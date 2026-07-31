@@ -25,11 +25,16 @@ export async function GET(request: NextRequest) {
     const verified = searchParams.get('verified') || '';
     const hasOrders = searchParams.get('hasOrders') || '';
 
-    // Build query - get all users except admins, include users without role
-    const query: any = {
-      role: { $ne: 'admin' },
+    // Build query - get all users except admins and deleted users
+    let query: any = {
       isDeleted: { $ne: true }
     };
+
+    // Role filter - exclude admins but include users without role
+    query.$or = [
+      { role: { $ne: 'admin' } },
+      { role: { $exists: false } }
+    ];
 
     // Status filter
     if (status === 'blocked') {
@@ -49,14 +54,19 @@ export async function GET(request: NextRequest) {
     let customers;
     if (search) {
       const searchRegex = new RegExp(search, 'i');
-      customers = await User.find({
-        ...query,
-        $or: [
-          { name: searchRegex },
-          { email: searchRegex },
-          { phone: searchRegex },
-        ],
-      }).sort({ createdAt: -1 });
+      const searchQuery = {
+        $and: [
+          query,
+          {
+            $or: [
+              { name: searchRegex },
+              { email: searchRegex },
+              { phone: searchRegex },
+            ]
+          }
+        ]
+      };
+      customers = await User.find(searchQuery).sort({ createdAt: -1 });
     } else {
       customers = await User.find(query).sort({ createdAt: -1 });
     }

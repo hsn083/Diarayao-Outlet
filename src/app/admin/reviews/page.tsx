@@ -61,6 +61,12 @@ interface Review {
   avatar?: string;
   createdAt: string;
   updatedAt: string;
+  product?: {
+    _id: string;
+    name: string;
+    slug: string;
+    images?: string[];
+  };
 }
 
 interface Product {
@@ -118,9 +124,19 @@ export default function AdminReviewsPage() {
     }
   };
 
-  const getProductName = (productId: string) => {
-    const product = products.find(p => p.id === productId);
+  const getProductName = (review: Review) => {
+    if (review.product && typeof review.product === 'object') {
+      return review.product.name || 'Unknown Product';
+    }
+    const product = products.find(p => p.id === review.productId);
     return product?.name || 'Unknown Product';
+  };
+
+  const getProductImage = (review: Review) => {
+    if (review.product && typeof review.product === 'object' && review.product.images) {
+      return review.product.images[0] || '/Logo.jpeg';
+    }
+    return '/Logo.jpeg';
   };
 
   const handleApprove = async (reviewId: string) => {
@@ -258,7 +274,7 @@ export default function AdminReviewsPage() {
       ['ID', 'Product', 'Customer', 'Email', 'Rating', 'Title', 'Comment', 'Status', 'Verified', 'Date'],
       ...filteredReviews.map(r => [
         r.id,
-        getProductName(r.productId),
+        getProductName(r),
         r.customerName,
         r.customerEmail,
         r.rating,
@@ -283,7 +299,7 @@ export default function AdminReviewsPage() {
       review.customerName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       review.customerEmail.toLowerCase().includes(searchQuery.toLowerCase()) ||
       review.comment.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      getProductName(review.productId).toLowerCase().includes(searchQuery.toLowerCase());
+      getProductName(review).toLowerCase().includes(searchQuery.toLowerCase());
     
     const matchesStatus = statusFilter === 'all' || review.status === statusFilter;
     
@@ -449,7 +465,7 @@ export default function AdminReviewsPage() {
                         </div>
                         
                         <p className="text-sm text-muted-foreground mb-2">
-                          Product: {getProductName(review.productId)}
+                          Product: {getProductName(review)}
                         </p>
                         
                         <p className="text-muted-foreground mb-3">{review.comment}</p>
@@ -514,7 +530,7 @@ export default function AdminReviewsPage() {
                                   {getStatusBadge(selectedReview.status)}
                                 </div>
                                 <p className="text-sm text-muted-foreground">
-                                  Product: {getProductName(selectedReview.productId)}
+                                  Product: {getProductName(selectedReview)}
                                 </p>
                                 {selectedReview.title && (
                                   <p className="font-medium">{selectedReview.title}</p>
@@ -682,7 +698,7 @@ export default function AdminReviewsPage() {
                               {reviewToDelete && (
                                 <div className="p-3 bg-muted rounded-lg">
                                   <p className="text-sm font-medium mb-1">{reviewToDelete.comment}</p>
-                                  <p className="text-xs text-muted-foreground">Product: {getProductName(reviewToDelete.productId)}</p>
+                                  <p className="text-xs text-muted-foreground">Product: {getProductName(reviewToDelete)}</p>
                                 </div>
                               )}
                               <div className="flex justify-end space-x-2">

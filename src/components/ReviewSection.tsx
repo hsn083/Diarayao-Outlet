@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from 'react';
-import { Star, ShieldCheck, ThumbsUp, ChevronDown, Pen, User } from 'lucide-react';
+import { Star, ShieldCheck, ThumbsUp, ChevronDown, Pen, User, Check } from 'lucide-react';
 
 export default function ReviewSection({ productId, currentUser, onReviewSubmit }: any) {
   const [reviews, setReviews] = useState<any[]>([]);
@@ -16,6 +16,18 @@ export default function ReviewSection({ productId, currentUser, onReviewSubmit }
   const [error, setError] = useState('');
   const [sortBy, setSortBy] = useState('recent');
   const [sortDropdownOpen, setSortDropdownOpen] = useState(false);
+  const [helpfulReviews, setHelpfulReviews] = useState<Set<string>>(new Set());
+  const [sessionId] = useState(() => {
+    if (typeof window !== 'undefined') {
+      let sid = localStorage.getItem('reviewSessionId');
+      if (!sid) {
+        sid = Math.random().toString(36).substring(2, 15);
+        localStorage.setItem('reviewSessionId', sid);
+      }
+      return sid;
+    }
+    return '';
+  });
 
   const fetchReviews = async () => {
     try {
@@ -86,6 +98,42 @@ export default function ReviewSection({ productId, currentUser, onReviewSubmit }
       console.error('Submit review error:', err);
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleHelpful = async (reviewId: string) => {
+    // Check if already marked as helpful by this session
+    if (helpfulReviews.has(reviewId)) {
+      return; // Already marked
+    }
+
+    try {
+      const res = await fetch('/api/reviews/helpful', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          reviewId,
+          sessionId,
+        }),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        // Update local state
+        setHelpfulReviews(prev => new Set([...prev, reviewId]));
+        setReviews(prev => 
+          prev.map(review => 
+            review._id === reviewId 
+              ? { ...review, helpfulCount: data.helpfulCount, helpful: data.helpfulCount, likes: data.likesCount }
+              : review
+          )
+        );
+      } else if (data.error === 'You have already marked this review as helpful') {
+        // Already marked on server, update local state
+        setHelpfulReviews(prev => new Set([...prev, reviewId]));
+      }
+    } catch (err) {
+      console.error('Mark helpful error:', err);
     }
   };
 
@@ -293,9 +341,26 @@ export default function ReviewSection({ productId, currentUser, onReviewSubmit }
                   
                   <p className="text-gray-700 leading-relaxed mb-4">{review.comment}</p>
                   
-                  <button className="flex items-center gap-2 text-sm text-gray-500 hover:text-pink-600 transition-colors">
-                    <ThumbsUp className="w-4 h-4" />
-                    <span>Helpful</span>
+                  <button 
+                    onClick={() => handleHelpful(review._id)}
+                    disabled={helpfulReviews.has(review._id)}
+                    className={`flex items-center gap-2 text-sm transition-colors ${
+                      helpfulReviews.has(review._id) 
+                        ? 'text-pink-600 cursor-default' 
+                        : 'text-gray-500 hover:text-pink-600 cursor-pointer'
+                    }`}
+                  >
+                    {helpfulReviews.has(review._id) ? (
+                      <Check className="w-4 h-4" />
+                    ) : (
+                      <ThumbsUp className="w-4 h-4" />
+                    )}
+                    <span>
+                      {helpfulReviews.has(review._id) ? 'Marked as helpful' : 'Helpful'}
+                    </span>
+                    {review.helpfulCount > 0 && (
+                      <span className="text-gray-400">({review.helpfulCount})</span>
+                    )}
                   </button>
                 </div>
               ))
