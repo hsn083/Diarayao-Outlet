@@ -1,0 +1,418 @@
+[
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "Diarayaoutlet06",
+    "details": "Successful login",
+    "id": "AUDIT-1785511947585-ludipfeqm",
+    "timestamp": "2026-07-31T15:32:27.585Z"
+  },
+  {
+    "id": "AUDIT-1785154351198-gkkyjlc",
+    "action": "DATA_RESET",
+    "adminId": "unknown",
+    "adminUsername": "unknown",
+    "details": "Reset data: revenue, salesAnalytics",
+    "timestamp": "2026-07-27T12:12:31.198Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "Diarayaoutlet06",
+    "details": "Successful login",
+    "id": "AUDIT-1785144684362-kzp4u4xai",
+    "timestamp": "2026-07-27T09:31:24.362Z"
+  },
+  {
+    "action": "PASSWORD_CHANGED",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "Diarayaoutlet06",
+    "details": "Password changed successfully",
+    "id": "AUDIT-1785144677808-8rbhwjk0z",
+    "timestamp": "2026-07-27T09:31:17.808Z"
+  },
+  {
+    "action": "USERNAME_CHANGED",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "@lh@mdcollection518",
+    "details": "Username changed from \"@lh@mdcollection518\" to \"Diarayaoutlet06\"",
+    "id": "AUDIT-1785144660184-tqmw79tji",
+    "timestamp": "2026-07-27T09:31:00.184Z"
+  },
+  {
+    "action": "EMAIL_CHANGED",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "@lh@mdcollection518",
+    "details": "Email changed from \"alhamdcollection518@gmail.com\" to \"Diarayaoutlet@gmail.com\"",
+    "id": "AUDIT-1785144625147-oz5tde4v1",
+    "timestamp": "2026-07-27T09:30:25.147Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "@lh@mdcollection518",
+    "details": "Successful login",
+    "id": "AUDIT-1785121096212-nqey3zwkd",
+    "timestamp": "2026-07-27T02:58:16.212Z"
+  },
+  {
+    "action": "LOGIN_FAILED",
+    "adminId": "unknown",
+    "adminUsername": "mhassanahmad183@gmail.com",
+    "details": "Failed login attempt for username \"mhassanahmad183@gmail.com\" - User not found",
+    "id": "AUDIT-1785121093958-gq9omva8h",
+    "timestamp": "2026-07-27T02:58:13.958Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "@lh@mdcollection518",
+    "details": "Successful login",
+    "id": "AUDIT-1783772130125-ot3tr5o78",
+    "timestamp": "2026-07-11T12:15:30.125Z"
+  },
+  {
+    "action": "PASSWORD_CHANGED",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "@lh@mdcollection518",
+    "details": "Password changed successfully",
+    "id": "AUDIT-1783772097842-46f5f8z5s",
+    "timestamp": "2026-07-11T12:14:57.842Z"
+  },
+  {
+    "action": "USERNAME_CHANGED",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Username changed from \"hassan83\" to \"@lh@mdcollection518\"",
+    "id": "AUDIT-1783772030776-yjtfrnmra",
+    "timestamp": "2026-07-11T12:13:50.776Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1783771412899-ubcqiqo1c",
+    "timestamp": "2026-07-11T12:03:32.899Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1783771411227-ndrefyy4h",
+    "timestamp": "2026-07-11T12:03:31.227Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1783684694871-eukd5o61m",
+    "timestamp": "2026-07-10T11:58:14.871Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1783050785710-zp8whqaca",
+    "timestamp": "2026-07-03T03:53:05.710Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1782963999097-9cdt0zkon",
+    "timestamp": "2026-07-02T03:46:39.097Z"
+  },
+  {
+    "id": "AUDIT-1782894232531-pkgznup",
+    "action": "DATA_RESET",
+    "adminId": "unknown",
+    "adminUsername": "unknown",
+    "details": "Reset data: revenue, salesAnalytics, dashboardStatistics",
+    "timestamp": "2026-07-01T08:23:52.531Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1782875379080-8dkw55lrx",
+    "timestamp": "2026-07-01T03:09:39.080Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1782832423635-6qq1wg8il",
+    "timestamp": "2026-06-30T15:13:43.635Z"
+  },
+  {
+    "id": "AUDIT-1782735954937-sicrkcc",
+    "action": "DATA_RESET",
+    "adminId": "unknown",
+    "adminUsername": "unknown",
+    "details": "Reset data: revenue",
+    "timestamp": "2026-06-29T12:25:54.937Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1782734413209-uiuq2dufd",
+    "timestamp": "2026-06-29T12:00:13.209Z"
+  },
+  {
+    "id": "AUDIT-1782734234226-wfe1y0l",
+    "action": "DATA_RESET",
+    "adminId": "unknown",
+    "adminUsername": "unknown",
+    "details": "Reset data: revenue, salesAnalytics",
+    "timestamp": "2026-06-29T11:57:14.226Z"
+  },
+  {
+    "id": "AUDIT-1782733721145-u8wz2h3",
+    "action": "DATA_RESET",
+    "adminId": "unknown",
+    "adminUsername": "unknown",
+    "details": "Reset data: products",
+    "timestamp": "2026-06-29T11:48:41.145Z"
+  },
+  {
+    "id": "AUDIT-1782733708957-8lp3ixh",
+    "action": "DATA_RESET",
+    "adminId": "unknown",
+    "adminUsername": "unknown",
+    "details": "Reset data: revenue, customers, salesAnalytics",
+    "timestamp": "2026-06-29T11:48:28.957Z"
+  },
+  {
+    "id": "AUDIT-1782733706036-rav1kfu",
+    "action": "DATA_RESET",
+    "adminId": "unknown",
+    "adminUsername": "unknown",
+    "details": "Reset data: revenue, salesAnalytics",
+    "timestamp": "2026-06-29T11:48:26.036Z"
+  },
+  {
+    "id": "AUDIT-1782733664275-lpdcn0a",
+    "action": "DATA_RESET",
+    "adminId": "unknown",
+    "adminUsername": "unknown",
+    "details": "Reset data: revenue, salesAnalytics",
+    "timestamp": "2026-06-29T11:47:44.275Z"
+  },
+  {
+    "id": "AUDIT-1782733614128-hawe2mk",
+    "action": "DATA_RESET",
+    "adminId": "unknown",
+    "adminUsername": "unknown",
+    "details": "Reset data: revenue, salesAnalytics",
+    "timestamp": "2026-06-29T11:46:54.128Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1782727867217-y8127zlty",
+    "timestamp": "2026-06-29T10:11:07.217Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1782641031075-2gg1kmuxb",
+    "timestamp": "2026-06-28T10:03:51.075Z"
+  },
+  {
+    "action": "LOGIN_FAILED",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Failed login attempt - Invalid password",
+    "id": "AUDIT-1782640974778-1rv29b9cf",
+    "timestamp": "2026-06-28T10:02:54.778Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1782554547617-mew5q9jyg",
+    "timestamp": "2026-06-27T10:02:27.617Z"
+  },
+  {
+    "action": "LOGIN_FAILED",
+    "adminId": "unknown",
+    "adminUsername": "mhassanahmad183@gmail.com",
+    "details": "Failed login attempt for username \"mhassanahmad183@gmail.com\" - User not found",
+    "id": "AUDIT-1782554545305-pxxdo5mww",
+    "timestamp": "2026-06-27T10:02:25.305Z"
+  },
+  {
+    "action": "EMAIL_CHANGED",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Email changed from \"admin@zorynix.pk\" to \"alhamdcollection518@gmail.com\"",
+    "id": "AUDIT-1782470055661-51qm6hr1z",
+    "timestamp": "2026-06-26T10:34:15.661Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1782467666413-vxouzpddr",
+    "timestamp": "2026-06-26T09:54:26.413Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1782294212576-v3zn852c3",
+    "timestamp": "2026-06-24T09:43:32.576Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1782130677756-fgz3wrbbo",
+    "timestamp": "2026-06-22T12:17:57.756Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1781681025028-1mopd0tta",
+    "timestamp": "2026-06-17T07:23:45.028Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1780287401659-jk2d15mb1",
+    "timestamp": "2026-06-01T04:16:41.659Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1780287248210-dkb5lrdnm",
+    "timestamp": "2026-06-01T04:14:08.210Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1780286811926-9j9a31noa",
+    "timestamp": "2026-06-01T04:06:51.926Z"
+  },
+  {
+    "action": "LOGIN_FAILED",
+    "adminId": "unknown",
+    "adminUsername": "adminn",
+    "details": "Failed login attempt for username \"adminn\" - User not found",
+    "id": "AUDIT-1780286808079-8bvd57f0d",
+    "timestamp": "2026-06-01T04:06:48.079Z"
+  },
+  {
+    "action": "LOGIN_FAILED",
+    "adminId": "unknown",
+    "adminUsername": "admin",
+    "details": "Failed login attempt for username \"admin\" - User not found",
+    "id": "AUDIT-1780286806439-tuclpf7aq",
+    "timestamp": "2026-06-01T04:06:46.439Z"
+  },
+  {
+    "action": "LOGIN_FAILED",
+    "adminId": "unknown",
+    "adminUsername": "admin",
+    "details": "Failed login attempt for username \"admin\" - User not found",
+    "id": "AUDIT-1780286803678-zm6kn2h0y",
+    "timestamp": "2026-06-01T04:06:43.678Z"
+  },
+  {
+    "action": "LOGIN_FAILED",
+    "adminId": "unknown",
+    "adminUsername": "admin",
+    "details": "Failed login attempt for username \"admin\" - User not found",
+    "id": "AUDIT-1780286801888-bxe9gt4pb",
+    "timestamp": "2026-06-01T04:06:41.888Z"
+  },
+  {
+    "action": "LOGIN_FAILED",
+    "adminId": "unknown",
+    "adminUsername": "admin",
+    "details": "Failed login attempt for username \"admin\" - User not found",
+    "id": "AUDIT-1780286800380-lka0n5gwl",
+    "timestamp": "2026-06-01T04:06:40.380Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1780286787184-u46ltfh00",
+    "timestamp": "2026-06-01T04:06:27.184Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Successful login",
+    "id": "AUDIT-1780244784635-is6o1o4mm",
+    "timestamp": "2026-05-31T16:26:24.635Z"
+  },
+  {
+    "action": "PASSWORD_CHANGED",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "hassan83",
+    "details": "Password changed successfully",
+    "id": "AUDIT-1780244770831-hi0bd60ok",
+    "timestamp": "2026-05-31T16:26:10.831Z"
+  },
+  {
+    "action": "USERNAME_CHANGED",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "admin",
+    "details": "Username changed from \"admin\" to \"hassan83\"",
+    "id": "AUDIT-1780244744061-byiek7no3",
+    "timestamp": "2026-05-31T16:25:44.061Z"
+  },
+  {
+    "action": "LOGIN_FAILED",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "admin",
+    "details": "Failed login attempt - Invalid password",
+    "id": "AUDIT-1780244680442-zndf9lj4p",
+    "timestamp": "2026-05-31T16:24:40.442Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "admin",
+    "details": "Successful login",
+    "id": "AUDIT-1780244671871-z5udwudi9",
+    "timestamp": "2026-05-31T16:24:31.871Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "admin",
+    "details": "Successful login",
+    "id": "AUDIT-1780244636234-62kgjvgcd",
+    "timestamp": "2026-05-31T16:23:56.234Z"
+  }
+]

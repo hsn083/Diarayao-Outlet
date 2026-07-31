@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 340 75% 85%;
+    --primary-foreground: 0 0% 10%;
+    --secondary: 340 30% 97%;
+    --secondary-foreground: 340 75% 30%;
+    --muted: 340 20% 96%;
+    --muted-foreground: 340 20% 45%;
+    --accent: 350 65% 78%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 340 20% 90%;
+    --input: 340 20% 90%;
+    --ring: 340 75% 85%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 340 20% 8%;
+    --foreground: 0 0% 95%;
+    --card: 340 20% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 340 20% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 340 75% 60%;
+    --primary-foreground: 0 0% 5%;
+    --secondary: 340 30% 18%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 340 30% 18%;
+    --muted-foreground: 340 30% 70%;
+    --accent: 350 65% 65%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 340 30% 25%;
+    --input: 340 30% 25%;
+    --ring: 340 75% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  
+  /* Mobile responsive base styles */
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  /* Ensure minimum touch target size for mobile usability */
+  button, a, input, select, textarea {
+    min-height: 44px;
+  }
+  
+  /* Mobile container padding */
+  @media (max-width: 768px) {
+    .container {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4849C;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C77B94;
+}
+
+/* Image optimization styles */
+@layer utilities {
+  .img-optimized {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+
+  .img-thumbnail {
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+    aspect-ratio: 1 / 1;
+  }
+
+  .img-product {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+/* Toggle Switch Container */
+.toggle-switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* Toggle Input */
+.toggle-switch input {
+  display: none;
+}
+
+/* Toggle Slider */
+.toggle-slider {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background-color: #D1D5DB; /* gray-300 */
+  border-radius: 9999px;
+  transition: background-color 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px;
+}
+
+/* Toggle Thumb */
+.toggle-slider::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background-color: #FFFFFF;
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+/* Checked State */
+.toggle-switch input:checked + .toggle-slider {
+  background-color: #10B981; /* green-500 */
+}
+
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(20px);
+}
+
+/* Label Text */
+.toggle-label {
+  margin-left: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827; /* gray-900 */
+}
+
+/* Dark Mode Support */
+.dark .toggle-label {
+  color: #F3F4F6; /* gray-100 */
+}
+
+.dark .toggle-slider {
+  background-color: #374151; /* gray-700 */
+}

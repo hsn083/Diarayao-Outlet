@@ -1,0 +1,13 @@
+# Diarayao Outlet Robots.txt
+# Allow all pages except admin and API routes
+
+User-agent: *
+Allow: /
+
+Disallow: /admin
+Disallow: /api
+Disallow: /dashboard
+Disallow: /private
+
+# Sitemap location
+Sitemap: https://www.diarayao.com/sitemap.xml
