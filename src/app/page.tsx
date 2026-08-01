@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/Logo.jpeg',
+        url: 'https://www.diarayao.com/pic.jpg',
         width: 1200,
         height: 630,
         alt: 'Diarayao Outlet - Premium Arabian & Turkish Abayas',
@@ -31,9 +31,12 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Premium Arabian & Turkish Abayas in Pakistan | Diarayao Outlet',
     description: 'Shop premium Arabian and Turkish abayas at Diarayao Outlet. Elegant modest fashion, secure payments, fast nationwide delivery, easy returns, and the latest luxury abaya collection in Pakistan.',
-    images: ['/Logo.jpeg'],
+    images: ['https://www.diarayao.com/pic.jpg'],
     creator: '@diarayaooutlet',
     site: '@diarayaooutlet',
+  },
+  alternates: {
+    canonical: 'https://www.diarayao.com',
   },
 };
 

@@ -4,7 +4,7 @@ export interface IPaymentVerification extends Document {
   payment: mongoose.Types.ObjectId;
   order: mongoose.Types.ObjectId;
   screenshot: string;
-  transactionId?: string;
+  transactionId: string;
   notes?: string;
   status: 'pending' | 'approved' | 'rejected';
   reviewedBy?: mongoose.Types.ObjectId;
@@ -30,7 +30,10 @@ const PaymentVerificationSchema = new Schema<IPaymentVerification>(
       type: String,
       required: true,
     },
-    transactionId: String,
+    transactionId: {
+      type: String,
+      required: true,
+    },
     notes: String,
     status: {
       type: String,

@@ -213,6 +213,88 @@ export default function ProductPage() {
     }
   }, [product?.id, fetchLiveRating]);
 
+  // Update SEO metadata when product loads
+  useEffect(() => {
+    if (product) {
+      // Update document title
+      const title = product.metaTitle || `${product.name} | Diarayao Outlet`;
+      document.title = title;
+
+      // Update meta description
+      const description = product.metaDescription || product.description;
+      let metaDescription = document.querySelector('meta[name="description"]') as HTMLMetaElement;
+      if (metaDescription) {
+        metaDescription.setAttribute('content', description);
+      } else {
+        metaDescription = document.createElement('meta') as HTMLMetaElement;
+        metaDescription.name = 'description';
+        metaDescription.content = description;
+        document.head.appendChild(metaDescription);
+      }
+
+      // Update meta keywords
+      const keywords = product.metaKeywords || `${product.name}, Abaya, ${product.category}, Diarayao Outlet, Modest Fashion, Islamic Clothing`;
+      let metaKeywords = document.querySelector('meta[name="keywords"]') as HTMLMetaElement;
+      if (metaKeywords) {
+        metaKeywords.setAttribute('content', keywords);
+      } else {
+        metaKeywords = document.createElement('meta') as HTMLMetaElement;
+        metaKeywords.name = 'keywords';
+        metaKeywords.content = keywords;
+        document.head.appendChild(metaKeywords);
+      }
+
+      // Update canonical URL
+      const canonicalUrl = `https://www.diarayao.com/product/${product.slug}`;
+      let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+      if (canonical) {
+        canonical.setAttribute('href', canonicalUrl);
+      } else {
+        canonical = document.createElement('link') as HTMLLinkElement;
+        canonical.rel = 'canonical';
+        canonical.href = canonicalUrl;
+        document.head.appendChild(canonical);
+      }
+
+      // Update Open Graph tags
+      const ogTitle = document.querySelector('meta[property="og:title"]') as HTMLMetaElement;
+      if (ogTitle) {
+        ogTitle.setAttribute('content', title);
+      }
+
+      const ogDescription = document.querySelector('meta[property="og:description"]') as HTMLMetaElement;
+      if (ogDescription) {
+        ogDescription.setAttribute('content', description);
+      }
+
+      const ogUrl = document.querySelector('meta[property="og:url"]') as HTMLMetaElement;
+      if (ogUrl) {
+        ogUrl.setAttribute('content', canonicalUrl);
+      }
+
+      const ogImage = document.querySelector('meta[property="og:image"]') as HTMLMetaElement;
+      if (ogImage && product.images && product.images.length > 0) {
+        ogImage.setAttribute('content', product.images[0]);
+      }
+
+      // Update Twitter card
+      const twitterTitle = document.querySelector('meta[name="twitter:title"]') as HTMLMetaElement;
+      if (twitterTitle) {
+        twitterTitle.setAttribute('content', title);
+      }
+
+      const twitterDescription = document.querySelector('meta[name="twitter:description"]') as HTMLMetaElement;
+      if (twitterDescription) {
+        twitterDescription.setAttribute('content', description);
+      }
+
+      const twitterImage = document.querySelector('meta[name="twitter:image"]') as HTMLMetaElement;
+      if (twitterImage && product.images && product.images.length > 0) {
+        twitterImage.setAttribute('content', product.images[0]);
+      }
+    }
+  }, [product]);
+
   if (isLoading) {
     return (
       <>
@@ -420,7 +502,7 @@ export default function ProductPage() {
         <ProductSchema
           name={product.name}
           description={product.description}
-          image={product.images?.[0] || '/Logo.jpeg'}
+          image={product.images?.[0] || 'https://www.diarayao.com/pic.jpg'}
           price={product.discountPrice || product.price}
           currency="PKR"
           availability={product.stock > 0 ? 'InStock' : 'OutOfStock'}
@@ -567,7 +649,8 @@ export default function ProductPage() {
                       )}
                       <Image
                         src={image}
-                        alt={`${product.name} - Thumbnail ${index + 1}`}
+                        alt={`${product.name} - Thumbnail ${index + 1} - ${product.category} abaya in ${product.colors?.map(c => c.name).join(', ') || 'various colors'} available at Diarayao Outlet Pakistan`}
+                        title={`${product.name} - View ${index + 1}`}
                         fill
                         className={`object-contain object-top transition-opacity duration-300 ${
                           loadedImages.has(index) ? 'opacity-100' : 'opacity-0'
@@ -749,37 +832,43 @@ export default function ProductPage() {
               </div>
 
               {/* Actions */}
-              <div className="flex space-x-3 md:space-x-4 mb-6 md:mb-8">
+              <div className="flex flex-row gap-2 sm:gap-3 md:gap-4 mb-4 sm:mb-6 md:mb-8 w-full">
                 <Button 
-                  className="flex-1 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 text-white font-semibold h-11 md:h-12" 
+                  className="flex-1 min-w-0 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 text-white font-semibold h-10 sm:h-11 md:h-12 text-xs sm:text-sm md:text-base px-2 sm:px-3 md:px-4" 
                   disabled={product.stock === 0 || isAddingToCart}
                   onClick={handleAddToCart}
                 >
                   {isAddingToCart ? (
                     <>
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                      Adding...
+                      <Loader2 className="mr-1 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5 animate-spin" />
+                      <span className="hidden sm:inline">Adding...</span>
+                      <span className="sm:hidden">...</span>
                     </>
                   ) : (
                     <>
-                      <ShoppingCart className="mr-2 h-5 w-5" />
-                      Add to Cart
+                      <ShoppingCart className="mr-1 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                      <span className="hidden sm:inline">Add to Cart</span>
+                      <span className="sm:hidden">Add</span>
                     </>
                   )}
                 </Button>
                 <Button 
                   variant="outline" 
-                  className="flex-1 border-pink-500 text-pink-700 hover:bg-pink-50 font-semibold h-11 md:h-12"
+                  className="flex-1 min-w-0 border-pink-500 text-pink-700 hover:bg-pink-50 font-semibold h-10 sm:h-11 md:h-12 text-xs sm:text-sm md:text-base px-2 sm:px-3 md:px-4"
                   disabled={product.stock === 0 || isBuyingNow}
                   onClick={handleBuyNow}
                 >
                   {isBuyingNow ? (
                     <>
-                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                      Processing...
+                      <Loader2 className="mr-1 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5 animate-spin" />
+                      <span className="hidden sm:inline">Processing...</span>
+                      <span className="sm:hidden">...</span>
                     </>
                   ) : (
-                    'Buy Now'
+                    <>
+                      <span className="hidden sm:inline">Buy Now</span>
+                      <span className="sm:hidden">Buy</span>
+                    </>
                   )}
                 </Button>
               </div>
@@ -831,8 +920,8 @@ export default function ProductPage() {
           {/* Related Products */}
           {relatedProducts.length > 0 && (
             <div>
-              <h2 className="text-2xl font-bold mb-6">Related Products</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Related Products</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
                 {relatedProducts.map(p => (
                   <ProductCard key={p.id} product={p} />
                 ))}

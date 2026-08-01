@@ -361,7 +361,7 @@ export default function HeroSlider() {
   return (
    <section
   ref={sliderRef}
-  className="relative overflow-hidden h-[550px] md:h-[650px] lg:h-[750px]"
+    className="relative overflow-hidden h-[550px] md:h-[650px] lg:h-[750px]"
       onMouseEnter={() => settings.pauseOnHover && setIsPaused(true)}
       onMouseLeave={() => settings.pauseOnHover && setIsPaused(false)}
       onTouchStart={settings.touchSwipe ? handleTouchStart : undefined}
@@ -400,7 +400,7 @@ export default function HeroSlider() {
                   />
                 </div>
                 {/* Mobile Image (shown on mobile only) */}
-                <div className="block md:hidden absolute inset-0 z-0">
+                 <div className="block md:hidden absolute inset-0 z-0">
                   <Image
                     src={getSafeImageUrl(banner.mobileImage, banner._id, true)}
                     alt={banner.heading || 'Banner image'}

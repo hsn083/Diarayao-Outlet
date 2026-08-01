@@ -12,6 +12,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Grid, List, Filter, ArrowLeft, Loader2, Package } from 'lucide-react';
 import { Category, Product } from '@/types';
 import { useProductStore } from '@/store/productStore';
+import { BreadcrumbSchema } from '@/components/StructuredData';
 
 export default function CategorySlugPage() {
   const params = useParams();
@@ -37,9 +38,74 @@ export default function CategorySlugPage() {
           // Update document title for SEO
           if (foundCategory) {
             document.title = foundCategory.metaTitle || `${foundCategory.name} | Diarayao Outlet`;
-            const metaDescription = document.querySelector('meta[name="description"]');
+            const metaDescription = document.querySelector('meta[name="description"]') as HTMLMetaElement;
             if (metaDescription) {
               metaDescription.setAttribute('content', foundCategory.metaDescription || `Explore our premium ${foundCategory.name} collection featuring elegant styles, premium fabrics and modern modest fashion.`);
+            }
+
+            // Update meta keywords
+            const keywords = foundCategory.metaKeywords || `${foundCategory.name}, Diarayao Outlet, Abaya, Modest Fashion, Islamic Clothing, ${foundCategory.name} Collection`;
+            let metaKeywords = document.querySelector('meta[name="keywords"]') as HTMLMetaElement;
+            if (metaKeywords) {
+              metaKeywords.setAttribute('content', keywords);
+            } else {
+              metaKeywords = document.createElement('meta') as HTMLMetaElement;
+              metaKeywords.name = 'keywords';
+              metaKeywords.content = keywords;
+              document.head.appendChild(metaKeywords);
+            }
+
+            // Update canonical URL
+            const canonicalUrl = `https://www.diarayao.com/category/${foundCategory.slug}`;
+            let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+            if (canonical) {
+              canonical.setAttribute('href', canonicalUrl);
+            } else {
+              canonical = document.createElement('link') as HTMLLinkElement;
+              canonical.rel = 'canonical';
+              canonical.href = canonicalUrl;
+              document.head.appendChild(canonical);
+            }
+
+            // Update Open Graph tags
+            const ogTitle = document.querySelector('meta[property="og:title"]') as HTMLMetaElement;
+            if (ogTitle) {
+              ogTitle.setAttribute('content', foundCategory.metaTitle || `${foundCategory.name} | Diarayao Outlet`);
+            }
+
+            const ogDescription = document.querySelector('meta[property="og:description"]') as HTMLMetaElement;
+            if (ogDescription) {
+              ogDescription.setAttribute('content', foundCategory.metaDescription || `Explore our premium ${foundCategory.name} collection featuring elegant styles, premium fabrics and modern modest fashion.`);
+            }
+
+            const ogUrl = document.querySelector('meta[property="og:url"]') as HTMLMetaElement;
+            if (ogUrl) {
+              ogUrl.setAttribute('content', canonicalUrl);
+            }
+
+            const ogImage = document.querySelector('meta[property="og:image"]') as HTMLMetaElement;
+            if (ogImage && foundCategory.image) {
+              ogImage.setAttribute('content', foundCategory.image);
+            } else if (ogImage) {
+              ogImage.setAttribute('content', 'https://www.diarayao.com/pic.jpg');
+            }
+
+            // Update Twitter card
+            const twitterTitle = document.querySelector('meta[name="twitter:title"]') as HTMLMetaElement;
+            if (twitterTitle) {
+              twitterTitle.setAttribute('content', foundCategory.metaTitle || `${foundCategory.name} | Diarayao Outlet`);
+            }
+
+            const twitterDescription = document.querySelector('meta[name="twitter:description"]') as HTMLMetaElement;
+            if (twitterDescription) {
+              twitterDescription.setAttribute('content', foundCategory.metaDescription || `Explore our premium ${foundCategory.name} collection featuring elegant styles, premium fabrics and modern modest fashion.`);
+            }
+
+            const twitterImage = document.querySelector('meta[name="twitter:image"]') as HTMLMetaElement;
+            if (twitterImage && foundCategory.image) {
+              twitterImage.setAttribute('content', foundCategory.image);
+            } else if (twitterImage) {
+              twitterImage.setAttribute('content', 'https://www.diarayao.com/pic.jpg');
             }
           }
         }
@@ -97,6 +163,12 @@ export default function CategorySlugPage() {
 
   const categoryProducts = getProductsByCategory(category?.id, category?.slug);
 
+  const breadcrumbItems = [
+    { name: 'Home', item: '/' },
+    { name: 'Categories', item: '/categories' },
+    { name: category?.name || '', item: `/category/${category?.slug}` },
+  ];
+
   const sortedProducts = [...categoryProducts].sort((a, b) => {
     switch (sortBy) {
       case 'price-low':
@@ -115,6 +187,7 @@ export default function CategorySlugPage() {
 
   return (
     <>
+      <BreadcrumbSchema items={breadcrumbItems} />
       <Header />
       <main className="min-h-screen bg-slate-50/50">
         {/* Category Header */}

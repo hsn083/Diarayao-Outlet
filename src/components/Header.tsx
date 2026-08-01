@@ -169,7 +169,7 @@ export default function Header() {
               <Input
                 type="search"
                 placeholder="Search abayas, hijabs, modest wear..."
-                className="pl-10 w-full border-pink-200 focus:border-pink-400 focus:ring-pink-500/20 transition-all duration-200"
+                className="pl-10 w-full border-pink-200 focus:border-pink-400 focus:ring-pink-500/20 transition-all duration-200 text-base"
                 value={searchQuery}
                 onChange={(e) => handleSearchInputChange(e.target.value)}
                 onFocus={() => setShowSuggestions(true)}
@@ -390,7 +390,7 @@ export default function Header() {
               value={mobileSearchQuery}
               onChange={(e) => setMobileSearchQuery(e.target.value)}
               placeholder="Search modest wear..."
-              className="pl-10 w-full border-pink-200 focus:border-pink-400 focus:ring-pink-500/20 transition-all duration-200"
+              className="pl-10 w-full border-pink-200 focus:border-pink-400 focus:ring-pink-500/20 transition-all duration-200 text-base"
             />
           </form>
         </div>
@@ -431,7 +431,7 @@ export default function Header() {
                     value={mobileSearchQuery}
                     onChange={(e) => setMobileSearchQuery(e.target.value)}
                     placeholder="Search products..."
-                    className="pl-10 w-full border-gray-300 focus:border-pink-400 focus:ring-pink-500/20 text-gray-900"
+                    className="pl-10 w-full border-gray-300 focus:border-pink-400 focus:ring-pink-500/20 text-gray-900 text-base"
                   />
                 </form>
               </div>

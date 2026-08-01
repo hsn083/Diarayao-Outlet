@@ -5,7 +5,7 @@ export interface IPayment extends Document {
   amount: number;
   method: 'cod' | 'easypaisa' | 'jazzcash' | 'stripe';
   status: 'pending' | 'processing' | 'completed' | 'failed' | 'refunded';
-  transactionId?: string;
+  transactionId: string;
   screenshot?: string;
   verificationStatus?: 'pending' | 'approved' | 'rejected';
   verifiedBy?: mongoose.Types.ObjectId;
@@ -38,7 +38,10 @@ const PaymentSchema = new Schema<IPayment>(
       enum: ['pending', 'processing', 'completed', 'failed', 'refunded'],
       default: 'pending',
     },
-    transactionId: String,
+    transactionId: {
+      type: String,
+      required: true,
+    },
     screenshot: String,
     verificationStatus: {
       type: String,

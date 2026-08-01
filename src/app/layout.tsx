@@ -5,7 +5,7 @@ import Analytics from "@/components/Analytics";
 import SettingsProvider from "@/components/SettingsProvider";
 import { ToastContainer } from "@/components/ui/toast";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { OrganizationSchema, WebsiteSchema, OnlineStoreSchema } from "@/components/StructuredData";
+import { OrganizationSchema, WebsiteSchema, OnlineStoreSchema, WebPageSchema } from "@/components/StructuredData";
 
 // Force dynamic rendering to avoid build-time fetch issues
 export const dynamic = 'force-dynamic';
@@ -57,9 +57,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const metaTitle = settings?.seo?.metaTitle || 'Diarayao Outlet | Buy Premium Abayas & Modest Dresses Online';
   const metaDescription = settings?.seo?.metaDescription || 'Shop premium Abayas, Hijabs, Modest Dresses and Islamic Fashion online at Diarayao Outlet. High-quality fabrics, elegant designs, fast delivery across Pakistan and secure shopping experience.';
   const metaKeywords = settings?.seo?.metaKeywords || 'Diarayao Outlet, Abaya Pakistan, Buy Abaya Online, Premium Abaya, Hijab Pakistan, Modest Fashion, Islamic Clothing, Women\'s Abaya, Modest Dresses, Luxury Abaya, Black Abaya, Kimono Abaya, Open Abaya, Nida Abaya, Pakistani Abaya, Abaya Collection, Muslim Fashion, Hijab Store, Abaya Online Pakistan, Islamic Wear';
-  const ogImage = settings?.seo?.ogImage || '/Logo.jpeg';
-  const canonicalUrl = settings?.seo?.canonicalUrl || process.env.NEXT_PUBLIC_SITE_URL || 'https://www.diarayao.com/';
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.diarayao.com/';
+  const ogImage = settings?.seo?.ogImage || 'https://www.diarayao.com/pic.jpg';
+  const canonicalUrl = settings?.seo?.canonicalUrl || 'https://www.diarayao.com';
+  const siteUrl = 'https://www.diarayao.com';
 
   return {
     metadataBase: new URL(siteUrl),
@@ -74,14 +74,9 @@ export async function generateMetadata(): Promise<Metadata> {
     publisher: 'Diarayao Outlet',
     manifest: '/manifest.json',
     icons: {
-      icon: [
-        { url: '/favicon.png', sizes: '32x32', type: 'image/png' },
-        { url: '/favicon.png', sizes: '192x192', type: 'image/png' },
-        { url: '/favicon.png', sizes: '512x512', type: 'image/png' },
-      ],
-      apple: [
-        { url: '/favicon.png', sizes: '180x180', type: 'image/png' },
-      ],
+      icon: '/favicon.png',
+      shortcut: '/favicon.png',
+      apple: '/favicon.png',
     },
     formatDetection: {
       email: false,
@@ -100,7 +95,7 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       images: [
         {
-          url: ogImage,
+          url: 'https://www.diarayao.com/pic.jpg',
           width: 1200,
           height: 630,
           alt: `${siteName} - Premium Abayas & Modest Fashion`,
@@ -111,7 +106,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       title: settings?.seo?.twitterTitle || 'Diarayao Outlet',
       description: settings?.seo?.twitterDescription || 'Premium Abayas & Modest Fashion Online',
-      images: [settings?.seo?.twitterImage || ogImage],
+      images: ['https://www.diarayao.com/pic.jpg'],
       creator: '@diarayaooutlet',
       site: '@diarayaooutlet',
     },
@@ -144,7 +139,8 @@ export function generateViewport(): Viewport {
   return {
     width: 'device-width',
     initialScale: 1,
-    maximumScale: 5,
+    maximumScale: 1,
+    userScalable: false,
     themeColor: '#F43F7E',
   };
 }
@@ -165,6 +161,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${poppins.variable} ${playfairDisplay.variable} ${cinzel.variable} ${montserrat.variable}`}>
         <OrganizationSchema />
         <WebsiteSchema />
+        <WebPageSchema />
         <OnlineStoreSchema />
         <SettingsProvider>
           {children}

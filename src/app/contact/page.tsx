@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/Logo.jpeg',
+        url: 'https://www.diarayao.com/pic.jpg',
         width: 1200,
         height: 630,
         alt: 'Diarayao Outlet - Contact Us',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Contact Us - Diarayao Outlet',
     description: 'Contact Diarayao Outlet for any questions about our premium abayas, hijabs, and modest fashion.',
-    images: ['/Logo.jpeg'],
+    images: ['https://www.diarayao.com/pic.jpg'],
     creator: '@diarayaooutlet',
     site: '@diarayaooutlet',
   },

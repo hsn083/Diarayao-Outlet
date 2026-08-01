@@ -5,6 +5,9 @@ export interface Product {
   slug: string;
   sku?: string;
   description: string;
+  metaTitle?: string;
+  metaDescription?: string;
+  metaKeywords?: string;
   price: number;
   discountPrice?: number;
   categoryId: string;
@@ -143,7 +146,7 @@ export interface Order {
   paymentMethod: 'cod' | 'easypaisa' | 'jazzcash' | 'bank_transfer' | 'card' | 'stripe';
   paymentStatus: PaymentStatus;
   paymentScreenshot?: PaymentScreenshot;
-  transactionId?: string;
+  transactionId: string;
   paymentTime?: string;
   adminNotes?: string;
   trackingId?: string;
@@ -202,6 +205,7 @@ export interface Category {
   displayOrder: number;
   metaTitle?: string;
   metaDescription?: string;
+  metaKeywords?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -296,7 +300,7 @@ export interface Transaction {
 
 export interface PaymentVerification {
   success: boolean;
-  transactionId?: string;
+  transactionId: string;
   error?: string;
 }
 

@@ -46,6 +46,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate transaction ID for Easypaisa, JazzCash, and bank_transfer
+    if ((order.paymentMethod === 'easypaisa' || order.paymentMethod === 'jazzcash' || order.paymentMethod === 'bank_transfer') && !order.transactionId) {
+      return NextResponse.json(
+        { success: false, error: 'Transaction ID is required for this payment method' },
+        { status: 400 }
+      );
+    }
+
     // Validate payment screenshot for bank_transfer if provided
     if (order.paymentMethod === 'bank_transfer' && !order.paymentScreenshot) {
       return NextResponse.json(
@@ -200,7 +208,7 @@ export async function POST(request: NextRequest) {
         amount: total,
         method: order.paymentMethod,
         status: order.paymentMethod === 'cod' ? 'pending' : 'processing',
-        transactionId: transaction?.transactionId || order.transactionId,
+        transactionId: transaction?.transactionId || order.transactionId || `COD-${newOrder.orderNumber}`,
         screenshot: order.paymentScreenshot?.url || order.paymentScreenshot || transaction?.screenshot?.url || transaction?.screenshot,
         verificationStatus: order.paymentMethod === 'cod' ? 'pending' : 'pending',
         metadata: transaction,

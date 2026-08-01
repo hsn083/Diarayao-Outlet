@@ -404,12 +404,10 @@ Please verify my payment.`;
                       {paymentStatusConfig.label}
                     </Badge>
                   </div>
-                  {order.transactionId && (
-                    <div className="flex justify-between">
-                      <span className="text-gray-500">Transaction ID</span>
-                      <span className="font-medium text-gray-900 font-mono text-xs">{order.transactionId}</span>
-                    </div>
-                  )}
+                  <div className="flex justify-between">
+                    <span className="text-gray-500">Transaction ID</span>
+                    <span className="font-medium text-gray-900 font-mono text-xs">{order.transactionId}</span>
+                  </div>
                   {order.paymentTime && (
                     <div className="flex justify-between">
                       <span className="text-gray-500">Payment Time</span>

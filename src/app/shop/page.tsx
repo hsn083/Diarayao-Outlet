@@ -12,6 +12,7 @@ import { Slider } from '@/components/ui/slider';
 import { Search, SlidersHorizontal, X, Loader2, Package } from 'lucide-react';
 import { Category, Product } from '@/types';
 import { useProductStore } from '@/store/productStore';
+import { BreadcrumbSchema } from '@/components/StructuredData';
 
 export default function ShopPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -89,8 +90,14 @@ export default function ShopPage() {
     }
   });
 
+  const breadcrumbItems = [
+    { name: 'Home', item: '/' },
+    { name: 'Shop', item: '/shop' },
+  ];
+
   return (
     <>
+      <BreadcrumbSchema items={breadcrumbItems} />
       <Header />
       <main className="min-h-screen">
         <div className="bg-muted/30 py-8">

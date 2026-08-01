@@ -4,6 +4,14 @@
     "adminId": "ADMIN-1780244625271",
     "adminUsername": "Diarayaoutlet06",
     "details": "Successful login",
+    "id": "AUDIT-1785575279088-ll0na6i4w",
+    "timestamp": "2026-08-01T09:07:59.088Z"
+  },
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1780244625271",
+    "adminUsername": "Diarayaoutlet06",
+    "details": "Successful login",
     "id": "AUDIT-1785511947585-ludipfeqm",
     "timestamp": "2026-07-31T15:32:27.585Z"
   },

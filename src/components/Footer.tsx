@@ -40,7 +40,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#FFF5F7] border-t border-[#F4A7B9] mt-20">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 max-w-full overflow-hidden">
           {/* Company Info */}
           <div className="text-left">
             <div className="mb-6 flex justify-start">

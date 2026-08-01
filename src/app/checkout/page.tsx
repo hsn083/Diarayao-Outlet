@@ -196,6 +196,13 @@ export default function CheckoutPage() {
         return;
       }
 
+      // Validate transaction ID for Easypaisa and JazzCash
+      if ((paymentMethod === 'easypaisa' || paymentMethod === 'jazzcash' || paymentMethod === 'bankTransfer') && !transactionId) {
+        setError('Please enter transaction ID before placing your order.');
+        setIsLoading(false);
+        return;
+      }
+
       // Show OTP verification before placing order
       setShowOTPVerification(true);
       setIsLoading(false);
@@ -342,7 +349,7 @@ export default function CheckoutPage() {
                            paymentMethod === 'easypaisa' ? 'easypaisa' : 'bank_transfer',
               paymentStatus: paymentStatus,
               paymentScreenshot: screenshotUrl || undefined,
-              transactionId: transactionId || undefined,
+              transactionId: transactionId,
               shipping: {
                 method: shippingMethod,
                 courier: 'TCS',
@@ -897,7 +904,7 @@ export default function CheckoutPage() {
                             </div>
                           )}
                           <div>
-                            <Label htmlFor="transactionId" className="text-sm">Transaction ID (Optional)</Label>
+                            <Label htmlFor="transactionId" className="text-sm">Transaction ID *</Label>
                             <Input
                               id="transactionId"
                               placeholder="Enter transaction ID from your payment receipt"

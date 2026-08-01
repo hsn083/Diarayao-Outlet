@@ -43,7 +43,7 @@ export default function Categories() {
       {isLoading ? (
         <div className="text-center py-12 text-muted-foreground">Loading collections...</div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
           {categories.map((category) => (
             <Link key={category.id} href={`/category/${category.slug}`}>
               <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer group border border-gray-100 hover:border-pink-200 rounded-lg">
@@ -54,6 +54,7 @@ export default function Categories() {
                       alt={category.name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 20vw, 20vw"
                     />
                   ) : (
                     <div className="text-6xl mb-4">
@@ -61,11 +62,11 @@ export default function Categories() {
                     </div>
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="font-bold text-white uppercase tracking-wide text-lg mb-1">
+                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+                    <h3 className="font-bold text-white uppercase tracking-wide text-sm sm:text-base md:text-lg mb-1">
                       {category.name}
                     </h3>
-                    <p className="text-sm text-white/90 line-clamp-1">{category.description}</p>
+                    <p className="text-xs sm:text-sm text-white/90 line-clamp-1">{category.description}</p>
                   </div>
                 </div>
               </Card>

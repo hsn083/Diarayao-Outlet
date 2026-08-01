@@ -34,7 +34,8 @@ export function OrganizationSchema() {
     name: 'Diarayao Outlet',
     alternateName: 'DiarayaoOutlet',
     url: 'https://www.diarayao.com',
-    logo: 'https://www.diarayao.com/Logo.jpeg',
+    logo: 'https://www.diarayao.com/pic.jpg',
+    image: 'https://www.diarayao.com/pic.jpg',
     description: 'Premium Abayas, Hijabs, Modest Dresses and Islamic Fashion online store. High-quality fabrics, elegant designs, fast delivery across Pakistan.',
     foundingDate: '2024',
     address: {
@@ -55,6 +56,7 @@ export function OrganizationSchema() {
       'https://www.facebook.com/diarayaooutlet',
       'https://www.instagram.com/diarayaooutlet',
       'https://www.tiktok.com/@diarayaooutlet',
+      'https://wa.me/923001234567',
     ],
   };
 
@@ -88,13 +90,38 @@ export function WebsiteSchema() {
   return <StructuredData data={websiteData} />;
 }
 
+// WebPage Schema for homepage
+export function WebPageSchema() {
+  const webPageData = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: 'Diarayao Outlet - Premium Abayas & Modest Fashion',
+    url: 'https://www.diarayao.com',
+    description: 'Shop premium Abayas, Hijabs, Modest Dresses and Islamic Fashion online at Diarayao Outlet. High-quality fabrics, elegant designs, fast delivery across Pakistan.',
+    inLanguage: 'en-US',
+    isPartOf: {
+      '@type': 'WebSite',
+      name: 'Diarayao Outlet',
+      url: 'https://www.diarayao.com',
+    },
+    about: {
+      '@type': 'Organization',
+      name: 'Diarayao Outlet',
+      url: 'https://www.diarayao.com',
+    },
+  };
+
+  return <StructuredData data={webPageData} />;
+}
+
 // Online Store Schema
 export function OnlineStoreSchema() {
   const storeData = {
     '@context': 'https://schema.org',
     '@type': 'Store',
     name: 'Diarayao Outlet',
-    image: 'https://www.diarayao.com/Logo.jpeg',
+    image: 'https://www.diarayao.com/pic.jpg',
+    logo: 'https://www.diarayao.com/pic.jpg',
     description: 'Premium Abayas, Hijabs, Modest Dresses and Islamic Fashion online store with nationwide delivery across Pakistan.',
     url: 'https://www.diarayao.com',
     telephone: '+92 300 1234567',

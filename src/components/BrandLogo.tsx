@@ -16,6 +16,7 @@ export default function BrandLogo({
       href="/"
       className="w-[140px] md:w-[160px] lg:w-[180px] flex flex-col items-center leading-none transition-transform duration-300 hover:scale-[1.03]"
       aria-label="DIARAYAO OUTLET - Home"
+      title="Diarayao Outlet - Premium Abayas and Modest Fashion"
     >
       {/* Top Decorative Ornament */}
       <div 

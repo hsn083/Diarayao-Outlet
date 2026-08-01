@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/Logo.jpeg',
+        url: 'https://www.diarayao.com/pic.jpg',
         width: 1200,
         height: 630,
         alt: 'Diarayao Outlet - About Us',
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'About Us - Premium Abayas & Modest Fashion | Diarayao Outlet',
     description: 'Learn about Diarayao Outlet - Pakistan\'s premier destination for premium Arabian and Turkish abayas, hijabs, and modest fashion.',
-    images: ['/Logo.jpeg'],
+    images: ['https://www.diarayao.com/pic.jpg'],
     creator: '@diarayaooutlet',
     site: '@diarayaooutlet',
   },

@@ -142,6 +142,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             <Image
               src={currentImage}
               alt={`${product.name} - ${product.category} abaya in ${product.colors?.map(c => c.name).join(', ') || 'various colors'} available at Diarayao Outlet Pakistan`}
+              title={product.name}
               fill
               className="object-contain object-top group-hover:scale-105 transition-all duration-300 ease-in-out"
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
@@ -201,28 +202,28 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
       </Link>
       
-      <CardContent className="p-4 md:p-5">
+      <CardContent className="p-2.5 md:p-3 lg:p-5">
         {product.brand && (
-          <p className="text-[11px] md:text-xs text-pink-600 font-medium mb-1.5 uppercase tracking-wide">{product.brand}</p>
+          <p className="text-[10px] sm:text-[11px] md:text-xs text-pink-600 font-medium mb-1 sm:mb-1.5 uppercase tracking-wide">{product.brand}</p>
         )}
         <Link href={`/product/${product.slug}`}>
-          <h3 className="font-semibold mb-2.5 line-clamp-2 group-hover:text-pink-700 transition-colors text-gray-800 text-sm md:text-base leading-snug">
+          <h3 className="font-semibold mb-2 sm:mb-2.5 line-clamp-2 group-hover:text-pink-700 transition-colors text-gray-800 text-xs sm:text-sm md:text-base leading-snug">
             {product.name}
           </h3>
         </Link>
         
-        <div className="flex items-center space-x-1.5 mb-2.5">
-          <Star className="h-3.5 w-3.5 md:h-4 md:w-4 fill-yellow-400 text-yellow-400" />
-          <span className="text-xs md:text-sm font-medium text-gray-700">{(product.rating || 0).toFixed(1)}</span>
-          <span className="text-xs md:text-sm text-muted-foreground">({product.reviewCount || product.reviews || 0})</span>
+        <div className="flex items-center space-x-1 sm:space-x-1.5 mb-2 sm:mb-2.5">
+          <Star className="h-3 w-3 sm:h-3.5 sm:w-3.5 md:h-4 md:w-4 fill-yellow-400 text-yellow-400" />
+          <span className="text-[10px] sm:text-xs md:text-sm font-medium text-gray-700">{(product.rating || 0).toFixed(1)}</span>
+          <span className="text-[10px] sm:text-xs md:text-sm text-muted-foreground">({product.reviewCount || product.reviews || 0})</span>
         </div>
         
-        <div className="flex items-center space-x-2 mb-3.5">
-          <span className="text-lg md:text-xl font-bold text-pink-600">
+        <div className="flex items-center space-x-1.5 sm:space-x-2 mb-2.5 sm:mb-3.5">
+          <span className="text-base sm:text-lg md:text-xl font-bold text-pink-600">
             PKR {(product.discountPrice || product.price).toLocaleString()}
           </span>
           {product.discountPrice && (
-            <span className="text-xs md:text-sm text-muted-foreground line-through">
+            <span className="text-[10px] sm:text-xs md:text-sm text-muted-foreground line-through">
               PKR {product.price.toLocaleString()}
             </span>
           )}
@@ -230,17 +231,17 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {/* Display available sizes */}
         {displaySizes.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-2">
+          <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-1.5 sm:mb-2">
             {displaySizes.map((size, index) => (
               <span 
                 key={index} 
-                className="text-[10px] md:text-xs px-2 md:px-2.5 py-1 md:py-1 bg-gray-100 text-gray-600 rounded-full"
+                className="text-[9px] sm:text-[10px] md:text-xs px-1.5 sm:px-2 md:px-2.5 py-0.5 sm:py-1 md:py-1 bg-gray-100 text-gray-600 rounded-full"
               >
                 {size}
               </span>
             ))}
             {availableSizes.length > 4 && (
-              <span className="text-[10px] md:text-xs px-2 md:px-2.5 py-1 md:py-1 bg-gray-100 text-gray-600 rounded-full">
+              <span className="text-[9px] sm:text-[10px] md:text-xs px-1.5 sm:px-2 md:px-2.5 py-0.5 sm:py-1 md:py-1 bg-gray-100 text-gray-600 rounded-full">
                 +{availableSizes.length - 4}
               </span>
             )}
@@ -248,34 +249,33 @@ export default function ProductCard({ product }: ProductCardProps) {
         )}
       </CardContent>
       
-      <CardFooter className="p-4 pt-0 md:p-5 md:pt-0 flex w-full gap-2.5">
+      <CardFooter className="p-2.5 pt-0 sm:p-3 md:p-5 md:pt-0 flex flex-row items-center w-full gap-2 sm:gap-2.5">
         <Button 
-          className="flex-1 min-w-0 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 text-white font-semibold text-xs md:text-sm px-3 md:px-4 py-2.5 md:py-3 h-9 md:h-10" 
+          className="flex-1 min-w-0 bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-400 hover:to-rose-400 text-white font-semibold text-[11px] sm:text-xs md:text-sm px-2 sm:px-2.5 md:px-4 py-2 sm:py-2 md:py-2.5 h-9 sm:h-9 md:h-10" 
           size="sm"
           onClick={handleAddToCart}
           disabled={product.stock === 0 || isAddingToCart}
         >
           {isAddingToCart ? (
-            <Loader2 className="mr-1.5 h-4 w-4 animate-spin" />
+            <Loader2 className="mr-1 h-3.5 w-3.5 sm:mr-1 sm:h-3.5 sm:w-3.5 animate-spin" />
           ) : (
-            <ShoppingCart className="mr-1.5 h-4 w-4" />
+            <ShoppingCart className="mr-1 h-3.5 w-3.5 sm:mr-1 sm:h-3.5 sm:w-3.5" />
           )}
-          <span className="truncate hidden sm:inline">{isAddingToCart ? 'Adding...' : 'Add to Cart'}</span>
-          <span className="sm:hidden">{isAddingToCart ? '...' : 'Add'}</span>
+          <span className="truncate text-[11px] sm:text-xs md:text-sm">{isAddingToCart ? 'Adding...' : 'Add to Cart'}</span>
         </Button>
         <Button 
-          className="flex-1 min-w-0 border-pink-500 text-pink-700 hover:bg-pink-50 font-semibold text-xs md:text-sm px-3 md:px-4 py-2.5 md:py-3 h-9 md:h-10" 
+          className="flex-1 min-w-0 border-pink-500 text-pink-700 hover:bg-pink-50 font-semibold text-[11px] sm:text-xs md:text-sm px-2 sm:px-2.5 md:px-4 py-2 sm:py-2 md:py-2.5 h-9 sm:h-9 md:h-10" 
           size="sm"
           variant="outline"
           onClick={handleBuyNow}
           disabled={product.stock === 0 || isBuyingNow}
         >
           {isBuyingNow ? (
-            <Loader2 className="mr-1.5 h-4 w-4 animate-spin" />
+            <Loader2 className="mr-1 h-3.5 w-3.5 sm:mr-1 sm:h-3.5 sm:w-3.5 animate-spin" />
           ) : (
-            <Zap className="mr-1.5 h-4 w-4" />
+            <Zap className="mr-1 h-3.5 w-3.5 sm:mr-1 sm:h-3.5 sm:w-3.5" />
           )}
-          <span className="truncate text-xs md:text-sm">{isBuyingNow ? 'Processing...' : 'Buy Now'}</span>
+          <span className="truncate text-[11px] sm:text-xs md:text-sm">{isBuyingNow ? 'Processing...' : 'Buy Now'}</span>
         </Button>
       </CardFooter>
     </Card>

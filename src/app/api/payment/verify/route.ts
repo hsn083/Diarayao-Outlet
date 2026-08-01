@@ -58,6 +58,7 @@ export async function GET(request: NextRequest) {
     await PaymentVerification.create({
       payment: payment?._id,
       order: payment?.order,
+      screenshot: '',
       status: session.payment_status === 'paid' ? 'approved' : 'rejected',
       transactionId: session.payment_intent as string,
       reviewedAt: new Date(),

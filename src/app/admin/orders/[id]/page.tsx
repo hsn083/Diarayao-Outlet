@@ -624,12 +624,10 @@ export default function AdminOrderDetailPage() {
                     </div>
                   )}
 
-                  {order.transactionId && (
-                    <div>
-                      <label className="text-xs font-medium text-gray-600 mb-1 block">Transaction ID</label>
-                      <p className="text-sm font-mono bg-white px-2 py-1 rounded border">{order.transactionId}</p>
-                    </div>
-                  )}
+                  <div>
+                    <label className="text-xs font-medium text-gray-600 mb-1 block">Transaction ID</label>
+                    <p className="text-sm font-mono bg-white px-2 py-1 rounded border">{order.transactionId}</p>
+                  </div>
 
                   {order.paymentTime && (
                     <div>
