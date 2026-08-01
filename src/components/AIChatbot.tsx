@@ -83,7 +83,7 @@ export function AIChatbot() {
       return 'You can reach our support team at alhamdcollection518@gmail.com or call +923457791198. We\'re available Monday to Saturday, 9 AM to 6 PM.';
     }
     if (lowerInput.includes('product') || lowerInput.includes('item')) {
-      return 'We have a wide range of products including accessories. You can browse our collection on the Shop page or use the search feature to find specific items.';
+      return 'We have a wide range of products. You can browse our collection on the Shop page or use the search feature to find specific items.';
     }
     
     return 'Thank you for your message! I\'m here to help with orders, shipping, returns, payments, and product information. How can I assist you further?';

@@ -14,7 +14,7 @@ const defaultHeroBanner: HeroBanner = {
   desktopImage: '/images/hero-banner-default.jpg',
   mobileImage: '/images/hero-banner-default.jpg',
   heading: 'Premium Fashion Collection',
-  subHeading: 'Discover the latest fashion trends and premium accessories crafted for comfort and elegance.',
+  subHeading: 'Discover the latest fashion trends and premium products crafted for comfort and elegance.',
   buttonText: 'Shop Now',
   buttonUrl: '/shop',
   textPosition: 'left',

@@ -15,9 +15,7 @@ import {
 } from '@/components/ui/form';
 import { Check, X } from 'lucide-react';
 
-const categories = [
-  'Accessories',
-];
+const categories: string[] = [];
 
 const brands = [
   'AlhamdCollection',

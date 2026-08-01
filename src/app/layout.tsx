@@ -6,6 +6,7 @@ import SettingsProvider from "@/components/SettingsProvider";
 import { ToastContainer } from "@/components/ui/toast";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { OrganizationSchema, WebsiteSchema, OnlineStoreSchema, WebPageSchema } from "@/components/StructuredData";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 // Force dynamic rendering to avoid build-time fetch issues
 export const dynamic = 'force-dynamic';
@@ -169,6 +170,7 @@ export default function RootLayout({
 
         <ToastContainer />
         <SpeedInsights />
+        <WhatsAppButton />
 
       </body>
     </html>

@@ -17,17 +17,7 @@ export default function ReviewSection({ productId, currentUser, onReviewSubmit }
   const [sortBy, setSortBy] = useState('recent');
   const [sortDropdownOpen, setSortDropdownOpen] = useState(false);
   const [helpfulReviews, setHelpfulReviews] = useState<Set<string>>(new Set());
-  const [sessionId] = useState(() => {
-    if (typeof window !== 'undefined') {
-      let sid = localStorage.getItem('reviewSessionId');
-      if (!sid) {
-        sid = Math.random().toString(36).substring(2, 15);
-        localStorage.setItem('reviewSessionId', sid);
-      }
-      return sid;
-    }
-    return '';
-  });
+  const [loadingHelpful, setLoadingHelpful] = useState<Set<string>>(new Set());
 
   const fetchReviews = async () => {
     try {
@@ -38,6 +28,19 @@ export default function ReviewSection({ productId, currentUser, onReviewSubmit }
         setAverageRating(data.averageRating);
         setTotalReviews(data.totalReviews);
         setRatingDistribution(data.ratingDistribution);
+
+        // Initialize helpful state based on currentUser
+        if (currentUser) {
+          const helpfulIds = data.reviews
+            .filter((review: any) => 
+              review.helpfulBy && 
+              review.helpfulBy.some((id: any) => id.toString() === currentUser._id)
+            )
+            .map((review: any) => review._id);
+          setHelpfulReviews(new Set(helpfulIds));
+        } else {
+          setHelpfulReviews(new Set());
+        }
       }
     } catch (err) {
       console.error('Failed to fetch reviews:', err);
@@ -46,7 +49,7 @@ export default function ReviewSection({ productId, currentUser, onReviewSubmit }
 
   useEffect(() => {
     if (productId) fetchReviews();
-  }, [productId]);
+  }, [productId, currentUser]);
 
   const handleSubmit = async () => {
     setError('');
@@ -102,10 +105,14 @@ export default function ReviewSection({ productId, currentUser, onReviewSubmit }
   };
 
   const handleHelpful = async (reviewId: string) => {
-    // Check if already marked as helpful by this session
-    if (helpfulReviews.has(reviewId)) {
-      return; // Already marked
+    // Check if user is logged in
+    if (!currentUser) {
+      setError('Please login to mark reviews as helpful');
+      return;
     }
+
+    // Set loading state
+    setLoadingHelpful(prev => new Set([...prev, reviewId]));
 
     try {
       const res = await fetch('/api/reviews/helpful', {
@@ -113,27 +120,42 @@ export default function ReviewSection({ productId, currentUser, onReviewSubmit }
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           reviewId,
-          sessionId,
         }),
       });
       const data = await res.json();
 
       if (data.success) {
-        // Update local state
-        setHelpfulReviews(prev => new Set([...prev, reviewId]));
+        // Update local state based on toggle result
+        if (data.isHelpful) {
+          setHelpfulReviews(prev => new Set([...prev, reviewId]));
+        } else {
+          setHelpfulReviews(prev => {
+            const newSet = new Set(prev);
+            newSet.delete(reviewId);
+            return newSet;
+          });
+        }
+
         setReviews(prev => 
           prev.map(review => 
             review._id === reviewId 
-              ? { ...review, helpfulCount: data.helpfulCount, helpful: data.helpfulCount, likes: data.likesCount }
+              ? { ...review, helpfulCount: data.helpfulCount, helpful: data.helpful, likes: data.likesCount }
               : review
           )
         );
-      } else if (data.error === 'You have already marked this review as helpful') {
-        // Already marked on server, update local state
-        setHelpfulReviews(prev => new Set([...prev, reviewId]));
+      } else {
+        setError(data.error || 'Failed to update helpful status');
       }
     } catch (err) {
       console.error('Mark helpful error:', err);
+      setError('Something went wrong. Please try again.');
+    } finally {
+      // Remove loading state
+      setLoadingHelpful(prev => {
+        const newSet = new Set(prev);
+        newSet.delete(reviewId);
+        return newSet;
+      });
     }
   };
 
@@ -343,20 +365,27 @@ export default function ReviewSection({ productId, currentUser, onReviewSubmit }
                   
                   <button 
                     onClick={() => handleHelpful(review._id)}
-                    disabled={helpfulReviews.has(review._id)}
+                    disabled={loadingHelpful.has(review._id)}
                     className={`flex items-center gap-2 text-sm transition-colors ${
                       helpfulReviews.has(review._id) 
                         ? 'text-pink-600 cursor-default' 
                         : 'text-gray-500 hover:text-pink-600 cursor-pointer'
-                    }`}
+                    } ${loadingHelpful.has(review._id) ? 'opacity-50 cursor-wait' : ''}`}
                   >
-                    {helpfulReviews.has(review._id) ? (
+                    {loadingHelpful.has(review._id) ? (
+                      <div className="w-4 h-4 border-2 border-pink-600 border-t-transparent rounded-full animate-spin" />
+                    ) : helpfulReviews.has(review._id) ? (
                       <Check className="w-4 h-4" />
                     ) : (
                       <ThumbsUp className="w-4 h-4" />
                     )}
                     <span>
-                      {helpfulReviews.has(review._id) ? 'Marked as helpful' : 'Helpful'}
+                      {loadingHelpful.has(review._id) 
+                        ? 'Loading...' 
+                        : helpfulReviews.has(review._id) 
+                          ? 'Marked as helpful' 
+                          : 'Helpful'
+                      }
                     </span>
                     {review.helpfulCount > 0 && (
                       <span className="text-gray-400">({review.helpfulCount})</span>

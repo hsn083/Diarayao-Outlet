@@ -14,7 +14,6 @@ export interface IReview extends Document {
   helpfulCount: number;
   helpful: number;
   helpfulBy: mongoose.Types.ObjectId[];
-  helpfulUsers: string[];
   likes: number;
   unhelpfulCount?: number;
   unhelpfulUsers?: string[];
@@ -58,7 +57,6 @@ const ReviewSchema = new Schema<IReview>(
     helpfulCount: { type: Number, default: 0 },
     helpful: { type: Number, default: 0 },
     helpfulBy: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-    helpfulUsers: { type: [String], default: [] },
     likes: { type: Number, default: 0 },
     unhelpfulCount: { type: Number, default: 0 },
     unhelpfulUsers: { type: [String], default: [] },

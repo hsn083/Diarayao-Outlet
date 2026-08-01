@@ -22,10 +22,10 @@ const blogPosts = [
   },
   {
     id: 3,
-    title: 'The Ultimate Accessory Guide for Men',
-    category: 'Accessories',
+    title: 'Fashion Trends for the Season',
+    category: 'Fashion',
     date: 'June 5, 2024',
-    excerpt: 'From formal watches to casual bags, here is everything you need to know about men\'s accessories.',
+    excerpt: 'Discover the latest fashion trends and styles for the modern wardrobe.',
     readTime: '6 min read',
   },
   {

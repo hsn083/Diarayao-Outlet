@@ -21,64 +21,7 @@ export interface Category {
 }
 
 // Default categories to initialize if file doesn't exist
-const DEFAULT_CATEGORIES: Category[] = [
-  {
-    id: '1',
-    name: 'Fashion Accessories',
-    slug: 'fashion-accessories',
-    image: '/images/categories/fashion.jpg',
-    description: 'Premium fashion gear for serious gamers',
-    productCount: 45,
-    status: 'active',
-    displayOrder: 1,
-    metaTitle: 'Fashion Accessories - Premium Fashion Gear',
-    metaDescription: 'Shop the best fashion accessories including mice, keyboards, headsets, and more.',
-    createdAt: new Date('2024-01-01').toISOString(),
-    updatedAt: new Date('2024-01-01').toISOString(),
-  },
-  {
-    id: '2',
-    name: 'Mobile Accessories',
-    slug: 'mobile-accessories',
-    image: '/images/categories/mobile.jpg',
-    description: 'Essential accessories for your smartphone',
-    productCount: 32,
-    status: 'active',
-    displayOrder: 2,
-    metaTitle: 'Mobile Accessories - Phone Cases, Chargers & More',
-    metaDescription: 'Discover essential mobile accessories including cases, chargers, cables, and more.',
-    createdAt: new Date('2024-01-01').toISOString(),
-    updatedAt: new Date('2024-01-01').toISOString(),
-  },
-  {
-    id: '3',
-    name: 'RGB Products',
-    slug: 'rgb-products',
-    image: '/images/categories/rgb.jpg',
-    description: 'Light up your setup with RGB products',
-    productCount: 28,
-    status: 'active',
-    displayOrder: 3,
-    metaTitle: 'RGB Products - RGB Lighting & Fashion Gear',
-    metaDescription: 'Illuminate your setup with our collection of RGB products and lighting solutions.',
-    createdAt: new Date('2024-01-01').toISOString(),
-    updatedAt: new Date('2024-01-01').toISOString(),
-  },
-  {
-    id: '4',
-    name: 'PC Accessories',
-    slug: 'pc-accessories',
-    image: '/images/categories/pc.jpg',
-    description: 'Enhance your PC experience',
-    productCount: 56,
-    status: 'active',
-    displayOrder: 4,
-    metaTitle: 'PC Accessories - Computer Parts & Peripherals',
-    metaDescription: 'Upgrade your PC with our selection of accessories, components, and peripherals.',
-    createdAt: new Date('2024-01-01').toISOString(),
-    updatedAt: new Date('2024-01-01').toISOString(),
-  },
-];
+const DEFAULT_CATEGORIES: Category[] = [];
 
 // Ensure data directory exists
 async function ensureDataDir() {

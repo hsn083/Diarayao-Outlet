@@ -227,3 +227,15 @@
     max-width: 100%;
   }
 }
+
+/* WhatsApp Button Pulse Animation */
+@keyframes whatsappPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
