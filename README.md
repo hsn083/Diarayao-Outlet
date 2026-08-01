@@ -539,14 +539,14 @@ Pakistan
 Email:
 
 ```
-your-email@example.com
+mhassanahmad183@gmail.com
 ```
 
 Website:
 
 ```
-https://yourwebsite.com
-```
+
+https://www.diarayao.com
 
 ---
 
