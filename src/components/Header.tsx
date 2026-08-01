@@ -300,7 +300,7 @@ export default function Header() {
           </div>
 
           {/* Navigation */}
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-6 flex-1 justify-end">
             <Link href="/" className="flex items-center leading-none text-sm font-medium text-gray-700 hover:text-pink-600 transition-colors duration-200 relative group">
               Home
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-400 transition-all duration-200 group-hover:w-full"></span>
@@ -329,9 +329,9 @@ export default function Header() {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4 shrink-0">
             <Notifications />
-            <Link href="/wishlist" aria-label="Wishlist">
+            <Link href="/wishlist" aria-label="Wishlist" className="hidden sm:block">
               <Button 
                 variant="ghost" 
                 size="icon" 
@@ -359,7 +359,7 @@ export default function Header() {
                 )}
               </Button>
             </Link>
-            <Link href="/account" aria-label="Account">
+            <Link href="/account" aria-label="Account" className="hidden sm:block">
               <Button 
                 variant="ghost" 
                 size="icon" 
@@ -371,12 +371,12 @@ export default function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden flex items-center justify-center hover:text-pink-600 hover:bg-pink-50 transition-all duration-200"
+              className="lg:hidden flex items-center justify-center hover:text-pink-600 hover:bg-pink-50 transition-all duration-200 relative z-50 shrink-0"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </Button>
           </div>
         </div>

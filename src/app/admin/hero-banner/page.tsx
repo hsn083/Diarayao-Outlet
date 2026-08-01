@@ -283,7 +283,7 @@ export default function AdminHeroBannerPage() {
                           <Input
                             id="heading"
                             name="heading"
-                            placeholder="e.g., PREMIUM CLOTHING & SHOES COLLECTION"
+                            placeholder="e.g., PREMIUM FASHION COLLECTION"
                             defaultValue={heroBanner?.heading || ''}
                             required
                           />

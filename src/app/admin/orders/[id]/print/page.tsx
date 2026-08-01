@@ -48,7 +48,7 @@ export default function PrintOrderPage() {
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '32px', paddingBottom: '20px', borderBottom: '2px solid #0F766E' }}>
         <div>
           <h1 style={{ margin: 0, fontSize: '24px', fontWeight: 900, color: '#0F766E' }}>ALHAMD<span style={{ color: '#D4AF37' }}> Collection</span></h1>
-          <p style={{ margin: '4px 0 0', fontSize: '12px', color: '#6B7280' }}>Premium Clothing & Shoes</p>
+          <p style={{ margin: '4px 0 0', fontSize: '12px', color: '#6B7280' }}>Premium Fashion</p>
         </div>
         <div style={{ textAlign: 'right' }}>
           <p style={{ margin: 0, fontSize: '18px', fontWeight: 700 }}>ORDER SLIP</p>

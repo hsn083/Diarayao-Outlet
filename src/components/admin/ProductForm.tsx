@@ -16,9 +16,6 @@ import {
 import { Check, X } from 'lucide-react';
 
 const categories = [
-  "Men's Clothing",
-  "Women's Clothing",
-  'Shoes',
   'Accessories',
 ];
 

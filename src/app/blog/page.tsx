@@ -22,10 +22,10 @@ const blogPosts = [
   },
   {
     id: 3,
-    title: 'The Ultimate Shoe Guide for Men',
-    category: 'Footwear',
+    title: 'The Ultimate Accessory Guide for Men',
+    category: 'Accessories',
     date: 'June 5, 2024',
-    excerpt: 'From formal leather shoes to casual sneakers, here is everything you need to know about men\'s footwear.',
+    excerpt: 'From formal watches to casual bags, here is everything you need to know about men\'s accessories.',
     readTime: '6 min read',
   },
   {

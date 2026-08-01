@@ -214,9 +214,7 @@ export default function LowStockPage() {
                 className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"
               >
                 <option value="">All Categories</option>
-                <option value="mens-clothing">Men's Clothing</option>
-                <option value="womens-clothing">Women's Clothing</option>
-                <option value="shoes">Shoes</option>
+                <option value="accessories">Accessories</option>
               </select>
               <select
                 value={statusFilter}

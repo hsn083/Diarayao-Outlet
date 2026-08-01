@@ -318,7 +318,7 @@ export default function AdminCategoriesPage() {
                       <Input
                         id="name"
                         name="name"
-                        placeholder="e.g., Men's Clothing"
+                        placeholder="e.g., Accessories"
                         defaultValue={editingCategory?.name || ''}
                         required
                       />

@@ -18,7 +18,7 @@ function baseTemplate(title: string, content: string) {
   <!-- Header -->
   <tr><td style="background:linear-gradient(135deg,${BRAND_COLOR},#065F46);padding:32px 40px;border-radius:12px 12px 0 0;text-align:center;">
     <h1 style="margin:0;color:#fff;font-size:24px;font-weight:800;letter-spacing:-0.5px;">ALHAMD<span style="color:${GOLD_COLOR};"> Collection</span></h1>
-    <p style="margin:4px 0 0;color:rgba(255,255,255,0.7);font-size:13px;">Premium Clothing & Shoes</p>
+    <p style="margin:4px 0 0;color:rgba(255,255,255,0.7);font-size:13px;">Premium Fashion</p>
   </td></tr>
   <!-- Body -->
   <tr><td style="background:#fff;padding:40px;border-left:1px solid #e5e7eb;border-right:1px solid #e5e7eb;">
@@ -128,7 +128,7 @@ export function orderStatusUpdateTemplate(name: string, orderId: string, status:
 export function welcomeEmailTemplate(name: string) {
   const content = `
     <p style="margin:0 0 16px;color:#374151;font-size:16px;">Welcome, <strong>${name}</strong>! 🎉</p>
-    <p style="margin:0 0 24px;color:#6b7280;font-size:15px;">Your AlhamdCollection account has been created. Discover premium clothing and footwear for every occasion.</p>
+    <p style="margin:0 0 24px;color:#6b7280;font-size:15px;">Your AlhamdCollection account has been created. Discover premium fashion accessories for every occasion.</p>
     <div style="text-align:center;margin:24px 0;">
       <a href="https://alhamdcollection.pk/shop" style="display:inline-block;background:${BRAND_COLOR};color:#fff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px;">Shop Now →</a>
     </div>
