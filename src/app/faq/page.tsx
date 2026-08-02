@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://www.diarayao.com/pic.jpg',
+        url: 'https://www.diarayao.com/favicon.png',
         width: 1200,
         height: 630,
         alt: 'Diarayao Outlet - FAQ',
@@ -25,12 +25,12 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'FAQ - Frequently Asked Questions | Diarayao Outlet',
     description: 'Find answers to common questions about Diarayao Outlet abayas, hijabs, modest fashion, shipping, returns, payments, and more.',
-    images: ['https://www.diarayao.com/pic.jpg'],
+    images: ['https://www.diarayao.com/favicon.png'],
     creator: '@diarayaooutlet',
     site: '@diarayaooutlet',
   },
   alternates: {
-    canonical: 'https://www.diarayao.com/faq',
+    canonical: '/faq',
   },
 };
 

@@ -23,7 +23,7 @@ export async function POST(request: NextRequest) {
     
     // Verify the admin was created
     const users = getAdminUsers();
-    const adminUser = users.find(u => u.username === 'admin');
+    const adminUser = users.find(u => u.username === 'Diarayaoutlet06');
     
     if (!adminUser) {
       return NextResponse.json(
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
 export async function GET(request: NextRequest) {
   try {
     const users = getAdminUsers();
-    const adminUser = users.find(u => u.username === 'admin');
+    const adminUser = users.find(u => u.username === 'Diarayaoutlet06');
     
     return NextResponse.json({
       success: true,

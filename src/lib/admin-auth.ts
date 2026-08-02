@@ -34,7 +34,7 @@ const AUDIT_LOGS_FILE = path.join(DATA_DIR, 'audit-logs.json');
 
 // Default admin user (will be created if no users exist)
 const DEFAULT_ADMIN: Omit<AdminUser, 'id' | 'passwordHash' | 'createdAt' | 'updatedAt'> = {
-  username: 'admin',
+  username: 'Diarayaoutlet06',
   email: 'admin@alhamdcollection.pk',
   recoveryEmail: 'admin@alhamdcollection.pk',
 };
@@ -129,7 +129,7 @@ export async function initializeDefaultAdmin(): Promise<void> {
   
   if (users.length === 0) {
     console.log('[ADMIN-AUTH] No admin users found, creating default admin');
-    const passwordHash = await bcrypt.hash('admin123', 10);
+    const passwordHash = await bcrypt.hash('FatimA.Amir.06', 10);
     const defaultAdmin: AdminUser = {
       ...DEFAULT_ADMIN,
       id: `ADMIN-${Date.now()}`,
@@ -140,7 +140,19 @@ export async function initializeDefaultAdmin(): Promise<void> {
     setAdminUsers([defaultAdmin]);
     console.log('[ADMIN-AUTH] Default admin user created successfully');
   } else {
-    console.log('[ADMIN-AUTH] Admin users already exist, skipping creation');
+    // Check if old 'admin' user exists and update it
+    const oldAdminIndex = users.findIndex((u) => u.username === 'admin');
+    if (oldAdminIndex !== -1) {
+      console.log('[ADMIN-AUTH] Found old admin user, updating credentials');
+      const passwordHash = await bcrypt.hash('FatimA.Amir.06', 10);
+      users[oldAdminIndex].username = 'Diarayaoutlet06';
+      users[oldAdminIndex].passwordHash = passwordHash;
+      users[oldAdminIndex].updatedAt = new Date().toISOString();
+      setAdminUsers(users);
+      console.log('[ADMIN-AUTH] Admin user updated successfully');
+    } else {
+      console.log('[ADMIN-AUTH] Admin users already exist, skipping creation');
+    }
   }
 }
 

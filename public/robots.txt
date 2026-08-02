@@ -13,7 +13,6 @@ Disallow: /static
 
 # Allow important assets
 Allow: /favicon.png
-Allow: /pic.jpg
 Allow: /manifest.json
 
 # Crawl delay

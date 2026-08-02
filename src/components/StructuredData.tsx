@@ -34,9 +34,9 @@ export function OrganizationSchema() {
     name: 'Diarayao Outlet',
     alternateName: 'DiarayaoOutlet',
     url: 'https://www.diarayao.com',
-    logo: 'https://www.diarayao.com/pic.jpg',
-    image: 'https://www.diarayao.com/pic.jpg',
-    description: 'Premium Abayas, Hijabs, Modest Dresses and Islamic Fashion online store. High-quality fabrics, elegant designs, fast delivery across Pakistan.',
+    logo: 'https://www.diarayao.com/favicon.png',
+    image: 'https://www.diarayao.com/favicon.png',
+    description: 'Shop premium abayas, hijabs, modest dresses and Islamic fashion at Diarayao Outlet. Elegant styles, quality fabrics, fast delivery across Pakistan.',
     foundingDate: '2024',
     address: {
       '@type': 'PostalAddress',
@@ -71,7 +71,7 @@ export function WebsiteSchema() {
     name: 'Diarayao Outlet',
     alternateName: 'DiarayaoOutlet',
     url: 'https://www.diarayao.com',
-    description: 'Premium Abayas, Hijabs, Modest Dresses and Islamic Fashion online store in Pakistan',
+    description: 'Shop premium abayas, hijabs, modest dresses and Islamic fashion at Diarayao Outlet. Elegant styles, quality fabrics, fast delivery across Pakistan.',
     potentialAction: {
       '@type': 'SearchAction',
       target: {
@@ -97,7 +97,7 @@ export function WebPageSchema() {
     '@type': 'WebPage',
     name: 'Diarayao Outlet - Premium Abayas & Modest Fashion',
     url: 'https://www.diarayao.com',
-    description: 'Shop premium Abayas, Hijabs, Modest Dresses and Islamic Fashion online at Diarayao Outlet. High-quality fabrics, elegant designs, fast delivery across Pakistan.',
+    description: 'Shop premium abayas, hijabs, modest dresses and Islamic fashion at Diarayao Outlet. Elegant styles, quality fabrics, fast delivery across Pakistan.',
     inLanguage: 'en-US',
     isPartOf: {
       '@type': 'WebSite',
@@ -120,9 +120,9 @@ export function OnlineStoreSchema() {
     '@context': 'https://schema.org',
     '@type': 'Store',
     name: 'Diarayao Outlet',
-    image: 'https://www.diarayao.com/pic.jpg',
-    logo: 'https://www.diarayao.com/pic.jpg',
-    description: 'Premium Abayas, Hijabs, Modest Dresses and Islamic Fashion online store with nationwide delivery across Pakistan.',
+    image: 'https://www.diarayao.com/favicon.png',
+    logo: 'https://www.diarayao.com/favicon.png',
+    description: 'Shop premium abayas, hijabs, modest dresses and Islamic fashion at Diarayao Outlet. Elegant styles, quality fabrics, fast delivery across Pakistan.',
     url: 'https://www.diarayao.com',
     telephone: '+92 300 1234567',
     email: 'diarayaooutlet@gmail.com',

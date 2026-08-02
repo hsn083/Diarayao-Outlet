@@ -55,18 +55,6 @@ export default function CategorySlugPage() {
               document.head.appendChild(metaKeywords);
             }
 
-            // Update canonical URL
-            const canonicalUrl = `https://www.diarayao.com/category/${foundCategory.slug}`;
-            let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-            if (canonical) {
-              canonical.setAttribute('href', canonicalUrl);
-            } else {
-              canonical = document.createElement('link') as HTMLLinkElement;
-              canonical.rel = 'canonical';
-              canonical.href = canonicalUrl;
-              document.head.appendChild(canonical);
-            }
-
             // Update Open Graph tags
             const ogTitle = document.querySelector('meta[property="og:title"]') as HTMLMetaElement;
             if (ogTitle) {
@@ -78,16 +66,11 @@ export default function CategorySlugPage() {
               ogDescription.setAttribute('content', foundCategory.metaDescription || `Explore our premium ${foundCategory.name} collection featuring elegant styles, premium fabrics and modern modest fashion.`);
             }
 
-            const ogUrl = document.querySelector('meta[property="og:url"]') as HTMLMetaElement;
-            if (ogUrl) {
-              ogUrl.setAttribute('content', canonicalUrl);
-            }
-
             const ogImage = document.querySelector('meta[property="og:image"]') as HTMLMetaElement;
             if (ogImage && foundCategory.image) {
               ogImage.setAttribute('content', foundCategory.image);
             } else if (ogImage) {
-              ogImage.setAttribute('content', 'https://www.diarayao.com/pic.jpg');
+              ogImage.setAttribute('content', 'https://www.diarayao.com/favicon.png');
             }
 
             // Update Twitter card
@@ -105,7 +88,7 @@ export default function CategorySlugPage() {
             if (twitterImage && foundCategory.image) {
               twitterImage.setAttribute('content', foundCategory.image);
             } else if (twitterImage) {
-              twitterImage.setAttribute('content', 'https://www.diarayao.com/pic.jpg');
+              twitterImage.setAttribute('content', 'https://www.diarayao.com/favicon.png');
             }
           }
         }

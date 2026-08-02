@@ -7,6 +7,9 @@ import { FileText, ShoppingCart, User, CreditCard, Truck, AlertTriangle, Scale, 
 export const metadata: Metadata = {
   title: 'Terms & Conditions | Diarayao Outlet',
   description: 'Read the terms and conditions for using Diarayao Outlet website and services.',
+  alternates: {
+    canonical: '/terms-conditions',
+  },
 };
 
 export default function TermsConditionsPage() {

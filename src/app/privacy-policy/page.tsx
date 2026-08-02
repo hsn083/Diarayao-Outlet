@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     site: '@diarayaooutlet',
   },
   alternates: {
-    canonical: 'https://www.diarayao.com/privacy-policy',
+    canonical: '/privacy-policy',
   },
 };
 

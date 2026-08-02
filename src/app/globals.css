@@ -239,3 +239,21 @@
     transform: scale(1.05);
   }
 }
+
+/* Announcement Bar Marquee Animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.announcement-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+.announcement-marquee:hover {
+  animation-play-state: paused;
+}

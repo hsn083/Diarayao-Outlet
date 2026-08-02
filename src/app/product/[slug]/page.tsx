@@ -1,3 +1,14 @@
+import { Metadata } from 'next';
+import { Product } from '@/types';
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  return {
+    alternates: {
+      canonical: `/product/${params.slug}`,
+    },
+  };
+}
+
 'use client';
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
@@ -40,7 +51,6 @@ import {
   Twitter,
   Mail as MailIcon
 } from 'lucide-react';
-import { Product } from '@/types';
 import { useProductStore } from '@/store/productStore';
 import { useCartStore } from '@/store/cartStore';
 import { useRouter } from 'next/navigation';
@@ -244,18 +254,6 @@ export default function ProductPage() {
         document.head.appendChild(metaKeywords);
       }
 
-      // Update canonical URL
-      const canonicalUrl = `https://www.diarayao.com/product/${product.slug}`;
-      let canonical = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
-      if (canonical) {
-        canonical.setAttribute('href', canonicalUrl);
-      } else {
-        canonical = document.createElement('link') as HTMLLinkElement;
-        canonical.rel = 'canonical';
-        canonical.href = canonicalUrl;
-        document.head.appendChild(canonical);
-      }
-
       // Update Open Graph tags
       const ogTitle = document.querySelector('meta[property="og:title"]') as HTMLMetaElement;
       if (ogTitle) {
@@ -265,11 +263,6 @@ export default function ProductPage() {
       const ogDescription = document.querySelector('meta[property="og:description"]') as HTMLMetaElement;
       if (ogDescription) {
         ogDescription.setAttribute('content', description);
-      }
-
-      const ogUrl = document.querySelector('meta[property="og:url"]') as HTMLMetaElement;
-      if (ogUrl) {
-        ogUrl.setAttribute('content', canonicalUrl);
       }
 
       const ogImage = document.querySelector('meta[property="og:image"]') as HTMLMetaElement;
@@ -502,7 +495,7 @@ export default function ProductPage() {
         <ProductSchema
           name={product.name}
           description={product.description}
-          image={product.images?.[0] || 'https://www.diarayao.com/pic.jpg'}
+          image={product.images?.[0] || 'https://www.diarayao.com/favicon.png'}
           price={product.discountPrice || product.price}
           currency="PKR"
           availability={product.stock > 0 ? 'InStock' : 'OutOfStock'}

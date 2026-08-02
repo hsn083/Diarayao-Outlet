@@ -13,9 +13,9 @@ export default function SEOContentSection() {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 mb-20">
       <div className="bg-white rounded-2xl p-6 sm:p-8 md:p-12 lg:p-16 overflow-hidden">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight break-words">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 sm:mb-8 leading-tight break-words">
           Premium Islamic Modest Wear in Pakistan | Abayas, Hijabs & Modest Dresses from Diarayao Outlet
-        </h1>
+        </h2>
 
         <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isExpanded ? 'max-h-none' : 'max-h-[400px]'}`}>
           <div className="space-y-6 sm:space-y-8 text-gray-700 leading-relaxed text-sm sm:text-base md:text-lg">

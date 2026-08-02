@@ -7,6 +7,7 @@ import { ToastContainer } from "@/components/ui/toast";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { OrganizationSchema, WebsiteSchema, OnlineStoreSchema, WebPageSchema } from "@/components/StructuredData";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import AnnouncementBar from "@/components/AnnouncementBar";
 
 // Force dynamic rendering to avoid build-time fetch issues
 export const dynamic = 'force-dynamic';
@@ -55,11 +56,10 @@ export async function generateMetadata(): Promise<Metadata> {
   const settings = await getSettings();
   
   const siteName = settings?.general?.siteName || 'Diarayao Outlet';
-  const metaTitle = settings?.seo?.metaTitle || 'Diarayao Outlet | Buy Premium Abayas & Modest Dresses Online';
-  const metaDescription = settings?.seo?.metaDescription || 'Shop premium Abayas, Hijabs, Modest Dresses and Islamic Fashion online at Diarayao Outlet. High-quality fabrics, elegant designs, fast delivery across Pakistan and secure shopping experience.';
+  const metaTitle = settings?.seo?.metaTitle || 'Diarayao Outlet | Premium Abayas & Modest Dresses';
+  const metaDescription = settings?.seo?.metaDescription || 'Shop premium abayas, hijabs, modest dresses and Islamic fashion at Diarayao Outlet. Elegant styles, quality fabrics, fast delivery across Pakistan.';
   const metaKeywords = settings?.seo?.metaKeywords || 'Diarayao Outlet, Abaya Pakistan, Buy Abaya Online, Premium Abaya, Hijab Pakistan, Modest Fashion, Islamic Clothing, Women\'s Abaya, Modest Dresses, Luxury Abaya, Black Abaya, Kimono Abaya, Open Abaya, Nida Abaya, Pakistani Abaya, Abaya Collection, Muslim Fashion, Hijab Store, Abaya Online Pakistan, Islamic Wear';
-  const ogImage = settings?.seo?.ogImage || 'https://www.diarayao.com/pic.jpg';
-  const canonicalUrl = settings?.seo?.canonicalUrl || 'https://www.diarayao.com';
+  const ogImage = settings?.seo?.ogImage || '/favicon.png';
   const siteUrl = 'https://www.diarayao.com';
 
   return {
@@ -90,30 +90,22 @@ export async function generateMetadata(): Promise<Metadata> {
       telephone: false,
     },
     alternates: {
-      canonical: canonicalUrl,
+      canonical: '/',
     },
     openGraph: {
       title: settings?.seo?.ogTitle || 'Diarayao Outlet | Premium Abayas & Hijabs',
-      description: settings?.seo?.ogDescription || 'Discover elegant Abayas, Hijabs and modest fashion with premium quality and nationwide delivery.',
-      url: canonicalUrl,
+      description: settings?.seo?.ogDescription || 'Shop premium abayas, hijabs, modest dresses and Islamic fashion at Diarayao Outlet. Elegant styles, quality fabrics, fast delivery across Pakistan.',
+      url: '/',
       siteName: siteName,
       locale: 'en_PK',
       type: 'website',
-      images: [
-        {
-          url: ogImage,
-          width: 1200,
-          height: 630,
-          alt: `${siteName} - Premium Abayas & Modest Fashion`,
-          type: 'image/jpeg',
-        }
-      ],
+      images: ['/favicon.png'],
     },
     twitter: {
       card: 'summary_large_image',
       title: settings?.seo?.twitterTitle || 'Diarayao Outlet',
-      description: settings?.seo?.twitterDescription || 'Premium Abayas & Modest Fashion Online',
-      images: [ogImage],
+      description: settings?.seo?.twitterDescription || 'Shop premium abayas, hijabs, modest dresses and Islamic fashion at Diarayao Outlet. Elegant styles, quality fabrics, fast delivery across Pakistan.',
+      images: ['/favicon.png'],
       creator: '@diarayaooutlet',
       site: '@diarayaooutlet',
     },
@@ -166,6 +158,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://res.cloudinary.com" />
       </head>
       <body className={`${inter.variable} ${poppins.variable} ${playfairDisplay.variable} ${cinzel.variable} ${montserrat.variable}`}>
+        <AnnouncementBar />
         <OrganizationSchema />
         <WebsiteSchema />
         <WebPageSchema />
