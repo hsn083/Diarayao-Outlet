@@ -1,14 +1,3 @@
-import { Metadata } from 'next';
-import { Product } from '@/types';
-
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  return {
-    alternates: {
-      canonical: `/product/${params.slug}`,
-    },
-  };
-}
-
 'use client';
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
