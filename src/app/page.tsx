@@ -10,7 +10,7 @@ import { BreadcrumbSchema } from '@/components/StructuredData';
 export const metadata: Metadata = {
   title: 'Premium Arabian & Turkish Abayas in Pakistan | Diarayao Outlet',
   description: 'Shop premium Arabian and Turkish abayas at Diarayao Outlet. Elegant modest fashion, secure payments, fast nationwide delivery, easy returns, and the latest luxury abaya collection in Pakistan.',
-  keywords: 'abaya Pakistan, Arabian abayas, Turkish abayas, modest fashion, Islamic clothing, hijab, modest dresses, luxury abaya, Diarayao Outlet, online abaya shopping Pakistan',
+  keywords: 'abaya Pakistan, Arabian abayas, Turkish abayas, modest fashion, Islamic clothing, hijab, modest dresses, luxury abaya, black abaya, open abaya, kimono abaya, nida abaya, Diarayao Outlet, online abaya shopping Pakistan, buy abaya online Pakistan',
   openGraph: {
     title: 'Premium Arabian & Turkish Abayas in Pakistan | Diarayao Outlet',
     description: 'Shop premium Arabian and Turkish abayas at Diarayao Outlet. Elegant modest fashion, secure payments, fast nationwide delivery, easy returns, and the latest luxury abaya collection in Pakistan.',
@@ -24,6 +24,7 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: 'Diarayao Outlet - Premium Arabian & Turkish Abayas',
+        type: 'image/jpeg',
       }
     ],
   },
@@ -37,6 +38,11 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://www.diarayao.com',
+  },
+  icons: {
+    icon: '/favicon.png',
+    shortcut: '/favicon.png',
+    apple: '/favicon.png',
   },
 };
 

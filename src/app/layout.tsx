@@ -70,14 +70,19 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     description: metaDescription,
     keywords: metaKeywords,
+    applicationName: siteName,
     authors: [{ name: 'Diarayao Outlet' }],
     creator: 'Diarayao Outlet',
     publisher: 'Diarayao Outlet',
     manifest: '/manifest.json',
     icons: {
-      icon: '/favicon.png',
+      icon: [
+        { url: '/favicon.png', type: 'image/png' },
+      ],
       shortcut: '/favicon.png',
-      apple: '/favicon.png',
+      apple: [
+        { url: '/favicon.png', type: 'image/png' },
+      ],
     },
     formatDetection: {
       email: false,
@@ -96,10 +101,11 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       images: [
         {
-          url: 'https://www.diarayao.com/pic.jpg',
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: `${siteName} - Premium Abayas & Modest Fashion`,
+          type: 'image/jpeg',
         }
       ],
     },
@@ -107,7 +113,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: 'summary_large_image',
       title: settings?.seo?.twitterTitle || 'Diarayao Outlet',
       description: settings?.seo?.twitterDescription || 'Premium Abayas & Modest Fashion Online',
-      images: ['https://www.diarayao.com/pic.jpg'],
+      images: [ogImage],
       creator: '@diarayaooutlet',
       site: '@diarayaooutlet',
     },
