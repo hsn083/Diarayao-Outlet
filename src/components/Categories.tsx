@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
-import { Card, CardContent } from '@/components/ui/card';
+
 import { Category } from '@/types';
 
 // Fashion category emojis as fallback
@@ -43,33 +43,32 @@ export default function Categories() {
       {isLoading ? (
         <div className="text-center py-12 text-muted-foreground">Loading collections...</div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 justify-items-center">
           {categories.map((category) => (
-            <Link key={category.id} href={`/category/${category.slug}`}>
-              <Card className="overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer group border border-gray-100 hover:border-pink-200 rounded-lg">
-                <div className="aspect-square bg-gradient-to-br from-pink-50 to-rose-50 flex items-center justify-center relative overflow-hidden rounded-lg">
-                  {category.image ? (
-                    <Image 
-                      src={category.image} 
-                      alt={category.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 20vw, 20vw"
-                    />
-                  ) : (
-                    <div className="text-6xl mb-4">
-                      {categoryEmojis[category.slug] || '👗'}
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
-                    <h3 className="font-bold text-white uppercase tracking-wide text-sm sm:text-base md:text-lg mb-1">
-                      {category.name}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-white/90 line-clamp-1">{category.description}</p>
+            <Link key={category.id} href={`/category/${category.slug}`} className="flex flex-col items-center group">
+              <div className="relative w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 aspect-square rounded-full bg-white border border-gray-200 shadow-md overflow-hidden group-hover:shadow-xl group-hover:scale-105 transition-all duration-300">
+                {category.image ? (
+                  <Image 
+                    src={category.image} 
+                    alt={category.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 140px, (max-width: 768px) 150px, (max-width: 1024px) 160px, 176px"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-4xl sm:text-5xl">
+                    {categoryEmojis[category.slug] || '👗'}
                   </div>
-                </div>
-              </Card>
+                )}
+              </div>
+              <h3 className="mt-3 sm:mt-4 font-semibold text-gray-900 text-center text-sm sm:text-base md:text-lg group-hover:text-pink-600 transition-colors duration-300">
+                {category.name}
+              </h3>
+              {category.description && (
+                <p className="text-xs sm:text-sm text-gray-600 text-center line-clamp-1 mt-1">
+                  {category.description}
+                </p>
+              )}
             </Link>
           ))}
         </div>

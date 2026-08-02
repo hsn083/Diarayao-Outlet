@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { ShoppingCart, Search, User, Menu, Heart, X, Truck, Clock, XCircle } from 'lucide-react';
+import { ShoppingCart, Search, User, Menu, Heart, X, Truck, Clock, XCircle, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -26,7 +26,11 @@ export default function Header() {
   const [suggestions, setSuggestions] = useState<any>(null);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
+  const [categories, setCategories] = useState<any[]>([]);
+  const [categoriesDropdownOpen, setCategoriesDropdownOpen] = useState(false);
+  const [mobileCategoriesDropdownOpen, setMobileCategoriesDropdownOpen] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
+  const categoriesDropdownRef = useRef<HTMLDivElement>(null);
   const debounceRef = useRef<NodeJS.Timeout>();
   const general = useSettingsStore(state => state.settings.general);
 
@@ -62,9 +66,64 @@ export default function Header() {
       if (searchRef.current && !searchRef.current.contains(event.target as Node)) {
         setShowSuggestions(false);
       }
+      if (categoriesDropdownRef.current && !categoriesDropdownRef.current.contains(event.target as Node)) {
+        setCategoriesDropdownOpen(false);
+      }
     };
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Fetch all active categories
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch('/api/categories?status=active');
+        const data = await response.json();
+        if (data.success) {
+          setCategories(data.categories);
+        }
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
+  // Fetch Abaya subcategories
+  useEffect(() => {
+    const fetchAbayaCategories = async () => {
+      try {
+        const response = await fetch('/api/categories?status=active');
+        const data = await response.json();
+        if (data.success) {
+          // Find Abayas category and its subcategories
+          const abayasCategory = data.categories.find((cat: any) => 
+            cat.name.toLowerCase() === 'abayas' || cat.slug === 'abayas'
+          );
+          
+          if (abayasCategory) {
+            // Get subcategories that have Abayas as parent
+            const subcategories = data.categories.filter((cat: any) => 
+              cat.parentCategory === abayasCategory.id || cat.parentCategory === abayasCategory._id?.toString()
+            );
+            setAbayaCategories(subcategories);
+          } else {
+            // Fallback: Look for categories with abaya-related names
+            const abayaRelated = data.categories.filter((cat: any) => 
+              cat.name.toLowerCase().includes('abaya') && 
+              cat.name.toLowerCase() !== 'abayas'
+            );
+            setAbayaCategories(abayaRelated);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching abaya categories:', error);
+      }
+    };
+
+    fetchAbayaCategories();
   }, []);
 
   const saveRecentSearch = (query: string) => {
@@ -305,10 +364,39 @@ export default function Header() {
               Home
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-400 transition-all duration-200 group-hover:w-full"></span>
             </Link>
-            <Link href="/category/abayas" className="flex items-center leading-none text-sm font-medium text-gray-700 hover:text-pink-600 transition-colors duration-200 relative group">
-              Abayas
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-400 transition-all duration-200 group-hover:w-full"></span>
-            </Link>
+            <div 
+              className="relative"
+              ref={categoriesDropdownRef}
+              onMouseEnter={() => setCategoriesDropdownOpen(true)}
+              onMouseLeave={() => setCategoriesDropdownOpen(false)}
+            >
+              <button 
+                className="flex items-center gap-1 leading-none text-sm font-medium text-gray-700 hover:text-pink-600 transition-colors duration-200 relative group"
+                onClick={() => setCategoriesDropdownOpen(!categoriesDropdownOpen)}
+                aria-expanded={categoriesDropdownOpen}
+                aria-haspopup="true"
+              >
+                Categories
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${categoriesDropdownOpen ? 'rotate-180' : ''}`} />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-400 transition-all duration-200 group-hover:w-full"></span>
+              </button>
+              
+              {/* Dropdown Menu */}
+              {categoriesDropdownOpen && categories.length > 0 && (
+                <div className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 z-50 min-w-[200px] py-2">
+                  {categories.map((category) => (
+                    <Link
+                      key={category.id}
+                      href={`/category/${category.slug}`}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600 hover:bg-pink-50 transition-colors"
+                      onClick={() => setCategoriesDropdownOpen(false)}
+                    >
+                      {category.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
             <Link href="/shop?sort=price-asc" className="flex items-center leading-none text-sm font-medium text-gray-700 hover:text-pink-600 transition-colors duration-200 relative group">
               Sale
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-400 transition-all duration-200 group-hover:w-full"></span>
@@ -446,13 +534,35 @@ export default function Header() {
                   Home
                 </Link>
 
-                <Link
-                  href="/category/abayas"
-                  className="flex items-center gap-3 px-4 py-3 text-base font-medium text-gray-800 hover:text-pink-600 hover:bg-pink-50 rounded-lg transition-colors"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Abayas
-                </Link>
+                <div>
+                  <button
+                    className="flex items-center justify-between w-full gap-3 px-4 py-3 text-base font-medium text-gray-800 hover:text-pink-600 hover:bg-pink-50 rounded-lg transition-colors"
+                    onClick={() => setMobileCategoriesDropdownOpen(!mobileCategoriesDropdownOpen)}
+                    aria-expanded={mobileCategoriesDropdownOpen}
+                  >
+                    <span>Categories</span>
+                    <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${mobileCategoriesDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  {/* Mobile Dropdown */}
+                  {mobileCategoriesDropdownOpen && categories.length > 0 && (
+                    <div className="pl-4 pr-2 py-2 space-y-1">
+                      {categories.map((category) => (
+                        <Link
+                          key={category.id}
+                          href={`/category/${category.slug}`}
+                          className="block px-4 py-2 text-sm text-gray-600 hover:text-pink-600 hover:bg-pink-50 rounded-lg transition-colors"
+                          onClick={() => {
+                            setMobileCategoriesDropdownOpen(false);
+                            setMobileMenuOpen(false);
+                          }}
+                        >
+                          {category.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
 
                 <Link
                   href="/shop?sort=price-asc"
