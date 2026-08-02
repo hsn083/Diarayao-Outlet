@@ -4,6 +4,25 @@ import { getSecureHeaders, getCSPHeaders } from './lib/security';
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const hostname = request.nextUrl.hostname;
+  const protocol = request.nextUrl.protocol;
+
+  // Force www and HTTPS for canonical URL
+  const canonicalHost = 'www.diarayao.com';
+  
+  // Redirect non-www to www
+  if (hostname === 'diarayao.com' || hostname === 'diarayaooutlet.pk') {
+    const url = request.nextUrl.clone();
+    url.hostname = canonicalHost;
+    return NextResponse.redirect(url, 301);
+  }
+
+  // Redirect HTTP to HTTPS (only in production)
+  if (protocol === 'http:' && process.env.NODE_ENV === 'production') {
+    const url = request.nextUrl.clone();
+    url.protocol = 'https:';
+    return NextResponse.redirect(url, 301);
+  }
 
   // Allow login page to be accessible
   if (pathname === '/admin/login') {

@@ -162,9 +162,9 @@ export default function AdminCouponsPage() {
   };
 
   return (
-    
-
-      <AdminLayout><ToastContainer /><div className="p-8">
+    <AdminLayout>
+      <ToastContainer />
+      <div className="p-8">
         <div className="mb-8 pb-6 border-b border-gray-100">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between">

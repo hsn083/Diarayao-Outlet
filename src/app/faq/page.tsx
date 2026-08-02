@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     site: '@diarayaooutlet',
   },
   alternates: {
-    canonical: '/faq',
+    canonical: 'https://www.diarayao.com/faq',
   },
 };
 

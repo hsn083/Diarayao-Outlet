@@ -7,7 +7,7 @@ import { ToastContainer } from "@/components/ui/toast";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { OrganizationSchema, WebsiteSchema, OnlineStoreSchema, WebPageSchema } from "@/components/StructuredData";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import AnnouncementBar from "@/components/AnnouncementBar";
+import AnnouncementBarWrapper from "@/components/AnnouncementBarWrapper";
 
 // Force dynamic rendering to avoid build-time fetch issues
 export const dynamic = 'force-dynamic';
@@ -90,12 +90,12 @@ export async function generateMetadata(): Promise<Metadata> {
       telephone: false,
     },
     alternates: {
-      canonical: '/',
+      canonical: 'https://www.diarayao.com/',
     },
     openGraph: {
       title: settings?.seo?.ogTitle || 'Diarayao Outlet | Premium Abayas & Hijabs',
-      description: settings?.seo?.ogDescription || 'Shop premium abayas, hijabs, modest dresses and Islamic fashion at Diarayao Outlet. Elegant styles, quality fabrics, fast delivery across Pakistan.',
-      url: '/',
+      description: settings?.seo?.ogDescription || 'Shop premium abayas, hijabs, modest dresses and Islamic fashion at Diaraya Outlet. Elegant styles, quality fabrics and fast delivery across Pakistan.',
+      url: 'https://www.diarayao.com/',
       siteName: siteName,
       locale: 'en_PK',
       type: 'website',
@@ -104,7 +104,7 @@ export async function generateMetadata(): Promise<Metadata> {
     twitter: {
       card: 'summary_large_image',
       title: settings?.seo?.twitterTitle || 'Diarayao Outlet',
-      description: settings?.seo?.twitterDescription || 'Shop premium abayas, hijabs, modest dresses and Islamic fashion at Diarayao Outlet. Elegant styles, quality fabrics, fast delivery across Pakistan.',
+      description: settings?.seo?.twitterDescription || 'Shop premium abayas, hijabs, modest dresses and Islamic fashion at Diaraya Outlet. Elegant styles, quality fabrics and fast delivery across Pakistan.',
       images: ['/favicon.png'],
       creator: '@diarayaooutlet',
       site: '@diarayaooutlet',
@@ -158,7 +158,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://res.cloudinary.com" />
       </head>
       <body className={`${inter.variable} ${poppins.variable} ${playfairDisplay.variable} ${cinzel.variable} ${montserrat.variable}`}>
-        <AnnouncementBar />
+        <AnnouncementBarWrapper />
         <OrganizationSchema />
         <WebsiteSchema />
         <WebPageSchema />
