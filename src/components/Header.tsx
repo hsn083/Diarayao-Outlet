@@ -91,41 +91,6 @@ export default function Header() {
     fetchCategories();
   }, []);
 
-  // Fetch Abaya subcategories
-  useEffect(() => {
-    const fetchAbayaCategories = async () => {
-      try {
-        const response = await fetch('/api/categories?status=active');
-        const data = await response.json();
-        if (data.success) {
-          // Find Abayas category and its subcategories
-          const abayasCategory = data.categories.find((cat: any) => 
-            cat.name.toLowerCase() === 'abayas' || cat.slug === 'abayas'
-          );
-          
-          if (abayasCategory) {
-            // Get subcategories that have Abayas as parent
-            const subcategories = data.categories.filter((cat: any) => 
-              cat.parentCategory === abayasCategory.id || cat.parentCategory === abayasCategory._id?.toString()
-            );
-            setAbayaCategories(subcategories);
-          } else {
-            // Fallback: Look for categories with abaya-related names
-            const abayaRelated = data.categories.filter((cat: any) => 
-              cat.name.toLowerCase().includes('abaya') && 
-              cat.name.toLowerCase() !== 'abayas'
-            );
-            setAbayaCategories(abayaRelated);
-          }
-        }
-      } catch (error) {
-        console.error('Error fetching abaya categories:', error);
-      }
-    };
-
-    fetchAbayaCategories();
-  }, []);
-
   const saveRecentSearch = (query: string) => {
     const trimmed = query.trim();
     if (!trimmed) return;
