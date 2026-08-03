@@ -99,7 +99,7 @@ export async function generateMetadata(): Promise<Metadata> {
       siteName: siteName,
       locale: 'en_PK',
       type: 'website',
-      images: ['/favicon.png'],
+      images: ['/Pic.jpg'],
     },
     twitter: {
       card: 'summary_large_image',
