@@ -66,6 +66,16 @@ export default function AbayaProductSection() {
             ))}
           </div>
         )}
+
+        {/* CTA Button */}
+        <div className="flex justify-center mt-8 sm:mt-10">
+          <Link 
+            href="/shop"
+            className="inline-flex items-center justify-center px-8 py-3 sm:px-10 sm:py-4 bg-[#D4849C] text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:bg-[#C77B94] hover:scale-105 transition-all duration-300 text-base sm:text-lg"
+          >
+            Explore Abayas
+          </Link>
+        </div>
       </div>
     </section>
   );
