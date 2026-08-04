@@ -107,7 +107,7 @@ export default function AdminLoginPage() {
               </form>
               
               <div className="mt-6 text-center">
-                <Button variant="ghost" size="sm" onClick={() => window.location.href = '/'}>
+                <Button variant="ghost" size="sm" onClick={() => window.location.href = '/'} aria-label="Back to Website">
                   Back to Website
                 </Button>
               </div>

@@ -236,15 +236,16 @@ export default function AdminCategoriesPage() {
                   variant="ghost" 
                   className="text-gray-500 hover:bg-gray-50 mb-4"
                   onClick={() => window.location.href = '/admin'}
+                  aria-label="Back to Dashboard"
                 >
-                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" />
                   Back to Dashboard
                 </Button>
                 <h1 className="text-xl font-bold text-gray-900">Category Management</h1>
                 <p className="text-sm text-gray-500">Manage your product categories</p>
               </div>
               <Button className="bg-gradient-to-r from-pink-500 to-rose-500 text-white hover:from-pink-400 hover:to-rose-400 font-semibold" onClick={handleAddCategory}>
-                <Plus className="mr-2 h-4 w-4" />
+                <Plus className="mr-2 h-4 w-4" aria-hidden="true" />
                 Add Category
               </Button>
             </div>
@@ -298,12 +299,12 @@ export default function AdminCategoriesPage() {
                         <Button type="button" className="bg-pink-500 text-white hover:bg-pink-400 font-semibold" onClick={triggerFileInput} disabled={isUploading}>
                           {isUploading ? (
                             <>
-                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
                               Uploading...
                             </>
                           ) : (
                             <>
-                              <Upload className="mr-2 h-4 w-4" />
+                              <Upload className="mr-2 h-4 w-4" aria-hidden="true" />
                               Choose Image
                             </>
                           )}
@@ -437,7 +438,7 @@ export default function AdminCategoriesPage() {
                     onClick={handleBulkDelete}
                     className="ml-auto"
                   >
-                    <Trash2 className="mr-2 h-4 w-4" />
+                    <Trash2 className="mr-2 h-4 w-4" aria-hidden="true" />
                     Delete Selected ({selectedCategories.size})
                   </Button>
                 )}
@@ -514,11 +515,11 @@ export default function AdminCategoriesPage() {
                             <td className="p-4 text-sm">{category.displayOrder}</td>
                             <td className="p-4">
                               <div className="flex space-x-2">
-                                <Button variant="ghost" size="icon" className="hover:bg-pink-100 hover:text-pink-700" onClick={() => handleEditCategory(category)}>
-                                  <Edit className="h-4 w-4" />
+                                <Button variant="ghost" size="icon" className="hover:bg-pink-100 hover:text-pink-700" onClick={() => handleEditCategory(category)} aria-label="Edit category">
+                                  <Edit className="h-4 w-4" aria-hidden="true" />
                                 </Button>
-                                <Button variant="ghost" size="icon" className="text-destructive hover:bg-red-500/20" onClick={() => handleDeleteCategory(category.id)}>
-                                  <Trash2 className="h-4 w-4" />
+                                <Button variant="ghost" size="icon" className="text-destructive hover:bg-red-500/20" onClick={() => handleDeleteCategory(category.id)} aria-label="Delete category">
+                                  <Trash2 className="h-4 w-4" aria-hidden="true" />
                                 </Button>
                               </div>
                             </td>

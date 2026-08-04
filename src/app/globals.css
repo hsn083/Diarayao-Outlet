@@ -248,7 +248,24 @@
 }
 
 /* Performance: Removed non-composited whatsapp pulse animation to improve performance */
-/* The animation was replaced with a simple transform transition in the component *//* Additional mobile overflow prevention */
+/* The animation was replaced with a simple transform transition in the component */
+
+/* Accessibility: Enhanced focus styles for better visibility */
+*:focus-visible {
+  outline: 3px solid #D4849C !important;
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #D4849C !important;
+  outline-offset: 2px;
+}
+
+/* Additional mobile overflow prevention */
 @media (max-width: 640px) {
   * {
     max-width: 100% !important;

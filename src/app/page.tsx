@@ -28,7 +28,7 @@ const Categories = dynamic(() => import('@/components/Categories'), {
       </div>
     </div>
   ),
-  ssr: true
+  ssr: false // Below-fold content, defer to client
 });
 
 const AbayaProductSection = dynamic(() => import('@/components/AbayaProductSection'), {
@@ -44,15 +44,15 @@ const AbayaProductSection = dynamic(() => import('@/components/AbayaProductSecti
       </div>
     </section>
   ),
-  ssr: true
+  ssr: false // Below-fold content, defer to client
 });
 
 const HomepageSEOContent = dynamic(() => import('@/components/HomepageSEOContent'), {
-  ssr: true
+  ssr: false // Below-fold content, defer to client
 });
 
 const Footer = dynamic(() => import('@/components/Footer'), {
-  ssr: true
+  ssr: false // Below-fold content, defer to client
 });
 
 export default function Home() {

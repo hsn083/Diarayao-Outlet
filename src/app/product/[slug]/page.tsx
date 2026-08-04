@@ -693,11 +693,12 @@ export default function ProductPage() {
                     size="icon"
                     onClick={handleWishlistToggle}
                     className={isWishlisted ? 'text-red-500 border-red-500' : ''}
+                    aria-label={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
                   >
-                    <Heart className={`h-5 w-5 ${isWishlisted ? 'fill-current' : ''}`} />
+                    <Heart className={`h-5 w-5 ${isWishlisted ? 'fill-current' : ''}`} aria-hidden="true" />
                   </Button>
-                  <Button variant="outline" size="icon" onClick={handleShare}>
-                    <Share2 className="h-5 w-5" />
+                  <Button variant="outline" size="icon" onClick={handleShare} aria-label="Share product">
+                    <Share2 className="h-5 w-5" aria-hidden="true" />
                   </Button>
                 </div>
               </div>
@@ -790,16 +791,18 @@ export default function ProductPage() {
                     variant="outline"
                     size="icon"
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                    aria-label="Decrease quantity"
                   >
-                    <Minus className="h-4 w-4" />
+                    <Minus className="h-4 w-4" aria-hidden="true" />
                   </Button>
                   <div className="w-16 text-center font-medium">{quantity}</div>
                   <Button
                     variant="outline"
                     size="icon"
                     onClick={() => setQuantity(Math.min(product.stock, quantity + 1))}
+                    aria-label="Increase quantity"
                   >
-                    <Plus className="h-4 w-4" />
+                    <Plus className="h-4 w-4" aria-hidden="true" />
                   </Button>
                 </div>
               </div>

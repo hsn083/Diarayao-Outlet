@@ -168,8 +168,8 @@ export default function ShopPage() {
               <div className="sticky top-20 space-y-6">
                 <div className="flex items-center justify-between lg:hidden">
                   <h2 className="text-lg font-semibold">Filters</h2>
-                  <Button variant="ghost" size="icon" onClick={() => setShowFilters(false)}>
-                    <X className="h-4 w-4" />
+                  <Button variant="ghost" size="icon" onClick={() => setShowFilters(false)} aria-label="Close filters">
+                    <X className="h-4 w-4" aria-hidden="true" />
                   </Button>
                 </div>
 

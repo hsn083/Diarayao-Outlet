@@ -336,15 +336,15 @@ export default function AccountPage() {
                     <h3 className="font-medium mb-2">Email Preferences</h3>
                     <div className="space-y-2">
                       <label className="flex items-center space-x-2">
-                        <input type="checkbox" defaultChecked />
+                        <input type="checkbox" defaultChecked id="order-updates" />
                         <span className="text-sm">Order updates</span>
                       </label>
                       <label className="flex items-center space-x-2">
-                        <input type="checkbox" defaultChecked />
+                        <input type="checkbox" defaultChecked id="promotional-emails" />
                         <span className="text-sm">Promotional emails</span>
                       </label>
                       <label className="flex items-center space-x-2">
-                        <input type="checkbox" defaultChecked />
+                        <input type="checkbox" defaultChecked id="newsletter" />
                         <span className="text-sm">Newsletter</span>
                       </label>
                     </div>

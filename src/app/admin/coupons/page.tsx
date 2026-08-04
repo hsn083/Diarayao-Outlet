@@ -173,8 +173,9 @@ export default function AdminCouponsPage() {
                   variant="ghost" 
                   className="text-gray-500 hover:bg-gray-50 mb-4"
                   onClick={() => window.location.href = '/admin'}
+                  aria-label="Back to Dashboard"
                 >
-                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" />
                   Back to Dashboard
                 </Button>
                 <h1 className="text-xl font-bold text-gray-900">Coupon Management</h1>
@@ -187,7 +188,7 @@ export default function AdminCouponsPage() {
                   setShowAddForm(!showAddForm);
                 }}
               >
-                <Plus className="mr-2 h-4 w-4" />
+                <Plus className="mr-2 h-4 w-4" aria-hidden="true" />
                 {showAddForm ? 'Cancel' : 'Add Coupon'}
               </Button>
             </div>
@@ -282,7 +283,7 @@ export default function AdminCouponsPage() {
                   </div>
                   <div className="flex space-x-4">
                     <Button type="submit" disabled={isSubmitting} className="bg-emerald-600 text-black hover:bg-emerald-500">
-                      {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                      {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />}
                       {editingCoupon ? 'Update Coupon' : 'Create Coupon'}
                     </Button>
                     <Button type="button" variant="outline" onClick={resetForm}>
@@ -318,14 +319,14 @@ export default function AdminCouponsPage() {
                       </CardTitle>
                     </div>
                     <div className="flex space-x-2">
-                      <Button variant="ghost" size="icon" onClick={() => copyCode(coupon.code)}>
-                        <Copy className="h-4 w-4" />
+                      <Button variant="ghost" size="icon" onClick={() => copyCode(coupon.code)} aria-label="Copy coupon code">
+                        <Copy className="h-4 w-4" aria-hidden="true" />
                       </Button>
-                      <Button variant="ghost" size="icon" onClick={() => handleEditCoupon(coupon)}>
-                        <Edit className="h-4 w-4" />
+                      <Button variant="ghost" size="icon" onClick={() => handleEditCoupon(coupon)} aria-label="Edit coupon">
+                        <Edit className="h-4 w-4" aria-hidden="true" />
                       </Button>
-                      <Button variant="ghost" size="icon" className="text-destructive" onClick={() => setDeleteConfirm({ id: coupon.id, code: coupon.code })}>
-                        <Trash2 className="h-4 w-4" />
+                      <Button variant="ghost" size="icon" className="text-destructive" onClick={() => setDeleteConfirm({ id: coupon.id, code: coupon.code })} aria-label="Delete coupon">
+                        <Trash2 className="h-4 w-4" aria-hidden="true" />
                       </Button>
                     </div>
                   </div>

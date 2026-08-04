@@ -72,16 +72,16 @@ export default function HomepageSEOContent() {
 
         {/* Why Choose Diarayao Section */}
         <section className="mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
             Why Choose Diarayao Outlet for Your Modest Fashion Needs?
-          </h2>
+          </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             <div className="flex items-start gap-4 p-4 bg-gradient-to-br from-pink-50 to-rose-50 rounded-xl">
               <div className="flex-shrink-0 w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center">
                 <Award className="h-6 w-6 text-pink-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Premium Quality</h3>
+                <h4 className="font-semibold text-gray-900 mb-2">Premium Quality</h4>
                 <p className="text-sm text-gray-600">Exceptional fabrics and meticulous stitching ensure long-lasting quality.</p>
               </div>
             </div>
@@ -90,7 +90,7 @@ export default function HomepageSEOContent() {
                 <Heart className="h-6 w-6 text-emerald-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Elegant Designs</h3>
+                <h4 className="font-semibold text-gray-900 mb-2">Elegant Designs</h4>
                 <p className="text-sm text-gray-600">Modern, timeless, and modest styles perfect for every occasion.</p>
               </div>
             </div>
@@ -99,7 +99,7 @@ export default function HomepageSEOContent() {
                 <Truck className="h-6 w-6 text-blue-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Fast Delivery</h3>
+                <h4 className="font-semibold text-gray-900 mb-2">Fast Delivery</h4>
                 <p className="text-sm text-gray-600">Reliable nationwide delivery across Pakistan within 3-5 business days.</p>
               </div>
             </div>
@@ -108,7 +108,7 @@ export default function HomepageSEOContent() {
                 <Shield className="h-6 w-6 text-amber-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Secure Shopping</h3>
+                <h4 className="font-semibold text-gray-900 mb-2">Secure Shopping</h4>
                 <p className="text-sm text-gray-600">Your data and orders are protected with industry-standard security.</p>
               </div>
             </div>
@@ -117,7 +117,7 @@ export default function HomepageSEOContent() {
                 <Zap className="h-6 w-6 text-purple-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Easy Returns</h3>
+                <h4 className="font-semibold text-gray-900 mb-2">Easy Returns</h4>
                 <p className="text-sm text-gray-600">Hassle-free 7-day return and exchange policy for your peace of mind.</p>
               </div>
             </div>
@@ -126,7 +126,7 @@ export default function HomepageSEOContent() {
                 <Check className="h-6 w-6 text-rose-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-900 mb-2">Customer Support</h3>
+                <h4 className="font-semibold text-gray-900 mb-2">Customer Support</h4>
                 <p className="text-sm text-gray-600">24/7 customer support to assist you with any queries or concerns.</p>
               </div>
             </div>
@@ -153,9 +153,9 @@ export default function HomepageSEOContent() {
 
         {/* Fast Delivery Section */}
         <section className="mb-12 sm:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6">
             Fast Delivery Across Pakistan - Bringing Modest Fashion to Your Doorstep
-          </h2>
+          </h3>
           <div className="space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base md:text-lg">
             <p>
               Shopping at Diarayao Outlet is simple, secure, and convenient. Browse our collection of premium abayas, hijabs, and modest wear from anywhere in Pakistan and have them delivered directly to your doorstep. Our efficient logistics network ensures that your orders reach you quickly and safely, no matter where you are in the country.
@@ -171,9 +171,9 @@ export default function HomepageSEOContent() {
 
         {/* FAQ Section */}
         <section className="border-t border-gray-200 pt-8 sm:pt-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
             Frequently Asked Questions About Our Premium Abayas
-          </h2>
+          </h3>
           
           <div className="space-y-4">
             {faqs.map((faq, index) => (

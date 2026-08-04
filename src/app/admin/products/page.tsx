@@ -454,7 +454,7 @@ export default function AdminProductsPage() {
                 className="bg-gradient-to-r from-pink-500 to-rose-500 text-white hover:from-pink-400 hover:to-rose-400 font-semibold"
                 onClick={handleAddProduct}
               >
-                <Plus className="mr-2 h-4 w-4" />
+                <Plus className="mr-2 h-4 w-4" aria-hidden="true" />
                 Add Product
               </Button>
             </div>
@@ -665,7 +665,7 @@ export default function AdminProductsPage() {
                         onClick={addColor}
                         className="w-full"
                       >
-                        <Plus className="mr-2 h-4 w-4" />
+                        <Plus className="mr-2 h-4 w-4" aria-hidden="true" />
                         Add Color
                       </Button>
                     </div>
@@ -706,7 +706,7 @@ export default function AdminProductsPage() {
                         onClick={addSize}
                         className="w-full"
                       >
-                        <Plus className="mr-2 h-4 w-4" />
+                        <Plus className="mr-2 h-4 w-4" aria-hidden="true" />
                         Add Size
                       </Button>
                     </div>

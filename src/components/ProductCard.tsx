@@ -198,11 +198,12 @@ export default function ProductCard({ product }: ProductCardProps) {
             className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 hover:bg-white shadow-sm z-10"
             onClick={(e) => {
               e.preventDefault();
+              e.stopPropagation();
               toggleItem(product.id);
             }}
             aria-label={isInWishlist(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}
           >
-            <Heart className={`h-4 w-4 ${isInWishlist(product.id) ? 'fill-red-500 text-red-500' : 'text-gray-500'}`} />
+            <Heart className={`h-4 w-4 ${isInWishlist(product.id) ? 'fill-red-500 text-red-500' : 'text-gray-500'}`} aria-hidden="true" />
           </Button>
         </div>
       </Link>
@@ -211,10 +212,10 @@ export default function ProductCard({ product }: ProductCardProps) {
         {product.brand && (
           <p className="text-[10px] sm:text-[11px] md:text-xs text-pink-600 font-medium mb-1 sm:mb-1.5 uppercase tracking-wide">{product.brand}</p>
         )}
-        <Link href={`/product/${product.slug}`}>
-          <h3 className="font-semibold mb-2 sm:mb-2.5 line-clamp-2 group-hover:text-pink-700 transition-colors text-gray-800 text-xs sm:text-sm md:text-base leading-snug">
+        <Link href={`/product/${product.slug}`} aria-label={`View ${product.name} details`}>
+          <span className="font-semibold mb-2 sm:mb-2.5 line-clamp-2 group-hover:text-pink-700 transition-colors text-gray-800 text-xs sm:text-sm md:text-base leading-snug block">
             {product.name}
-          </h3>
+          </span>
         </Link>
         
         <div className="flex items-center space-x-1 sm:space-x-1.5 mb-2 sm:mb-2.5">

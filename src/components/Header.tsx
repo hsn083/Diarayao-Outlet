@@ -211,9 +211,6 @@ export default function Header() {
                 onChange={(e) => handleSearchInputChange(e.target.value)}
                 onFocus={() => setShowSuggestions(true)}
                 aria-label="Search products"
-                aria-autocomplete="list"
-                aria-controls="search-suggestions"
-                aria-expanded={showSuggestions}
               />
               
               {/* Search Suggestions Dropdown */}
@@ -221,115 +218,125 @@ export default function Header() {
                 <div 
                   className="absolute top-full left-0 right-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 z-50 max-h-96 overflow-y-auto"
                   id="search-suggestions"
-                  role="listbox"
-                  aria-label="Search suggestions"
                 >
                   {isLoadingSuggestions ? (
                     <div className="p-4 text-center text-gray-500" role="status" aria-live="polite">
                       <div className="inline-block animate-spin rounded-full h-5 w-5 border-2 border-pink-500 border-t-transparent"></div>
                     </div>
                   ) : (
-                    <>
+                    <ul className="py-2">
                       {/* Recent Searches */}
                       {!searchQuery && recentSearches.length > 0 && (
-                        <div className="p-3 border-b border-gray-100">
-                          <div className="flex items-center justify-between mb-2">
-                            <span className="text-xs font-semibold text-gray-500 uppercase">Recent Searches</span>
-                            <button
-                              onClick={clearRecentSearches}
-                              className="text-xs text-pink-600 hover:text-pink-700 flex items-center gap-1"
-                              aria-label="Clear recent searches"
-                            >
-                              <XCircle className="h-3 w-3" aria-hidden="true" />
-                              Clear
-                            </button>
-                          </div>
+                        <>
+                          <li className="px-3 py-2">
+                            <div className="flex items-center justify-between mb-2">
+                              <span className="text-xs font-semibold text-gray-500 uppercase">Recent Searches</span>
+                              <button
+                                onClick={clearRecentSearches}
+                                className="text-xs text-pink-600 hover:text-pink-700 flex items-center gap-1"
+                                aria-label="Clear recent searches"
+                              >
+                                <XCircle className="h-3 w-3" aria-hidden="true" />
+                                Clear
+                              </button>
+                            </div>
+                          </li>
                           {recentSearches.map((search, idx) => (
-                            <button
-                              key={idx}
-                              onClick={() => handleSuggestionClick('recent', search)}
-                              className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md flex items-center gap-2"
-                            >
-                              <Clock className="h-4 w-4 text-gray-400" />
-                              {search}
-                            </button>
+                            <li key={idx}>
+                              <button
+                                onClick={() => handleSuggestionClick('recent', search)}
+                                className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md flex items-center gap-2"
+                              >
+                                <Clock className="h-4 w-4 text-gray-400" aria-hidden="true" />
+                                {search}
+                              </button>
+                            </li>
                           ))}
-                        </div>
+                        </>
                       )}
 
                       {/* Products */}
                       {suggestions?.products && suggestions.products.length > 0 && (
-                        <div className="p-3 border-b border-gray-100">
-                          <span className="text-xs font-semibold text-gray-500 uppercase mb-2 block">Products</span>
+                        <>
+                          <li className="px-3 py-2">
+                            <span className="text-xs font-semibold text-gray-500 uppercase">Products</span>
+                          </li>
                           {suggestions.products.map((product: any) => (
-                            <button
-                              key={product.id}
-                              onClick={() => handleSuggestionClick('product', product.slug)}
-                              className="w-full text-left px-3 py-2 hover:bg-pink-50 rounded-md flex items-center gap-3"
-                            >
-                              {product.images?.[0] && (
-                                <div className="relative w-10 h-10">
-                                  <Image
-                                    src={product.images[0]}
-                                    alt={`${product.name} - ${product.category} abaya available at Diarayao Outlet Pakistan`}
-                                    fill
-                                    className="object-cover rounded"
-                                  />
+                            <li key={product.id}>
+                              <button
+                                onClick={() => handleSuggestionClick('product', product.slug)}
+                                className="w-full text-left px-3 py-2 hover:bg-pink-50 rounded-md flex items-center gap-3"
+                              >
+                                {product.images?.[0] && (
+                                  <div className="relative w-10 h-10">
+                                    <Image
+                                      src={product.images[0]}
+                                      alt={`${product.name} - ${product.category} abaya available at Diarayao Outlet Pakistan`}
+                                      fill
+                                      className="object-cover rounded"
+                                    />
+                                  </div>
+                                )}
+                                <div className="flex-1 min-w-0">
+                                  <p className="text-sm font-medium text-gray-900 truncate">{product.name}</p>
+                                  <p className="text-xs text-gray-500">PKR {(product.discountPrice || product.price).toLocaleString()}</p>
                                 </div>
-                              )}
-                              <div className="flex-1 min-w-0">
-                                <p className="text-sm font-medium text-gray-900 truncate">{product.name}</p>
-                                <p className="text-xs text-gray-500">PKR {(product.discountPrice || product.price).toLocaleString()}</p>
-                              </div>
-                            </button>
+                              </button>
+                            </li>
                           ))}
-                        </div>
+                        </>
                       )}
 
                       {/* Categories */}
                       {suggestions?.categories && suggestions.categories.length > 0 && (
-                        <div className="p-3 border-b border-gray-100">
-                          <span className="text-xs font-semibold text-gray-500 uppercase mb-2 block">Categories</span>
+                        <>
+                          <li className="px-3 py-2">
+                            <span className="text-xs font-semibold text-gray-500 uppercase">Categories</span>
+                          </li>
                           {suggestions.categories.map((category: any, idx: number) => (
-                            <button
-                              key={category._id || idx}
-                              onClick={() => handleSuggestionClick('category', category.slug)}
-                              className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md"
-                            >
-                              {category.name}
-                            </button>
+                            <li key={category._id || idx}>
+                              <button
+                                onClick={() => handleSuggestionClick('category', category.slug)}
+                                className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md"
+                              >
+                                {category.name}
+                              </button>
+                            </li>
                           ))}
-                        </div>
+                        </>
                       )}
 
                       {/* Brands */}
                       {suggestions?.brands && suggestions.brands.length > 0 && (
-                        <div className="p-3">
-                          <span className="text-xs font-semibold text-gray-500 uppercase mb-2 block">Brands</span>
+                        <>
+                          <li className="px-3 py-2">
+                            <span className="text-xs font-semibold text-gray-500 uppercase">Brands</span>
+                          </li>
                           {suggestions.brands.map((brand: any, idx: number) => (
-                            <button
-                              key={brand._id || idx}
-                              onClick={() => handleSuggestionClick('brand', brand.name)}
-                              className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md"
-                            >
-                              {brand.name}
-                            </button>
+                            <li key={brand._id || idx}>
+                              <button
+                                onClick={() => handleSuggestionClick('brand', brand.name)}
+                                className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md"
+                              >
+                                {brand.name}
+                              </button>
+                            </li>
                           ))}
-                        </div>
+                        </>
                       )}
 
                       {/* View All Results */}
                       {searchQuery && (
-                        <div className="p-3 border-t border-gray-100">
+                        <li>
                           <button
                             onClick={() => handleSearch(searchQuery)}
                             className="w-full text-center py-2 text-sm font-medium text-pink-600 hover:text-pink-700 hover:bg-pink-50 rounded-md"
                           >
                             View all results for "{searchQuery}"
                           </button>
-                        </div>
+                        </li>
                       )}
-                    </>
+                    </ul>
                   )}
                 </div>
               )}
@@ -399,12 +406,13 @@ export default function Header() {
             {/* Performance: Dynamic import for non-critical component */}
             <Notifications />
             <Link href="/wishlist" aria-label="Wishlist" className="hidden sm:block">
-              <Button 
-                variant="ghost" 
-                size="icon" 
+              <Button
+                variant="ghost"
+                size="icon"
                 className="relative flex items-center justify-center hover:text-pink-600 hover:bg-pink-50 transition-all duration-200"
+                aria-label="Wishlist"
               >
-                <Heart className="w-5 h-5" />
+                <Heart className="w-5 h-5" aria-hidden="true" />
                 {wishlistItems.length > 0 && (
                   <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs bg-pink-500 text-white hover:bg-pink-600 transition-colors">
                     {wishlistItems.length}
@@ -427,12 +435,13 @@ export default function Header() {
               </Button>
             </Link>
             <Link href="/account" aria-label="Account" className="hidden sm:block">
-              <Button 
-                variant="ghost" 
-                size="icon" 
+              <Button
+                variant="ghost"
+                size="icon"
                 className="flex items-center justify-center hover:text-pink-600 hover:bg-pink-50 transition-all duration-200"
+                aria-label="Account"
               >
-                <User className="w-5 h-5" />
+                <User className="w-5 h-5" aria-hidden="true" />
               </Button>
             </Link>
             <Button

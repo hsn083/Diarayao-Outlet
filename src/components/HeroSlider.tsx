@@ -540,9 +540,10 @@ export default function HeroSlider() {
               }}
               aria-label="Previous slide"
             >
-              <ChevronLeft 
-                className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" 
+              <ChevronLeft
+                className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8"
                 style={{ color: settings.arrowIconColor }}
+                aria-hidden="true"
               />
             </button>
             <button
@@ -559,9 +560,10 @@ export default function HeroSlider() {
               }}
               aria-label="Next slide"
             >
-              <ChevronRight 
-                className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" 
+              <ChevronRight
+                className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8"
                 style={{ color: settings.arrowIconColor }}
+                aria-hidden="true"
               />
             </button>
           </>
@@ -569,7 +571,7 @@ export default function HeroSlider() {
 
         {/* Navigation Dots */}
         {banners.length > 1 && settings.showDots && (
-          <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10" role="tablist" aria-label="Slide navigation">
+          <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10" role="group" aria-label="Slide navigation">
             {banners.map((_, index) => (
               <button
                 key={index}
@@ -584,8 +586,7 @@ export default function HeroSlider() {
                   height: `${settings.dotSize}px`,
                 }}
                 aria-label={`Go to slide ${index + 1}`}
-                aria-selected={index === currentIndex}
-                role="tab"
+                aria-current={index === currentIndex ? 'true' : undefined}
               />
             ))}
           </div>

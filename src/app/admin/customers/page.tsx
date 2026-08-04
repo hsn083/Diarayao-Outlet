@@ -356,8 +356,9 @@ export default function AdminCustomersPage() {
                   variant="ghost" 
                   className="text-gray-500 hover:bg-gray-50 mb-4"
                   onClick={() => window.location.href = '/admin'}
+                  aria-label="Back to Dashboard"
                 >
-                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  <ArrowLeft className="mr-2 h-4 w-4" aria-hidden="true" />
                   Back to Dashboard
                 </Button>
                 <h1 className="text-xl font-bold text-gray-900">Customer Management</h1>
@@ -369,7 +370,7 @@ export default function AdminCustomersPage() {
                   className="bg-emerald-600/10 hover:bg-emerald-600/20 text-black border-black/30"
                   onClick={exportToCSV}
                 >
-                  <Download className="mr-2 h-4 w-4" />
+                  <Download className="mr-2 h-4 w-4" aria-hidden="true" />
                   Export CSV
                 </Button>
                 <Button 
@@ -377,7 +378,7 @@ export default function AdminCustomersPage() {
                   className="bg-emerald-600/10 hover:bg-emerald-600/20 text-black border-black/30"
                   onClick={printCustomerList}
                 >
-                  <Printer className="mr-2 h-4 w-4" />
+                  <Printer className="mr-2 h-4 w-4" aria-hidden="true" />
                   Print
                 </Button>
                 <Button 
@@ -385,7 +386,7 @@ export default function AdminCustomersPage() {
                   className="bg-emerald-100 hover:bg-emerald-200 text-emerald-700 border-emerald-100"
                   onClick={() => { fetchCustomers(); fetchStats(); }}
                 >
-                  <RefreshCw className="mr-2 h-4 w-4" />
+                  <RefreshCw className="mr-2 h-4 w-4" aria-hidden="true" />
                   Refresh
                 </Button>
               </div>
@@ -415,7 +416,7 @@ export default function AdminCustomersPage() {
                     className="w-full"
                     onClick={() => setShowFilters(!showFilters)}
                   >
-                    <Filter className="mr-2 h-4 w-4" />
+                    <Filter className="mr-2 h-4 w-4" aria-hidden="true" />
                     Filters
                     {(statusFilter || verifiedFilter || ordersFilter) && (
                       <Badge className="ml-2 bg-emerald-600 text-black">
@@ -434,7 +435,7 @@ export default function AdminCustomersPage() {
                       size="sm"
                       onClick={clearFilters}
                     >
-                      <X className="mr-2 h-4 w-4" />
+                      <X className="mr-2 h-4 w-4" aria-hidden="true" />
                       Clear
                     </Button>
                   )}
@@ -602,20 +603,20 @@ export default function AdminCustomersPage() {
                         <td className="p-4">
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
-                              <Button variant="ghost" size="icon">
-                                <MoreHorizontal className="h-4 w-4" />
+                              <Button variant="ghost" size="icon" aria-label="More options">
+                                <MoreHorizontal className="h-4 w-4" aria-hidden="true" />
                               </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
                               <DropdownMenuLabel>Actions</DropdownMenuLabel>
                               <DropdownMenuSeparator />
                               <DropdownMenuItem onClick={() => handleViewCustomer(customer.id)}>
-                                <Eye className="mr-2 h-4 w-4" />
+                                <Eye className="mr-2 h-4 w-4" aria-hidden="true" />
                                 View Details
                               </DropdownMenuItem>
                               {!customer.isGuest && (
                                 <DropdownMenuItem onClick={() => handleVerifyCustomer(customer.id, !customer.emailVerified)}>
-                                  <CheckCircle className="mr-2 h-4 w-4" />
+                                  <CheckCircle className="mr-2 h-4 w-4" aria-hidden="true" />
                                   {customer.emailVerified ? 'Unverify' : 'Verify'}
                                 </DropdownMenuItem>
                               )}
@@ -624,12 +625,12 @@ export default function AdminCustomersPage() {
                                 <>
                                   {customer.isBlocked ? (
                                     <DropdownMenuItem onClick={() => handleBlockCustomer(customer.id, false)}>
-                                      <Shield className="mr-2 h-4 w-4" />
+                                      <Shield className="mr-2 h-4 w-4" aria-hidden="true" />
                                       Unblock
                                     </DropdownMenuItem>
                                   ) : (
-                                    <DropdownMenuItem onClick={() => handleBlockCustomer(customer.id, true)} className="text-red-400">
-                                      <Ban className="mr-2 h-4 w-4" />
+                                    <DropdownMenuItem onClick={() => handleBlockCustomer(customer.id, true)}>
+                                      <Ban className="mr-2 h-4 w-4" aria-hidden="true" />
                                       Block
                                     </DropdownMenuItem>
                                   )}
@@ -638,7 +639,7 @@ export default function AdminCustomersPage() {
                                     onClick={() => handleDeleteCustomer(customer.id)}
                                     className="text-red-400"
                                   >
-                                    <Trash2 className="mr-2 h-4 w-4" />
+                                    <Trash2 className="mr-2 h-4 w-4" aria-hidden="true" />
                                     Delete Permanently
                                   </DropdownMenuItem>
                                 </>

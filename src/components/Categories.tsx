@@ -43,40 +43,42 @@ export default function Categories() {
       {isLoading ? (
         <div className="text-center py-12 text-muted-foreground" role="status" aria-live="polite">Loading collections...</div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 justify-items-center" role="list" aria-label="Product categories">
+        <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 justify-items-center list-none p-0 m-0" aria-label="Product categories">
           {categories.map((category) => (
-            <Link key={category.id} href={`/category/${category.slug}`} className="flex flex-col items-center group" aria-label={`Browse ${category.name} collection`}>
-              {/* Performance: Fixed dimensions to prevent CLS */}
-              <div className="relative w-[128px] h-[128px] sm:w-[144px] sm:h-[144px] md:w-[160px] md:h-[160px] lg:w-[176px] lg:h-[176px] rounded-full bg-white border border-gray-200 shadow-md overflow-hidden group-hover:shadow-xl group-hover:scale-105 transition-all duration-300" style={{ contain: 'layout' }}>
-                {category.image ? (
-                  <Image 
-                    src={category.image} 
-                    alt={`${category.name} category - Browse our ${category.name} collection at Diarayao Outlet Pakistan`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 140px, (max-width: 768px) 150px, (max-width: 1024px) 160px, 176px"
-                    loading="lazy"
-                    quality={85}
-                    placeholder="blur"
-                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDsQA//Z"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-4xl sm:text-5xl" aria-hidden="true">
-                    {categoryEmojis[category.slug] || '👗'}
-                  </div>
+            <li key={category.id}>
+              <Link href={`/category/${category.slug}`} className="flex flex-col items-center group" aria-label={`Browse ${category.name} collection`}>
+                {/* Performance: Fixed dimensions to prevent CLS */}
+                <div className="relative w-[128px] h-[128px] sm:w-[144px] sm:h-[144px] md:w-[160px] md:h-[160px] lg:w-[176px] lg:h-[176px] rounded-full bg-white border border-gray-200 shadow-md overflow-hidden group-hover:shadow-xl group-hover:scale-105 transition-all duration-300" style={{ contain: 'layout' }}>
+                  {category.image ? (
+                    <Image 
+                      src={category.image} 
+                      alt={`${category.name} category - Browse our ${category.name} collection at Diarayao Outlet Pakistan`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 140px, (max-width: 768px) 150px, (max-width: 1024px) 160px, 176px"
+                      loading="lazy"
+                      quality={85}
+                      placeholder="blur"
+                      blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDsQA//Z"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-4xl sm:text-5xl" aria-hidden="true">
+                      {categoryEmojis[category.slug] || '👗'}
+                    </div>
+                  )}
+                </div>
+                <span className="mt-3 sm:mt-4 font-semibold text-gray-900 text-center text-sm sm:text-base md:text-lg group-hover:text-pink-600 transition-colors duration-300">
+                  {category.name}
+                </span>
+                {category.description && (
+                  <p className="text-xs sm:text-sm text-gray-600 text-center line-clamp-1 mt-1">
+                    {category.description}
+                  </p>
                 )}
-              </div>
-              <h3 className="mt-3 sm:mt-4 font-semibold text-gray-900 text-center text-sm sm:text-base md:text-lg group-hover:text-pink-600 transition-colors duration-300">
-                {category.name}
-              </h3>
-              {category.description && (
-                <p className="text-xs sm:text-sm text-gray-600 text-center line-clamp-1 mt-1">
-                  {category.description}
-                </p>
-              )}
-            </Link>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
     </section>
   );
