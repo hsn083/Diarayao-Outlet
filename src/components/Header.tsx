@@ -39,6 +39,7 @@ export default function Header() {
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
   const [isLoadingSuggestions, setIsLoadingSuggestions] = useState(false);
   const [categories, setCategories] = useState<any[]>([]);
+  const categoriesFetched = useRef(false);
   const [categoriesDropdownOpen, setCategoriesDropdownOpen] = useState(false);
   const [mobileCategoriesDropdownOpen, setMobileCategoriesDropdownOpen] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
@@ -56,9 +57,13 @@ export default function Header() {
 
   // Load recent searches from localStorage
   useEffect(() => {
-    const saved = localStorage.getItem('recentSearches');
-    if (saved) {
-      setRecentSearches(JSON.parse(saved));
+    try {
+      const saved = localStorage.getItem('recentSearches');
+      if (saved) {
+        setRecentSearches(JSON.parse(saved));
+      }
+    } catch (error) {
+      // Ignore localStorage errors
     }
   }, []);
 
@@ -109,12 +114,20 @@ export default function Header() {
     
     const updated = [trimmed, ...recentSearches.filter(s => s !== trimmed)].slice(0, 5);
     setRecentSearches(updated);
-    localStorage.setItem('recentSearches', JSON.stringify(updated));
+    try {
+      localStorage.setItem('recentSearches', JSON.stringify(updated));
+    } catch (error) {
+      // Ignore localStorage errors
+    }
   };
 
   const clearRecentSearches = () => {
     setRecentSearches([]);
-    localStorage.removeItem('recentSearches');
+    try {
+      localStorage.removeItem('recentSearches');
+    } catch (error) {
+      // Ignore localStorage errors
+    }
   };
 
   const fetchSuggestions = async (query: string) => {
@@ -200,7 +213,7 @@ export default function Header() {
           </div>
 
           {/* Search Bar - Desktop */}
-          <div className="hidden md:flex items-center flex-1 max-w-lg mx-8 lg:mx-12" ref={searchRef} role="search">
+          <div className="hidden md:flex items-center flex-1 max-w-lg mx-8 lg:mx-12" ref={searchRef}>
             <form onSubmit={handleDesktopSearchSubmit} className="relative w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" aria-hidden="true" />
               <Input
@@ -219,11 +232,10 @@ export default function Header() {
                   className="absolute top-full left-0 right-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 z-50 max-h-96 overflow-y-auto"
                   id="search-suggestions"
                   role="listbox"
-                  aria-label="Search suggestions"
                 >
                   {isLoadingSuggestions ? (
-                    <div className="p-4 text-center text-gray-500" role="status" aria-live="polite">
-                      <div className="inline-block animate-spin rounded-full h-5 w-5 border-2 border-pink-500 border-t-transparent"></div>
+                    <div className="p-4 text-center text-gray-500">
+                      <div className="inline-block animate-spin rounded-full h-5 w-5 border-2 border-pink-500 border-t-transparent" aria-hidden="true"></div>
                     </div>
                   ) : (
                     <ul className="py-2">
@@ -249,7 +261,6 @@ export default function Header() {
                                 onClick={() => handleSuggestionClick('recent', search)}
                                 className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md flex items-center gap-2"
                                 role="option"
-                                aria-label={`Search for ${search}`}
                                 aria-selected="false"
                               >
                                 <Clock className="h-4 w-4 text-gray-400" aria-hidden="true" />
@@ -272,7 +283,6 @@ export default function Header() {
                                 onClick={() => handleSuggestionClick('product', product.slug)}
                                 className="w-full text-left px-3 py-2 hover:bg-pink-50 rounded-md flex items-center gap-3"
                                 role="option"
-                                aria-label={`View ${product.name}`}
                                 aria-selected="false"
                               >
                                 {product.images?.[0] && (
@@ -307,7 +317,6 @@ export default function Header() {
                                 onClick={() => handleSuggestionClick('category', category.slug)}
                                 className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md"
                                 role="option"
-                                aria-label={`Browse ${category.name} category`}
                                 aria-selected="false"
                               >
                                 {category.name}
@@ -329,7 +338,6 @@ export default function Header() {
                                 onClick={() => handleSuggestionClick('brand', brand.name)}
                                 className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-pink-50 rounded-md"
                                 role="option"
-                                aria-label={`Search for ${brand.name} brand`}
                                 aria-selected="false"
                               >
                                 {brand.name}
@@ -346,7 +354,6 @@ export default function Header() {
                             onClick={() => handleSearch(searchQuery)}
                             className="w-full text-center py-2 text-sm font-medium text-pink-600 hover:text-pink-700 hover:bg-pink-50 rounded-md"
                             role="option"
-                            aria-label={`View all results for ${searchQuery}`}
                             aria-selected="false"
                           >
                             View all results for "{searchQuery}"
@@ -361,7 +368,7 @@ export default function Header() {
           </div>
 
           {/* Navigation */}
-          <nav className="hidden lg:flex items-center gap-6 flex-1 justify-end" aria-label="Main navigation">
+          <nav className="hidden lg:flex items-center gap-6 flex-1 justify-end">
             <Link href="/" className="flex items-center leading-none text-sm font-medium text-gray-700 hover:text-pink-600 transition-colors duration-200 relative group">
               Home
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-400 transition-all duration-200 group-hover:w-full"></span>
@@ -377,8 +384,6 @@ export default function Header() {
                 onClick={() => setCategoriesDropdownOpen(!categoriesDropdownOpen)}
                 aria-expanded={categoriesDropdownOpen}
                 aria-haspopup="true"
-                aria-controls="categories-dropdown"
-                aria-label="Browse categories"
               >
                 Categories
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${categoriesDropdownOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -388,9 +393,7 @@ export default function Header() {
               {/* Dropdown Menu */}
               {categoriesDropdownOpen && categories.length > 0 && (
                 <ul 
-                  id="categories-dropdown"
                   className="absolute top-full left-0 mt-2 bg-white rounded-lg shadow-xl border border-gray-200 z-50 min-w-[200px] py-2"
-                  role="menu"
                 >
                   {categories.map((category) => (
                     <li key={category.id}>
@@ -398,7 +401,6 @@ export default function Header() {
                         href={`/category/${category.slug}`}
                         className="block px-4 py-2 text-sm text-gray-700 hover:text-pink-600 hover:bg-pink-50 transition-colors"
                         onClick={() => setCategoriesDropdownOpen(false)}
-                        role="menuitem"
                       >
                         {category.name}
                       </Link>
@@ -435,7 +437,6 @@ export default function Header() {
                 variant="ghost"
                 size="icon"
                 className="relative flex items-center justify-center hover:text-pink-600 hover:bg-pink-50 transition-all duration-200"
-                aria-label="Wishlist"
               >
                 <Heart className="w-5 h-5" aria-hidden="true" />
                 {wishlistItems.length > 0 && (
@@ -450,7 +451,6 @@ export default function Header() {
                 variant="ghost"
                 size="icon"
                 className="relative flex items-center justify-center hover:text-pink-600 hover:bg-pink-50 transition-all duration-200"
-                aria-label="Shopping cart"
               >
                 <ShoppingCart className="w-5 h-5" aria-hidden="true" />
                 {cartItems.length > 0 && (
@@ -465,7 +465,6 @@ export default function Header() {
                 variant="ghost"
                 size="icon"
                 className="flex items-center justify-center hover:text-pink-600 hover:bg-pink-50 transition-all duration-200"
-                aria-label="Account"
               >
                 <User className="w-5 h-5" aria-hidden="true" />
               </Button>
@@ -541,7 +540,7 @@ export default function Header() {
               </div>
 
               {/* Navigation Links */}
-              <nav className="p-4 space-y-1" aria-label="Mobile navigation">
+              <nav className="p-4 space-y-1">
                 <Link
                   href="/"
                   className="flex items-center gap-3 px-4 py-3 text-base font-medium text-gray-800 hover:text-pink-600 hover:bg-pink-50 rounded-lg transition-colors"
@@ -556,8 +555,6 @@ export default function Header() {
                     onClick={() => setMobileCategoriesDropdownOpen(!mobileCategoriesDropdownOpen)}
                     aria-expanded={mobileCategoriesDropdownOpen}
                     aria-haspopup="true"
-                    aria-controls="mobile-categories-dropdown"
-                    aria-label="Browse categories"
                   >
                     <span>Categories</span>
                     <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${mobileCategoriesDropdownOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -566,9 +563,7 @@ export default function Header() {
                   {/* Mobile Dropdown */}
                   {mobileCategoriesDropdownOpen && categories.length > 0 && (
                     <ul 
-                      id="mobile-categories-dropdown"
                       className="pl-4 pr-2 py-2 space-y-1"
-                      role="menu"
                     >
                       {categories.map((category) => (
                         <li key={category.id}>
@@ -579,7 +574,6 @@ export default function Header() {
                               setMobileCategoriesDropdownOpen(false);
                               setMobileMenuOpen(false);
                             }}
-                            role="menuitem"
                           >
                             {category.name}
                           </Link>
