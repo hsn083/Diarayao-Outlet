@@ -77,7 +77,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const metaTitle = settings?.seo?.metaTitle || 'Diarayao Outlet | Premium Abayas & Modest Dresses';
   const metaDescription = settings?.seo?.metaDescription || 'Shop premium Abayas, Hijabs & Modest Dresses in Pakistan. Quality fabrics, fast delivery. Order online at Diaraya Outlet!';
   const metaKeywords = settings?.seo?.metaKeywords || 'Diarayao Outlet, Abaya Pakistan, Buy Abaya Online, Premium Abaya, Hijab Pakistan, Modest Fashion, Islamic Clothing, Women\'s Abaya, Modest Dresses, Luxury Abaya, Black Abaya, Kimono Abaya, Open Abaya, Nida Abaya, Pakistani Abaya, Abaya Collection, Muslim Fashion, Hijab Store, Abaya Online Pakistan, Islamic Wear';
-  const ogImage = settings?.seo?.ogImage || '/favicon.png';
+  const ogImage = settings?.seo?.ogImage || '/Pic.jpg';
   const siteUrl = 'https://www.diarayao.com';
 
   return {
@@ -110,23 +110,31 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: 'https://www.diarayao.com/',
     },
-    openGraph: {
-      title: settings?.seo?.ogTitle || 'Diarayao Outlet | Premium Abayas & Hijabs',
-      description: settings?.seo?.ogDescription || 'Shop premium Abayas, Hijabs & Modest Dresses in Pakistan. Quality fabrics, fast delivery. Order online at Diaraya Outlet!',
-      url: 'https://www.diarayao.com/',
-      siteName: siteName,
-      locale: 'en_PK',
-      type: 'website',
-      images: ['/Pic.jpg'],
+   openGraph: {
+  title: settings?.seo?.ogTitle || metaTitle,
+  description: settings?.seo?.ogDescription || metaDescription,
+  url: siteUrl,
+  siteName,
+  locale: 'en_PK',
+  type: 'website',
+  images: [
+    {
+      url: `${siteUrl}${ogImage}`,
+      width: 1200,
+      height: 1200,
+      alt: 'Diarayao Premium Abaya Collection',
+      type: 'image/jpeg',
     },
-    twitter: {
-      card: 'summary_large_image',
-      title: settings?.seo?.twitterTitle || 'Diarayao Outlet',
-      description: settings?.seo?.twitterDescription || 'Shop premium Abayas, Hijabs & Modest Dresses in Pakistan. Quality fabrics, fast delivery. Order online at Diaraya Outlet!',
-      images: ['/favicon.png'],
-      creator: '@diarayaooutlet',
-      site: '@diarayaooutlet',
-    },
+  ],
+},
+   twitter: {
+  card: 'summary_large_image',
+  title: settings?.seo?.twitterTitle || metaTitle,
+  description: settings?.seo?.twitterDescription || metaDescription,
+  creator: '@diarayaooutlet',
+  site: '@diarayaooutlet',
+  images: [`${siteUrl}${ogImage}`],
+},
     robots: {
       index: settings?.seo?.robots !== 'noindex',
       follow: settings?.seo?.robots !== 'nofollow',
@@ -137,7 +145,7 @@ export async function generateMetadata(): Promise<Metadata> {
         'max-image-preview': 'large',
         'max-snippet': -1,
       },
-    },
+   },
     verification: {
       google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
       yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
@@ -178,6 +186,11 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="1200" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:alt" content="Diarayao Premium Abaya Collection" />
+        <link rel="preload" as="image" href="/Pic.jpg" />
       </head>
       <body className={`${inter.variable} ${poppins.variable} ${playfairDisplay.variable} ${cinzel.variable} ${montserrat.variable}`}>
         {/* Accessibility: Skip to content link for keyboard users */}
