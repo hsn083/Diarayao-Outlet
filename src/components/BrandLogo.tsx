@@ -12,11 +12,12 @@ export default function BrandLogo({
   const isDark = variant === 'dark';
 
   return (
-    <Link 
+    <Link
       href="/"
-      className="w-[140px] md:w-[160px] lg:w-[180px] flex flex-col items-center leading-none transition-transform duration-300 hover:scale-[1.03]"
+      className="w-[140px] h-[60px] md:w-[160px] md:h-[68px] lg:w-[180px] lg:h-[76px] flex flex-col items-center leading-none transition-transform duration-300 hover:scale-[1.03]"
       aria-label="DIARAYAO OUTLET - Home"
       title="Diarayao Outlet - Premium Abayas and Modest Fashion"
+      style={{ contain: 'layout' }}
     >
       {/* Top Decorative Ornament */}
       <div 

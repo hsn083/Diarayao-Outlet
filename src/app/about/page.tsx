@@ -47,7 +47,8 @@ export default function AboutPage() {
       <BreadcrumbSchema items={breadcrumbItems} />
       <Header />
 
-      <main className="min-h-screen bg-gray-50">
+      {/* Accessibility: Added id for skip to content link */}
+      <main id="main-content" className="min-h-screen bg-gray-50">
 
         {/* Hero */}
         <section className="bg-gradient-to-r from-pink-700 to-rose-700 text-white py-20">

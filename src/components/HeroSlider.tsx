@@ -342,8 +342,14 @@ export default function HeroSlider() {
 
   if (isLoading) {
     return (
-      <section className="relative bg-gray-100 animate-pulse">
-        <div className="relative w-full" style={{ aspectRatio: '1920/800' }}>
+      <section
+        className="relative bg-gray-100 animate-pulse"
+        aria-label="Loading hero banner"
+        role="status"
+        aria-live="polite"
+      >
+        {/* Performance: Fixed aspect ratio to prevent CLS */}
+        <div className="relative w-full h-[550px] md:h-[650px] lg:h-[750px]">
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="text-gray-400">Loading banners...</div>
           </div>
@@ -366,6 +372,8 @@ export default function HeroSlider() {
       onMouseLeave={() => settings.pauseOnHover && setIsPaused(false)}
       onTouchStart={settings.touchSwipe ? handleTouchStart : undefined}
       onTouchEnd={settings.touchSwipe ? handleTouchEnd : undefined}
+      aria-label="Hero banner slider"
+      role="region"
     >
       
       <div className="relative w-full h-full">
@@ -381,6 +389,7 @@ export default function HeroSlider() {
             <div
               key={banner._id}
               className="flex-shrink-0 w-full h-full relative"
+              style={{ contain: 'layout' }}
             >
               {/* Background Image */}
               <div className="relative w-full h-full">
@@ -501,6 +510,8 @@ export default function HeroSlider() {
                             e.currentTarget.style.boxShadow = banner.buttonShadow;
                           }
                         }}
+                        // Accessibility: Added aria-label for button
+                        aria-label={`${banner.buttonText} - ${banner.heading}`}
                       >
                         {banner.buttonText}
                       </button>
@@ -558,14 +569,14 @@ export default function HeroSlider() {
 
         {/* Navigation Dots */}
         {banners.length > 1 && settings.showDots && (
-          <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          <div className="absolute bottom-4 md:bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10" role="tablist" aria-label="Slide navigation">
             {banners.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
                 className="transition-all rounded-full"
                 style={{
-                  backgroundColor: index === currentIndex 
+                  backgroundColor: index === currentIndex
                     ? settings.activeDotColor
                     : settings.dotColor,
                   transform: index === currentIndex ? 'scale(1.25)' : 'scale(1)',
@@ -573,6 +584,8 @@ export default function HeroSlider() {
                   height: `${settings.dotSize}px`,
                 }}
                 aria-label={`Go to slide ${index + 1}`}
+                aria-selected={index === currentIndex}
+                role="tab"
               />
             ))}
           </div>

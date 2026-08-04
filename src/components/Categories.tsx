@@ -34,9 +34,9 @@ export default function Categories() {
   }, []);
 
   return (
-    <>
+    <section aria-labelledby="categories-heading">
       <div className="text-center mb-12 mt-8">
-        <h2 className="text-3xl font-bold mb-4 text-gray-900">Shop by Category</h2>
+        <h2 id="categories-heading" className="text-3xl font-bold mb-4 text-gray-900">Shop by Category</h2>
         <p className="text-muted-foreground">Browse our elegant Islamic modest wear collections</p>
       </div>
       
@@ -46,7 +46,8 @@ export default function Categories() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 justify-items-center" role="list" aria-label="Product categories">
           {categories.map((category) => (
             <Link key={category.id} href={`/category/${category.slug}`} className="flex flex-col items-center group" aria-label={`Browse ${category.name} collection`}>
-              <div className="relative w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 aspect-square rounded-full bg-white border border-gray-200 shadow-md overflow-hidden group-hover:shadow-xl group-hover:scale-105 transition-all duration-300">
+              {/* Performance: Fixed dimensions to prevent CLS */}
+              <div className="relative w-[128px] h-[128px] sm:w-[144px] sm:h-[144px] md:w-[160px] md:h-[160px] lg:w-[176px] lg:h-[176px] rounded-full bg-white border border-gray-200 shadow-md overflow-hidden group-hover:shadow-xl group-hover:scale-105 transition-all duration-300" style={{ contain: 'layout' }}>
                 {category.image ? (
                   <Image 
                     src={category.image} 
@@ -77,6 +78,6 @@ export default function Categories() {
           ))}
         </div>
       )}
-    </>
+    </section>
   );
 }

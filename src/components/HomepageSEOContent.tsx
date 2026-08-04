@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Check, ChevronDown, ChevronUp, Truck, Shield, Award, Heart, Zap } from 'lucide-react';
 
 export default function HomepageSEOContent() {
@@ -28,30 +28,10 @@ export default function HomepageSEOContent() {
       question: "What is your return and exchange policy?",
       answer: "We offer a hassle-free 7-day return and exchange policy. If you're not satisfied with your purchase, you can return or exchange it within 7 days of delivery, provided the item is in its original condition with tags attached."
     },
-    {
-      question: "How do I choose the right abaya size?",
-      answer: "We provide detailed size charts for each abaya on the product page. Our abayas are designed for a modest, comfortable fit. If you're between sizes, we recommend sizing up for a more relaxed fit. You can also contact our customer service for personalized sizing assistance."
-    },
-    {
-      question: "Are your abayas suitable for all seasons?",
-      answer: "Yes, we offer abayas for all seasons. Our lightweight Nida and crepe abayas are perfect for summer, while our thicker fabrics and layered designs provide warmth during winter. We also have all-season options that work year-round in Pakistan's climate."
-    },
-    {
-      question: "What payment methods do you accept?",
-      answer: "We accept multiple payment methods including Cash on Delivery (COD), bank transfers, credit/debit cards, and popular digital wallets like JazzCash, EasyPaisa, and SadaPay. All online payments are secured with industry-standard encryption."
-    },
-    {
-      question: "How can I track my order?",
-      answer: "Once your order is shipped, you'll receive a tracking number via email and SMS. You can use this number to track your order on our website's 'Track Order' page or contact our customer service team for real-time updates on your delivery status."
-    },
-    {
-      question: "Do you offer international shipping?",
-      answer: "Currently, we focus on serving customers within Pakistan to ensure the fastest delivery times and best service. We're exploring international shipping options for the future. Please subscribe to our newsletter for updates on international shipping availability."
-    }
   ];
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20">
+    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20" style={{ contain: 'layout' }}>
       <div className="bg-white rounded-2xl p-6 sm:p-8 md:p-12 lg:p-16 shadow-lg border border-gray-100">
         
         {/* About Diarayao Section */}

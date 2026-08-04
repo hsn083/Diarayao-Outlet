@@ -59,9 +59,10 @@ export default function CartPage() {
     return (
       <>
         <Header />
-        <main className="min-h-screen flex items-center justify-center">
+        {/* Accessibility: Added id for skip to content link */}
+        <main id="main-content" className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <ShoppingBag className="h-16 w-16 mx-auto mb-4 text-muted-foreground" />
+            <ShoppingBag className="h-16 w-16 mx-auto mb-4 text-muted-foreground" aria-hidden="true" />
             <h1 className="text-2xl font-bold mb-2">Your cart is empty</h1>
             <p className="text-muted-foreground mb-6">Add some products to get started</p>
             <Button onClick={() => window.location.href = '/shop'}>
@@ -77,7 +78,7 @@ export default function CartPage() {
   return (
     <>
       <Header />
-      <main className="min-h-screen">
+      <main id="main-content" className="min-h-screen">
         <div className="bg-muted/30 py-8">
           <div className="container mx-auto px-4">
             <h1 className="text-3xl font-bold">Shopping Cart</h1>
@@ -135,8 +136,9 @@ export default function CartPage() {
                           size="icon"
                           onClick={() => removeItem(item.product.id, item.selectedSize, item.selectedColor)}
                           className="text-destructive hover:text-destructive"
+                          aria-label={`Remove ${item.product.name} from cart`}
                         >
-                          <Trash2 className="h-4 w-4" />
+                          <Trash2 className="h-4 w-4" aria-hidden="true" />
                         </Button>
                         <div className="flex items-center space-x-2">
                           <Button
@@ -144,8 +146,9 @@ export default function CartPage() {
                             size="icon"
                             className="h-8 w-8"
                             onClick={() => updateQuantity(item.product.id, item.quantity - 1, item.selectedSize, item.selectedColor)}
+                            aria-label={`Decrease quantity of ${item.product.name}`}
                           >
-                            <Minus className="h-4 w-4" />
+                            <Minus className="h-4 w-4" aria-hidden="true" />
                           </Button>
                           <span className="w-8 text-center">{item.quantity}</span>
                           <Button
@@ -153,8 +156,9 @@ export default function CartPage() {
                             size="icon"
                             className="h-8 w-8"
                             onClick={() => updateQuantity(item.product.id, item.quantity + 1, item.selectedSize, item.selectedColor)}
+                            aria-label={`Increase quantity of ${item.product.name}`}
                           >
-                            <Plus className="h-4 w-4" />
+                            <Plus className="h-4 w-4" aria-hidden="true" />
                           </Button>
                         </div>
                       </div>
@@ -208,9 +212,10 @@ export default function CartPage() {
                   <div className="space-y-3">
                     {!couponCode && (
                       <form onSubmit={handleCouponApply} className="space-y-2">
-                        <label className="text-sm font-medium">Coupon Code</label>
+                        <label htmlFor="coupon" className="text-sm font-medium">Coupon Code</label>
                         <div className="flex space-x-2">
                           <Input 
+                            id="coupon"
                             name="coupon" 
                             placeholder="Enter coupon code" 
                             disabled={couponLoading}
@@ -267,7 +272,7 @@ export default function CartPage() {
 
                   <Button className="w-full" size="lg" onClick={() => window.location.href = '/checkout'}>
                     Proceed to Checkout
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                   </Button>
 
                   <div className="text-center text-xs text-muted-foreground">

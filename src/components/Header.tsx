@@ -7,12 +7,24 @@ import { ShoppingCart, Search, User, Menu, Heart, X, Truck, Clock, XCircle, Chev
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import Notifications from './Notifications';
+import dynamic from 'next/dynamic';
 import BrandLogo from './BrandLogo';
 import { useCartStore } from '@/store/cartStore';
 import { useWishlistStore } from '@/store/wishlistStore';
 import { useSettingsStore } from '@/store/settingsStore';
 import { useState, useEffect, useRef } from 'react';
+
+// Performance: Dynamic import for non-critical Notifications component
+const Notifications = dynamic(() => import('./Notifications'), {
+  ssr: false,
+  loading: () => (
+    <Button variant="ghost" size="icon" className="relative" aria-label="Notifications">
+      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+      </svg>
+    </Button>
+  )
+});
 
 export default function Header() {
   const router = useRouter();
@@ -170,12 +182,13 @@ export default function Header() {
   };
 
   return (
-    <header 
+    <header
       className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' 
+        isScrolled
+          ? 'bg-white/95 backdrop-blur-md shadow-lg py-2'
           : 'bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 shadow-sm'
       }`}
+      role="banner"
     >
        <div className="container mx-auto px-3 sm:px-4 md:px-6">
         <div className="flex items-center justify-between w-full h-14 sm:h-16 md:h-20">
@@ -371,7 +384,7 @@ export default function Header() {
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-400 transition-all duration-200 group-hover:w-full"></span>
             </Link>
             <Link href="/track-order" className="flex items-center gap-1 leading-none text-sm font-medium text-gray-700 hover:text-pink-600 transition-colors duration-200 relative group">
-              <Truck className="w-4 h-4 flex-shrink-0" />
+              <Truck className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
               <span>Track Order</span>
               <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-pink-400 transition-all duration-200 group-hover:w-full"></span>
             </Link>
@@ -383,6 +396,7 @@ export default function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-2 sm:gap-4 shrink-0">
+            {/* Performance: Dynamic import for non-critical component */}
             <Notifications />
             <Link href="/wishlist" aria-label="Wishlist" className="hidden sm:block">
               <Button 
@@ -399,12 +413,12 @@ export default function Header() {
               </Button>
             </Link>
             <Link href="/cart" aria-label="Shopping Cart">
-              <Button 
-                variant="ghost" 
-                size="icon" 
+              <Button
+                variant="ghost"
+                size="icon"
                 className="relative flex items-center justify-center hover:text-pink-600 hover:bg-pink-50 transition-all duration-200"
               >
-                <ShoppingCart className="w-5 h-5" />
+                <ShoppingCart className="w-5 h-5" aria-hidden="true" />
                 {cartItems.length > 0 && (
                   <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs bg-pink-500 text-white hover:bg-pink-600 transition-colors">
                     {cartItems.length}
@@ -429,7 +443,7 @@ export default function Header() {
               aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6" aria-hidden="true" /> : <Menu className="w-6 h-6" aria-hidden="true" />}
             </Button>
           </div>
         </div>
@@ -437,13 +451,14 @@ export default function Header() {
         {/* Search Bar - Mobile */}
         <div className="md:hidden pb-3">
           <form onSubmit={handleMobileSearchSubmit} className="relative w-full">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" aria-hidden="true" />
             <Input
               type="search"
               value={mobileSearchQuery}
               onChange={(e) => setMobileSearchQuery(e.target.value)}
               placeholder="Search modest wear..."
               className="pl-10 w-full border-pink-200 focus:border-pink-400 focus:ring-pink-500/20 transition-all duration-200 text-base"
+              aria-label="Search products"
             />
           </form>
         </div>
@@ -470,7 +485,7 @@ export default function Header() {
                     aria-label="Close menu"
                     className="hover:bg-gray-100"
                   >
-                    <X className="h-6 w-6 text-gray-700" />
+                    <X className="h-6 w-6 text-gray-700" aria-hidden="true" />
                   </Button>
                 </div>
               </div>
@@ -478,13 +493,14 @@ export default function Header() {
               {/* Search Bar */}
               <div className="p-4 border-b border-gray-100">
                 <form onSubmit={handleMobileSearchSubmit} className="relative">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" aria-hidden="true" />
                   <Input
                     type="search"
                     value={mobileSearchQuery}
                     onChange={(e) => setMobileSearchQuery(e.target.value)}
                     placeholder="Search products..."
                     className="pl-10 w-full border-gray-300 focus:border-pink-400 focus:ring-pink-500/20 text-gray-900 text-base"
+                    aria-label="Search products"
                   />
                 </form>
               </div>
@@ -504,9 +520,10 @@ export default function Header() {
                     className="flex items-center justify-between w-full gap-3 px-4 py-3 text-base font-medium text-gray-800 hover:text-pink-600 hover:bg-pink-50 rounded-lg transition-colors"
                     onClick={() => setMobileCategoriesDropdownOpen(!mobileCategoriesDropdownOpen)}
                     aria-expanded={mobileCategoriesDropdownOpen}
+                    aria-haspopup="true"
                   >
                     <span>Categories</span>
-                    <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${mobileCategoriesDropdownOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${mobileCategoriesDropdownOpen ? 'rotate-180' : ''}`} aria-hidden="true" />
                   </button>
                   
                   {/* Mobile Dropdown */}
@@ -550,7 +567,7 @@ export default function Header() {
                   className="flex items-center gap-3 px-4 py-3 text-base font-medium text-gray-800 hover:text-pink-600 hover:bg-pink-50 rounded-lg transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <Truck className="h-5 w-5 text-gray-600" />
+                  <Truck className="h-5 w-5 text-gray-600" aria-hidden="true" />
                   Track Order
                 </Link>
 
@@ -570,7 +587,7 @@ export default function Header() {
                   className="flex items-center gap-3 px-4 py-3 text-base font-medium text-gray-800 hover:text-pink-600 hover:bg-pink-50 rounded-lg transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <User className="h-5 w-5 text-gray-600" />
+                  <User className="h-5 w-5 text-gray-600" aria-hidden="true" />
                   My Account
                 </Link>
 
@@ -579,7 +596,7 @@ export default function Header() {
                   className="flex items-center gap-3 px-4 py-3 text-base font-medium text-gray-800 hover:text-pink-600 hover:bg-pink-50 rounded-lg transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <Heart className="h-5 w-5 text-gray-600" />
+                  <Heart className="h-5 w-5 text-gray-600" aria-hidden="true" />
                   Wishlist
                   {wishlistItems.length > 0 && (
                     <Badge className="ml-auto bg-pink-500 text-white">{wishlistItems.length}</Badge>
@@ -591,7 +608,7 @@ export default function Header() {
                   className="flex items-center gap-3 px-4 py-3 text-base font-medium text-gray-800 hover:text-pink-600 hover:bg-pink-50 rounded-lg transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <ShoppingCart className="h-5 w-5 text-gray-600" />
+                  <ShoppingCart className="h-5 w-5 text-gray-600" aria-hidden="true" />
                   Cart
                   {cartItems.length > 0 && (
                     <Badge className="ml-auto bg-pink-500 text-white">{cartItems.length}</Badge>

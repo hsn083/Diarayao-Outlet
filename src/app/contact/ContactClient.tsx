@@ -103,7 +103,7 @@ export default function ContactClient() {
     <>
       <BreadcrumbSchema items={breadcrumbItems} />
       <Header />
-      <main className="min-h-screen">
+      <main id="main-content" className="min-h-screen">
         <div className="bg-gradient-to-br from-emerald-600 to-teal-600 text-white py-16">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
@@ -144,6 +144,7 @@ export default function ContactClient() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       disabled={isLoading}
+                      autoComplete="name"
                     />
                   </div>
                   <div>
@@ -155,6 +156,7 @@ export default function ContactClient() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       disabled={isLoading}
+                      autoComplete="email"
                     />
                   </div>
                   <div>
@@ -166,6 +168,7 @@ export default function ContactClient() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       disabled={isLoading}
+                      autoComplete="tel"
                     />
                   </div>
                   <div>
@@ -176,6 +179,7 @@ export default function ContactClient() {
                       value={formData.subject}
                       onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                       disabled={isLoading}
+                      autoComplete="off"
                     />
                   </div>
                   <div>
@@ -188,6 +192,7 @@ export default function ContactClient() {
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       disabled={isLoading}
+                      aria-required="true"
                     />
                   </div>
                   <Button type="submit" className="w-full bg-emerald-600 hover:bg-emerald-700" disabled={isLoading}>
@@ -214,7 +219,7 @@ export default function ContactClient() {
                   <Card key={index}>
                     <CardContent className="p-6">
                       <div className="flex items-start space-x-3">
-                        <info.icon className="h-6 w-6 text-primary mt-1" />
+                        <info.icon className="h-6 w-6 text-primary mt-1" aria-hidden="true" />
                         <div>
                           <h3 className="font-semibold mb-2">{info.title}</h3>
                           {info.details.map((detail, i) => (
@@ -232,7 +237,7 @@ export default function ContactClient() {
                 <Card className="bg-green-50 border-green-200">
                   <CardContent className="p-6">
                     <div className="flex items-center space-x-3">
-                      <MessageSquare className="h-8 w-8 text-green-600" />
+                      <MessageSquare className="h-8 w-8 text-green-600" aria-hidden="true" />
                       <div>
                         <h3 className="font-semibold text-green-900">Chat with us on WhatsApp</h3>
                         <p className="text-sm text-green-700">
@@ -247,7 +252,7 @@ export default function ContactClient() {
                       className="block"
                     >
                       <Button className="w-full mt-4 bg-green-600 hover:bg-green-700">
-                        <MessageSquare className="mr-2 h-4 w-4" />
+                        <MessageSquare className="mr-2 h-4 w-4" aria-hidden="true" />
                         Chat on WhatsApp
                       </Button>
                     </a>

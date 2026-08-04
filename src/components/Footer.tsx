@@ -36,9 +36,9 @@ export default function Footer() {
   const settings = useSettingsStore(state => state.settings);
   const general = settings.general;
   const socialMedia = settings.socialMedia;
-  
+
   return (
-    <footer className="bg-[#FFF5F7] border-t border-[#F4A7B9] mt-20">
+    <footer className="bg-[#FFF5F7] border-t border-[#F4A7B9] mt-20" role="contentinfo" style={{ contain: 'layout' }}>
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 max-w-full overflow-hidden">
           {/* Company Info */}
@@ -53,23 +53,23 @@ export default function Footer() {
             </p>
             <div className="flex space-x-3">
               {socialMedia.facebook.enabled && socialMedia.facebook.url && (
-                <Link href={socialMedia.facebook.url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#FCE4EC] flex items-center justify-center text-[#2B2B2B] hover:text-[#E8A0B0] transition-colors">
-                  <Facebook className="h-5 w-5" />
+                <Link href={socialMedia.facebook.url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#FCE4EC] flex items-center justify-center text-[#2B2B2B] hover:text-[#E8A0B0] transition-colors" aria-label="Follow us on Facebook">
+                  <Facebook className="h-5 w-5" aria-hidden="true" />
                 </Link>
               )}
               {socialMedia.instagram.enabled && socialMedia.instagram.url && (
-                <Link href={socialMedia.instagram.url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#FCE4EC] flex items-center justify-center text-[#2B2B2B] hover:text-[#E8A0B0] transition-colors">
-                  <Instagram className="h-5 w-5" />
+                <Link href={socialMedia.instagram.url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#FCE4EC] flex items-center justify-center text-[#2B2B2B] hover:text-[#E8A0B0] transition-colors" aria-label="Follow us on Instagram">
+                  <Instagram className="h-5 w-5" aria-hidden="true" />
                 </Link>
               )}
               {socialMedia.tiktok.enabled && socialMedia.tiktok.url && (
-                <Link href={socialMedia.tiktok.url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#FCE4EC] flex items-center justify-center text-[#2B2B2B] hover:text-[#E8A0B0] transition-colors">
-                  <TikTokIcon className="h-5 w-5" />
+                <Link href={socialMedia.tiktok.url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#FCE4EC] flex items-center justify-center text-[#2B2B2B] hover:text-[#E8A0B0] transition-colors" aria-label="Follow us on TikTok">
+                  <TikTokIcon className="h-5 w-5" aria-hidden="true" />
                 </Link>
               )}
               {socialMedia.whatsapp.enabled && socialMedia.whatsapp.url && (
-                <Link href={socialMedia.whatsapp.url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#FCE4EC] flex items-center justify-center text-[#2B2B2B] hover:text-[#E8A0B0] transition-colors">
-                  <WhatsAppIcon className="h-5 w-5" />
+                <Link href={socialMedia.whatsapp.url} target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-[#FCE4EC] flex items-center justify-center text-[#2B2B2B] hover:text-[#E8A0B0] transition-colors" aria-label="Contact us on WhatsApp">
+                  <WhatsAppIcon className="h-5 w-5" aria-hidden="true" />
                 </Link>
               )}
             </div>

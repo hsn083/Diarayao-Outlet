@@ -74,6 +74,54 @@
   button, a, input, select, textarea {
     min-height: 44px;
   }
+
+  /* Accessibility: Add visible focus styles for keyboard navigation */
+  *:focus-visible {
+    outline: 2px solid #D4849C;
+    outline-offset: 2px;
+  }
+
+  /* Ensure focus styles are visible on all interactive elements */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid #D4849C;
+    outline-offset: 2px;
+  }
+
+  /* Skip to content link focus styles */
+  .sr-only:focus {
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    background: #D4849C;
+    color: white;
+    z-index: 9999;
+    clip: auto;
+    white-space: normal;
+  }
+
+  /* Performance: Optimize animations to use only transform and opacity */
+  .group-hover\:scale-105:hover {
+    transform: scale(1.05);
+  }
+
+  .hover\:scale-105:hover {
+    transform: scale(1.05);
+  }
+
+  /* Performance: Use will-change for animated elements */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
   
   /* Mobile container padding */
   @media (max-width: 768px) {
@@ -199,7 +247,8 @@
   background-color: #374151; /* gray-700 */
 }
 
-/* Additional mobile overflow prevention */
+/* Performance: Removed non-composited whatsapp pulse animation to improve performance */
+/* The animation was replaced with a simple transform transition in the component *//* Additional mobile overflow prevention */
 @media (max-width: 640px) {
   * {
     max-width: 100% !important;

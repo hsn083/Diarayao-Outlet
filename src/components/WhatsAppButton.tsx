@@ -7,10 +7,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with us on WhatsApp"
-      className="fixed bottom-5 right-5 z-[9999] bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
-      style={{
-        animation: 'whatsappPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-      }}
+      className="fixed bottom-5 right-5 z-[9999] bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-transform duration-300 hover:scale-110 will-change-transform"
       title="Chat with us on WhatsApp"
     >
       <svg

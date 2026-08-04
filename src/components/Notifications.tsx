@@ -155,8 +155,9 @@ export default function Notifications() {
                     Mark all as read
                   </Button>
                 )}
-                <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
-                  <X className="h-4 w-4" />
+                {/* Accessibility: Added aria-label to close button */}
+                <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)} aria-label="Close notifications">
+                  <X className="h-4 w-4" aria-hidden="true" />
                 </Button>
               </div>
             </div>
@@ -188,13 +189,15 @@ export default function Notifications() {
                             {!notification.isRead && (
                               <span className="h-2 w-2 bg-blue-600 rounded-full animate-pulse" />
                             )}
+                            {/* Accessibility: Added aria-label to delete button */}
                             <Button
                               variant="ghost"
                               size="icon"
                               className="h-6 w-6 opacity-0 hover:opacity-100 transition-opacity"
                               onClick={(e) => handleDelete(notification.id, e)}
+                              aria-label={`Delete notification: ${notification.title}`}
                             >
-                              <Trash2 className="h-3 w-3 text-muted-foreground hover:text-red-500" />
+                              <Trash2 className="h-3 w-3 text-muted-foreground hover:text-red-500" aria-hidden="true" />
                             </Button>
                           </div>
                         </div>

@@ -131,12 +131,13 @@ export default function ProductCard({ product }: ProductCardProps) {
   const displaySizes = availableSizes.slice(0, 4); // Show max 4 sizes
 
   return (
-    <Card className="overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_30px_rgba(212,132,156,0.2)] hover:-translate-y-2 transition-all duration-300 ease border border-[#F4E4E9] bg-white hover:border-pink-300 rounded-2xl">
+    <Card className="overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_30px_rgba(212,132,156,0.2)] hover:-translate-y-2 transition-all duration-300 ease border border-[#F4E4E9] bg-white hover:border-pink-300 rounded-2xl" style={{ contain: 'layout' }}>
       <Link href={`/product/${product.slug}`} aria-label={`View ${product.name} details`}>
-        <div 
+        <div
           className="relative aspect-[3/4] md:aspect-[4/5] bg-white flex items-center justify-center overflow-hidden rounded-t-2xl"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
+          style={{ contain: 'layout' }}
         >
           {currentImage && !imageError ? (
             <Image
@@ -144,7 +145,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               alt={`${product.name} - ${product.category} abaya in ${product.colors?.map(c => c.name).join(', ') || 'various colors'} available at Diarayao Outlet Pakistan`}
               title={product.name}
               fill
-              className="object-contain object-top group-hover:scale-105 transition-all duration-300 ease-in-out"
+              className="object-contain object-top group-hover:scale-105 transition-transform duration-300 ease-in-out will-change-transform"
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
               quality={85}
               priority={false}

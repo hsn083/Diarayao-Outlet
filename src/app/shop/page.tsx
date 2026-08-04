@@ -152,7 +152,8 @@ export default function ShopPage() {
     <>
       <BreadcrumbSchema items={breadcrumbItems} />
       <Header />
-      <main className="min-h-screen">
+      {/* Accessibility: Added id for skip to content link */}
+      <main id="main-content" className="min-h-screen">
         <div className="bg-muted/30 py-8">
           <div className="container mx-auto px-4">
             <h1 className="text-3xl font-bold mb-2">Shop Premium Abayas</h1>
