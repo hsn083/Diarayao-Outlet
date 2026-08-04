@@ -13,26 +13,30 @@ import AnnouncementBarWrapper from "@/components/AnnouncementBarWrapper";
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-const inter = Inter({ subsets: ["latin"], variable: '--font-inter' });
+const inter = Inter({ subsets: ["latin"], variable: '--font-inter', display: 'swap' });
 const poppins = Poppins({ 
   subsets: ["latin"], 
   weight: ["400", "500", "600", "700", "800"],
-  variable: '--font-poppins'
+  variable: '--font-poppins',
+  display: 'swap'
 });
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
-  variable: '--font-playfair-display'
+  variable: '--font-playfair-display',
+  display: 'swap'
 });
 const cinzel = Cinzel({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
-  variable: '--font-cinzel'
+  variable: '--font-cinzel',
+  display: 'swap'
 });
 const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
-  variable: '--font-montserrat'
+  variable: '--font-montserrat',
+  display: 'swap'
 });
 
 async function getSettings() {

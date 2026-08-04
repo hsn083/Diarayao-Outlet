@@ -146,9 +146,11 @@ export default function ProductCard({ product }: ProductCardProps) {
               fill
               className="object-contain object-top group-hover:scale-105 transition-all duration-300 ease-in-out"
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
-              quality={100}
+              quality={85}
               priority={false}
               loading="lazy"
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDsQA//Z"
               onError={() => {
                 console.error('ProductCard image failed to load:', currentImage);
                 setImageError(true);
@@ -168,22 +170,22 @@ export default function ProductCard({ product }: ProductCardProps) {
           {/* Status Badges */}
           <div className="absolute top-2 right-2 flex flex-col gap-1 z-10" role="status" aria-label="Product status">
             {product.statusTags?.includes('new') && (
-              <Badge className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white">
+              <Badge className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white" aria-label="New product">
                 New
               </Badge>
             )}
             {product.statusTags?.includes('sale') && (
-              <Badge className="bg-gradient-to-r from-red-500 to-pink-500 text-white">
+              <Badge className="bg-gradient-to-r from-red-500 to-pink-500 text-white" aria-label="On sale">
                 Sale
               </Badge>
             )}
             {product.statusTags?.includes('featured') && (
-              <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+              <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white" aria-label="Featured product">
                 Featured
               </Badge>
             )}
             {product.statusTags?.includes('out-of-stock') && (
-              <Badge className="bg-gray-600 text-white">
+              <Badge className="bg-gray-600 text-white" aria-label="Out of stock">
                 Out of Stock
               </Badge>
             )}

@@ -391,10 +391,12 @@ export default function HeroSlider() {
                     alt={banner.heading || 'Banner image'}
                     fill
                     priority={index === 0 && currentIndex === 0}
-                    quality={95}
+                    quality={85}
                     className="object-cover"
                     sizes="(max-width: 1024px) 1024px, 1920px"
                     fetchPriority={index === 0 && currentIndex === 0 ? "high" : "auto"}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDsQA//Z"
                     onError={() => {
                       setImageErrors(prev => ({ ...prev, [`${banner._id}-desktop`]: true }));
                     }}
@@ -407,10 +409,12 @@ export default function HeroSlider() {
                     alt={banner.heading || 'Banner image'}
                     fill
                     priority={index === 0 && currentIndex === 0}
-                    quality={95}
+                    quality={85}
                     className="object-cover"
                     sizes="768px"
                     fetchPriority={index === 0 && currentIndex === 0 ? "high" : "auto"}
+                    placeholder="blur"
+                    blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDsQA//Z"
                     onError={() => {
                       setImageErrors(prev => ({ ...prev, [`${banner._id}-mobile`]: true }));
                     }}

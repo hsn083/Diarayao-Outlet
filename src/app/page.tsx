@@ -2,7 +2,7 @@ import Header from '@/components/Header';
 import HeroSlider from '@/components/HeroSlider';
 import Categories from '@/components/Categories';
 import AbayaProductSection from '@/components/AbayaProductSection';
-import SEOContentSection from '@/components/SEOContentSection';
+import HomepageSEOContent from '@/components/HomepageSEOContent';
 import Footer from '@/components/Footer';
 import { BreadcrumbSchema } from '@/components/StructuredData';
 
@@ -23,7 +23,7 @@ export default function Home() {
         <HeroSlider />
         <Categories />
         <AbayaProductSection />
-        <SEOContentSection />
+        <HomepageSEOContent />
       </main>
       <Footer />
     </>
