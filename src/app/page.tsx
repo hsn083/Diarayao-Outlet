@@ -16,6 +16,10 @@ export default function Home() {
       <BreadcrumbSchema items={breadcrumbItems} />
       <Header />
       <main>
+        {/* SEO H1 - Always present for search engines, uses sr-only class to be hidden visually but accessible to screen readers */}
+        <h1 className="sr-only">
+          Diarayao Outlet - Premium Abayas, Hijabs & Modest Fashion in Pakistan
+        </h1>
         <HeroSlider />
         <Categories />
         <AbayaProductSection />

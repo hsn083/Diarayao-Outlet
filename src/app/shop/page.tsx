@@ -30,6 +30,59 @@ export default function ShopPage() {
   
   const { products, refetchProducts } = useProductStore();
 
+  // Update SEO metadata
+  useEffect(() => {
+    document.title = 'Shop Premium Abayas & Modest Fashion | Diarayao Outlet';
+    
+    const metaDescription = document.querySelector('meta[name="description"]') as HTMLMetaElement;
+    if (metaDescription) {
+      metaDescription.setAttribute('content', 'Browse our complete collection of premium abayas, hijabs, and modest fashion. Elegant styles, quality fabrics, and fast delivery across Pakistan.');
+    } else {
+      const newMeta = document.createElement('meta') as HTMLMetaElement;
+      newMeta.name = 'description';
+      newMeta.content = 'Browse our complete collection of premium abayas, hijabs, and modest fashion. Elegant styles, quality fabrics, and fast delivery across Pakistan.';
+      document.head.appendChild(newMeta);
+    }
+
+    // Update Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]') as HTMLMetaElement;
+    if (ogTitle) {
+      ogTitle.setAttribute('content', 'Shop Premium Abayas & Modest Fashion | Diarayao Outlet');
+    }
+
+    const ogDescription = document.querySelector('meta[property="og:description"]') as HTMLMetaElement;
+    if (ogDescription) {
+      ogDescription.setAttribute('content', 'Browse our complete collection of premium abayas, hijabs, and modest fashion. Elegant styles, quality fabrics, and fast delivery across Pakistan.');
+    }
+
+    const ogUrl = document.querySelector('meta[property="og:url"]') as HTMLMetaElement;
+    if (ogUrl) {
+      ogUrl.setAttribute('content', 'https://www.diarayao.com/shop');
+    }
+
+    // Update Twitter card
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]') as HTMLMetaElement;
+    if (twitterTitle) {
+      twitterTitle.setAttribute('content', 'Shop Premium Abayas & Modest Fashion | Diarayao Outlet');
+    }
+
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]') as HTMLMetaElement;
+    if (twitterDescription) {
+      twitterDescription.setAttribute('content', 'Browse our complete collection of premium abayas, hijabs, and modest fashion. Elegant styles, quality fabrics, and fast delivery across Pakistan.');
+    }
+
+    // Update canonical URL
+    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', 'https://www.diarayao.com/shop');
+    } else {
+      canonicalLink = document.createElement('link') as HTMLLinkElement;
+      canonicalLink.rel = 'canonical';
+      canonicalLink.href = 'https://www.diarayao.com/shop';
+      document.head.appendChild(canonicalLink);
+    }
+  }, []);
+
   // Fetch categories from API
   useEffect(() => {
     const fetchCategories = async () => {

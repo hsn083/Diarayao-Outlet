@@ -21,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/category`,
+      url: `${baseUrl}/categories`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.8,
@@ -51,7 +51,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/terms`,
+      url: `${baseUrl}/terms-conditions`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.3,
@@ -63,7 +63,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/return-policy`,
+      url: `${baseUrl}/returns`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.3,

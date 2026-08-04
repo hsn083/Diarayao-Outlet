@@ -258,7 +258,7 @@ export default function Header() {
                                 <div className="relative w-10 h-10">
                                   <Image
                                     src={product.images[0]}
-                                    alt={product.name}
+                                    alt={`${product.name} - ${product.category} abaya available at Diarayao Outlet Pakistan`}
                                     fill
                                     className="object-cover rounded"
                                   />

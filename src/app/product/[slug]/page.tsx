@@ -274,6 +274,17 @@ export default function ProductPage() {
       if (twitterImage && product.images && product.images.length > 0) {
         twitterImage.setAttribute('content', product.images[0]);
       }
+
+      // Update canonical URL
+      let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+      if (canonicalLink) {
+        canonicalLink.setAttribute('href', `https://www.diarayao.com/product/${product.slug}`);
+      } else {
+        canonicalLink = document.createElement('link') as HTMLLinkElement;
+        canonicalLink.rel = 'canonical';
+        canonicalLink.href = `https://www.diarayao.com/product/${product.slug}`;
+        document.head.appendChild(canonicalLink);
+      }
     }
   }, [product]);
 

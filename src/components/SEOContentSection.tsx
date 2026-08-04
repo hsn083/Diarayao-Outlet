@@ -5,10 +5,50 @@ import { Check, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function SEOContentSection() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const toggleExpanded = () => {
     setIsExpanded(!isExpanded);
   };
+
+  const toggleFaq = (index: number) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
+  const faqs = [
+    {
+      question: "What makes Diarayao Outlet abayas different from others?",
+      answer: "Our abayas are crafted from premium Arabic and Turkish-inspired fabrics, ensuring exceptional comfort, durability, and elegant draping. Each piece features meticulous stitching, modern modest designs, and quality finishing that sets us apart in the Pakistani market."
+    },
+    {
+      question: "Do you deliver across Pakistan?",
+      answer: "Yes, we offer fast and reliable nationwide delivery across all cities in Pakistan. Orders are typically processed within 1-2 business days, with delivery times varying by location (usually 3-5 business days for major cities)."
+    },
+    {
+      question: "What is your return and exchange policy?",
+      answer: "We offer a hassle-free 7-day return and exchange policy. If you're not satisfied with your purchase, you can return or exchange it within 7 days of delivery, provided the item is in its original condition with tags attached."
+    },
+    {
+      question: "How do I choose the right abaya size?",
+      answer: "We provide detailed size charts for each abaya on the product page. Our abayas are designed for a modest, comfortable fit. If you're between sizes, we recommend sizing up for a more relaxed fit. You can also contact our customer service for personalized sizing assistance."
+    },
+    {
+      question: "Are your abayas suitable for all seasons?",
+      answer: "Yes, we offer abayas for all seasons. Our lightweight Nida and crepe abayas are perfect for summer, while our thicker fabrics and layered designs provide warmth during winter. We also have all-season options that work year-round in Pakistan's climate."
+    },
+    {
+      question: "Do you offer international shipping?",
+      answer: "Currently, we focus on serving customers within Pakistan to ensure the fastest delivery times and best service. We're exploring international shipping options for the future. Please subscribe to our newsletter for updates on international shipping availability."
+    },
+    {
+      question: "How can I track my order?",
+      answer: "Once your order is shipped, you'll receive a tracking number via email and SMS. You can use this number to track your order on our website's 'Track Order' page or contact our customer service team for real-time updates on your delivery status."
+    },
+    {
+      question: "What payment methods do you accept?",
+      answer: "We accept multiple payment methods including Cash on Delivery (COD), bank transfers, credit/debit cards, and popular digital wallets like JazzCash, EasyPaisa, and SadaPay. All online payments are secured with industry-standard encryption."
+    }
+  ];
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 mb-20">
@@ -125,6 +165,43 @@ export default function SEOContentSection() {
             <p className="text-sm sm:text-base md:text-lg">
               Every woman deserves to feel elegant, comfortable, and confident. Diarayao Outlet helps you embrace modest fashion with premium quality and timeless style.
             </p>
+
+            {/* FAQ Section */}
+            <div className="mt-12 sm:mt-16 pt-8 sm:pt-12 border-t border-gray-200">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 sm:mb-8">
+                Frequently Asked Questions
+              </h2>
+              
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
+                    <button
+                      onClick={() => toggleFaq(index)}
+                      className="w-full px-4 sm:px-6 py-4 sm:py-5 text-left flex items-center justify-between bg-gray-50 hover:bg-gray-100 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-inset"
+                      aria-expanded={openFaq === index}
+                      aria-controls={`faq-answer-${index}`}
+                    >
+                      <span className="font-semibold text-gray-900 text-sm sm:text-base md:text-lg pr-4">
+                        {faq.question}
+                      </span>
+                      {openFaq === index ? (
+                        <ChevronUp className="h-5 w-5 text-emerald-600 flex-shrink-0" />
+                      ) : (
+                        <ChevronDown className="h-5 w-5 text-emerald-600 flex-shrink-0" />
+                      )}
+                    </button>
+                    {openFaq === index && (
+                      <div
+                        id={`faq-answer-${index}`}
+                        className="px-4 sm:px-6 py-4 sm:py-5 bg-white text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed"
+                      >
+                        {faq.answer}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 

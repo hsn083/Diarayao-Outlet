@@ -31,6 +31,64 @@ function SearchContent() {
     hasPrev: false,
   });
 
+  // Update SEO metadata
+  useEffect(() => {
+    const title = query ? `Search Results for "${query}" | Diarayao Outlet` : 'Search Products | Diarayao Outlet';
+    document.title = title;
+    
+    const description = query 
+      ? `Search results for "${query}" at Diarayao Outlet. Find premium abayas, hijabs, and modest fashion across Pakistan.`
+      : 'Search for premium abayas, hijabs, and modest fashion at Diarayao Outlet. Browse our extensive collection across Pakistan.';
+    
+    const metaDescription = document.querySelector('meta[name="description"]') as HTMLMetaElement;
+    if (metaDescription) {
+      metaDescription.setAttribute('content', description);
+    } else {
+      const newMeta = document.createElement('meta') as HTMLMetaElement;
+      newMeta.name = 'description';
+      newMeta.content = description;
+      document.head.appendChild(newMeta);
+    }
+
+    // Update Open Graph tags
+    const ogTitle = document.querySelector('meta[property="og:title"]') as HTMLMetaElement;
+    if (ogTitle) {
+      ogTitle.setAttribute('content', title);
+    }
+
+    const ogDescription = document.querySelector('meta[property="og:description"]') as HTMLMetaElement;
+    if (ogDescription) {
+      ogDescription.setAttribute('content', description);
+    }
+
+    const ogUrl = document.querySelector('meta[property="og:url"]') as HTMLMetaElement;
+    if (ogUrl) {
+      ogUrl.setAttribute('content', `https://www.diarayao.com/search?q=${encodeURIComponent(query)}`);
+    }
+
+    // Update Twitter card
+    const twitterTitle = document.querySelector('meta[name="twitter:title"]') as HTMLMetaElement;
+    if (twitterTitle) {
+      twitterTitle.setAttribute('content', title);
+    }
+
+    const twitterDescription = document.querySelector('meta[name="twitter:description"]') as HTMLMetaElement;
+    if (twitterDescription) {
+      twitterDescription.setAttribute('content', description);
+    }
+
+    // Update canonical URL
+    let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', `https://www.diarayao.com/search?q=${encodeURIComponent(query)}`);
+    } else {
+      canonicalLink = document.createElement('link') as HTMLLinkElement;
+      canonicalLink.rel = 'canonical';
+      canonicalLink.href = `https://www.diarayao.com/search?q=${encodeURIComponent(query)}`;
+      document.head.appendChild(canonicalLink);
+    }
+  }, [query]);
+
   useEffect(() => {
     const fetchProducts = async () => {
       if (!query.trim()) {
@@ -217,10 +275,10 @@ function SearchContent() {
             </div>
           )}
 
-          {/* Results Grid */}
+          {/* Products Grid */}
           {!isLoading && !error && products.length > 0 && (
             <>
-              <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 overflow-x-hidden w-full px-4 md:px-0">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
                 {products.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
@@ -228,35 +286,28 @@ function SearchContent() {
 
               {/* Pagination */}
               {pagination.totalPages > 1 && (
-                <div className="flex items-center justify-center gap-2 mt-8">
+                <div className="flex items-center justify-center gap-2">
                   <Button
                     variant="outline"
                     onClick={() => handlePageChange(pagination.page - 1)}
                     disabled={!pagination.hasPrev}
-                    className="flex items-center gap-2"
                   >
                     <ChevronLeft className="h-4 w-4" />
                     Previous
                   </Button>
-                  <span className="px-4 py-2 text-sm text-gray-600">
+                  <span className="text-sm text-gray-600">
                     Page {pagination.page} of {pagination.totalPages}
                   </span>
                   <Button
                     variant="outline"
                     onClick={() => handlePageChange(pagination.page + 1)}
                     disabled={!pagination.hasNext}
-                    className="flex items-center gap-2"
                   >
                     Next
                     <ChevronRight className="h-4 w-4" />
                   </Button>
                 </div>
               )}
-
-              {/* Results Count */}
-              <div className="text-center mt-4 text-gray-600">
-                Found {pagination.total} product{pagination.total !== 1 ? 's' : ''}
-              </div>
             </>
           )}
         </div>
@@ -268,7 +319,7 @@ function SearchContent() {
 
 export default function SearchPage() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><Loader2 className="h-8 w-8 animate-spin text-emerald-600" /></div>}>
       <SearchContent />
     </Suspense>
   );

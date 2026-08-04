@@ -35,20 +35,21 @@ export default function AbayaProductSection() {
   }
 
   return (
-    <section className="py-16 bg-white">
+    <section aria-labelledby="abayas-heading" className="py-16 bg-white">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h2 className="text-3xl font-bold text-[#D4849C] mb-2">Abayas Collection</h2>
+            <h2 id="abayas-heading" className="text-3xl font-bold text-[#D4849C] mb-2">Abayas Collection</h2>
             <p className="text-gray-600">Discover our elegant abayas crafted with premium fabrics</p>
           </div>
           <Link 
             href="/category/abayas"
             className="flex items-center gap-2 text-[#D4849C] hover:text-[#C77B94] font-semibold transition-colors"
+            aria-label="View all abayas collection"
           >
             View All
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
           </Link>
         </div>
 

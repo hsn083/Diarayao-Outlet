@@ -41,22 +41,23 @@ export default function Categories() {
       </div>
       
       {isLoading ? (
-        <div className="text-center py-12 text-muted-foreground">Loading collections...</div>
+        <div className="text-center py-12 text-muted-foreground" role="status" aria-live="polite">Loading collections...</div>
       ) : (
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 justify-items-center">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 justify-items-center" role="list" aria-label="Product categories">
           {categories.map((category) => (
-            <Link key={category.id} href={`/category/${category.slug}`} className="flex flex-col items-center group">
+            <Link key={category.id} href={`/category/${category.slug}`} className="flex flex-col items-center group" aria-label={`Browse ${category.name} collection`}>
               <div className="relative w-32 h-32 sm:w-36 sm:h-36 md:w-40 md:h-40 lg:w-44 lg:h-44 aspect-square rounded-full bg-white border border-gray-200 shadow-md overflow-hidden group-hover:shadow-xl group-hover:scale-105 transition-all duration-300">
                 {category.image ? (
                   <Image 
                     src={category.image} 
-                    alt={category.name}
+                    alt={`${category.name} category - Browse our ${category.name} collection at Diarayao Outlet Pakistan`}
                     fill
                     className="object-cover"
                     sizes="(max-width: 640px) 140px, (max-width: 768px) 150px, (max-width: 1024px) 160px, 176px"
+                    loading="lazy"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-4xl sm:text-5xl">
+                  <div className="w-full h-full flex items-center justify-center text-4xl sm:text-5xl" aria-hidden="true">
                     {categoryEmojis[category.slug] || '👗'}
                   </div>
                 )}

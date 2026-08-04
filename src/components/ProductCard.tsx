@@ -132,7 +132,7 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Card className="overflow-hidden group shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_30px_rgba(212,132,156,0.2)] hover:-translate-y-2 transition-all duration-300 ease border border-[#F4E4E9] bg-white hover:border-pink-300 rounded-2xl">
-      <Link href={`/product/${product.slug}`}>
+      <Link href={`/product/${product.slug}`} aria-label={`View ${product.name} details`}>
         <div 
           className="relative aspect-[3/4] md:aspect-[4/5] bg-white flex items-center justify-center overflow-hidden rounded-t-2xl"
           onMouseEnter={handleMouseEnter}
@@ -148,24 +148,25 @@ export default function ProductCard({ product }: ProductCardProps) {
               sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
               quality={100}
               priority={false}
+              loading="lazy"
               onError={() => {
                 console.error('ProductCard image failed to load:', currentImage);
                 setImageError(true);
               }}
             />
           ) : null}
-          <div className="w-full h-full flex items-center justify-center text-7xl md:text-8xl group-hover:scale-110 transition-transform" style={{ display: (currentImage && !imageError) ? 'none' : 'flex' }}>
+          <div className="w-full h-full flex items-center justify-center text-7xl md:text-8xl group-hover:scale-110 transition-transform" style={{ display: (currentImage && !imageError) ? 'none' : 'flex' }} aria-hidden="true">
             👗
           </div>
           
           {discount > 0 && (
-            <Badge className="absolute top-2 left-2 bg-gradient-to-r from-pink-500 to-rose-500 z-10 text-white">
+            <Badge className="absolute top-2 left-2 bg-gradient-to-r from-pink-500 to-rose-500 z-10 text-white" aria-label={`${discount}% discount`}>
               -{discount}%
             </Badge>
           )}
           
           {/* Status Badges */}
-          <div className="absolute top-2 right-2 flex flex-col gap-1 z-10">
+          <div className="absolute top-2 right-2 flex flex-col gap-1 z-10" role="status" aria-label="Product status">
             {product.statusTags?.includes('new') && (
               <Badge className="bg-gradient-to-r from-emerald-500 to-teal-500 text-white">
                 New
@@ -196,6 +197,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               e.preventDefault();
               toggleItem(product.id);
             }}
+            aria-label={isInWishlist(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}
           >
             <Heart className={`h-4 w-4 ${isInWishlist(product.id) ? 'fill-red-500 text-red-500' : 'text-gray-500'}`} />
           </Button>

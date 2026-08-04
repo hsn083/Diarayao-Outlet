@@ -10,6 +10,12 @@ Disallow: /dashboard
 Disallow: /private
 Disallow: /_next
 Disallow: /static
+Disallow: /auth
+Disallow: /cart
+Disallow: /checkout
+Disallow: /account
+Disallow: /orders
+Disallow: /wishlist
 
 # Allow important assets
 Allow: /favicon.png

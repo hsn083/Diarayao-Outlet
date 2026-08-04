@@ -7,6 +7,13 @@ export async function middleware(request: NextRequest) {
   const hostname = request.nextUrl.hostname;
   const protocol = request.nextUrl.protocol;
 
+  // SEO: 301 redirects for legacy index files to root
+  if (pathname === '/index.html' || pathname === '/index.php' || pathname === '/default.aspx') {
+    const url = request.nextUrl.clone();
+    url.pathname = '/';
+    return NextResponse.redirect(url, 301);
+  }
+
   // Force www and HTTPS for canonical URL
   const canonicalHost = 'www.diarayao.com';
   

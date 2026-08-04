@@ -390,10 +390,11 @@ export default function HeroSlider() {
                     src={getSafeImageUrl(banner.desktopImage, banner._id, false)}
                     alt={banner.heading || 'Banner image'}
                     fill
-                    priority={index === 0}
+                    priority={index === 0 && currentIndex === 0}
                     quality={95}
                     className="object-cover"
                     sizes="(max-width: 1024px) 1024px, 1920px"
+                    fetchPriority={index === 0 && currentIndex === 0 ? "high" : "auto"}
                     onError={() => {
                       setImageErrors(prev => ({ ...prev, [`${banner._id}-desktop`]: true }));
                     }}
@@ -405,10 +406,11 @@ export default function HeroSlider() {
                     src={getSafeImageUrl(banner.mobileImage, banner._id, true)}
                     alt={banner.heading || 'Banner image'}
                     fill
-                    priority={index === 0}
+                    priority={index === 0 && currentIndex === 0}
                     quality={95}
                     className="object-cover"
                     sizes="768px"
+                    fetchPriority={index === 0 && currentIndex === 0 ? "high" : "auto"}
                     onError={() => {
                       setImageErrors(prev => ({ ...prev, [`${banner._id}-mobile`]: true }));
                     }}
@@ -432,7 +434,7 @@ export default function HeroSlider() {
                   style={{ maxWidth: '800px' }}
                 >
                   {banner.heading && (
-                    <h1
+                    <h2
                       className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 lg:mb-6 leading-tight"
                       style={{ 
                         color: banner.headingColor || '#ffffff',
@@ -440,7 +442,7 @@ export default function HeroSlider() {
                       }}
                     >
                       {banner.heading}
-                    </h1>
+                    </h2>
                   )}
                   {banner.subHeading && (
                     <p

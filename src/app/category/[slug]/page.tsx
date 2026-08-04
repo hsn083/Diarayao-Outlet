@@ -12,7 +12,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Grid, List, Filter, ArrowLeft, Loader2, Package } from 'lucide-react';
 import { Category, Product } from '@/types';
 import { useProductStore } from '@/store/productStore';
-import { BreadcrumbSchema } from '@/components/StructuredData';
+import { BreadcrumbSchema, ProductSchema } from '@/components/StructuredData';
 
 export default function CategorySlugPage() {
   const params = useParams();
@@ -89,6 +89,17 @@ export default function CategorySlugPage() {
               twitterImage.setAttribute('content', foundCategory.image);
             } else if (twitterImage) {
               twitterImage.setAttribute('content', 'https://www.diarayao.com/favicon.png');
+            }
+
+            // Update canonical URL
+            let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement;
+            if (canonicalLink) {
+              canonicalLink.setAttribute('href', `https://www.diarayao.com/category/${foundCategory.slug}`);
+            } else {
+              canonicalLink = document.createElement('link') as HTMLLinkElement;
+              canonicalLink.rel = 'canonical';
+              canonicalLink.href = `https://www.diarayao.com/category/${foundCategory.slug}`;
+              document.head.appendChild(canonicalLink);
             }
           }
         }
@@ -171,6 +182,21 @@ export default function CategorySlugPage() {
   return (
     <>
       <BreadcrumbSchema items={breadcrumbItems} />
+      {/* Add ProductSchema for featured products in this category */}
+      {sortedProducts.slice(0, 3).map((product) => (
+        <ProductSchema
+          key={product.id}
+          name={product.name}
+          description={product.description}
+          image={product.images?.[0] || 'https://www.diarayao.com/favicon.png'}
+          price={product.discountPrice || product.price}
+          currency="PKR"
+          availability={product.stock > 0 ? 'InStock' : 'OutOfStock'}
+          brand="Diarayao Outlet"
+          averageRating={product.rating}
+          reviewCount={product.reviewCount || 0}
+        />
+      ))}
       <Header />
       <main className="min-h-screen bg-slate-50/50">
         {/* Category Header */}
@@ -189,7 +215,7 @@ export default function CategorySlugPage() {
                 <div className="relative w-20 h-20">
                   <Image 
                     src={category.image} 
-                    alt={category.name}
+                    alt={`${category.name} category image - Browse our ${category.name} collection at Diarayao Outlet Pakistan`}
                     fill
                     className="object-cover rounded-lg"
                   />
