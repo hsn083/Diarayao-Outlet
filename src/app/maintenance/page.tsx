@@ -39,13 +39,13 @@ export default async function MaintenancePage() {
           </div>
           
           <h1 className="text-5xl font-bold text-white mb-4">Website Under Maintenance</h1>
-          <p className="text-xl text-gray-300 max-w-md mx-auto">
+          <p className="text-xl text-gray-400 max-w-md mx-auto">
             {maintenanceData.maintenanceMessage}
           </p>
         </div>
         
         <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 max-w-md mx-auto">
-          <p className="text-gray-300 mb-4">
+          <p className="text-gray-400 mb-4">
             For urgent inquiries, please contact us at:
           </p>
           <div className="text-white">

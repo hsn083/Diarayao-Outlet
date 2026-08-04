@@ -178,7 +178,7 @@ function SearchContent() {
               onClick={() => setShowFilters(!showFilters)}
               className="flex items-center gap-2"
             >
-              <SlidersHorizontal className="h-4 w-4" />
+              <SlidersHorizontal className="h-4 w-4" aria-hidden="true" />
               Filters
             </Button>
             {Object.values(filters).some(v => v !== '') && (

@@ -178,7 +178,7 @@ Please verify my payment.`;
       <>
         <Header />
         <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
-          <Package className="h-16 w-16 text-gray-300 mb-4" />
+          <Package className="h-16 w-16 text-gray-400 mb-4" />
           <h2 className="text-xl font-bold text-gray-700 mb-2">Order Not Found</h2>
           <p className="text-gray-400 mb-6">We couldn't find an order with this ID.</p>
           <Link href="/orders">

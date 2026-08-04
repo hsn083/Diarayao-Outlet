@@ -298,7 +298,7 @@ export default function ShopPage() {
                     className="lg:hidden"
                     onClick={() => setShowFilters(!showFilters)}
                   >
-                    <SlidersHorizontal className="h-4 w-4 mr-2" />
+                    <SlidersHorizontal className="h-4 w-4 mr-2" aria-hidden="true" />
                     Filters
                   </Button>
                   <Select value={sortBy} onValueChange={setSortBy}>
