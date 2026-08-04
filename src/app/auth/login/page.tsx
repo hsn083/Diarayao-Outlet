@@ -73,10 +73,10 @@ export default function LoginPage() {
           {/* Accessibility: Changed CardTitle to h1 for proper heading hierarchy */}
           <h1 className="text-2xl font-bold text-center text-white">
             Welcome Back
-          <
-          <CardDescription className="text-center text-gray-400">
-              AlhamdCollection account
-          </CardDescription>
+          </h1>
+          <p className="text-center text-gray-400">
+              Sign in to your AlhamdCollection account
+          </p>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
