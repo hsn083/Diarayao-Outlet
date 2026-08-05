@@ -7,7 +7,7 @@ import { sendOrderStatusEmail } from './email-service';
 import mongoose from 'mongoose';
 
 // Admin email for stock alerts
-const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'alhamdcollection518@gmail.com';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'diarayaoutlet@gmail.com';
 
 // Calculate stock status based on quantity and threshold
 export function calculateStockStatus(quantity: number, threshold: number): 'in_stock' | 'low_stock' | 'out_of_stock' {

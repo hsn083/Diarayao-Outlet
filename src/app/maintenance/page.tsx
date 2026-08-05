@@ -70,7 +70,7 @@ export default async function MaintenancePage() {
         
         <div className="mt-8">
           <p className="text-gray-400 text-sm">
-           ©{new Date().getFullYear()} {maintenanceData.siteName}AlhamdCollection. All rights reserved.
+           ©{new Date().getFullYear()} {maintenanceData.siteName}Diarayao Outlet. All rights reserved.
           </p>
         </div>
       </div>

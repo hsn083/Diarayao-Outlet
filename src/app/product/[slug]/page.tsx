@@ -372,7 +372,7 @@ export default function ProductPage() {
       try {
         await navigator.share({
           title: product.name,
-          text: `Check out ${product.name} on AlhamdCollection Store!`,
+          text: `Check out ${product.name} on Diarayao Outlet Store!`,
           url: productUrl,
         });
         toastSuccess('Shared successfully');

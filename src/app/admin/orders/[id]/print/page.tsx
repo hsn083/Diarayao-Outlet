@@ -129,7 +129,7 @@ export default function PrintOrderPage() {
 
       {/* Footer */}
       <div style={{ textAlign: 'center', borderTop: '1px solid #e5e7eb', paddingTop: '16px', color: '#9CA3AF', fontSize: '12px' }}>
-        <p style={{ margin: 0 }}>Thank you for shopping with {general.siteName || 'AlhamdCollection'}! For support: {general.contactEmail || 'info@alhamdcollection.pk'}</p>
+        <p style={{ margin: 0 }}>Thank you for shopping with {general.siteName || 'Diarayao Outlet'}! For support: {general.contactEmail || 'diarayaoutlet@gmail.com'}</p>
         <p style={{ margin: '4px 0 0' }}>{general.siteTagline || 'Style Meets Comfort'}</p>
       </div>
     </div>

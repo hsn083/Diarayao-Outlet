@@ -25,7 +25,7 @@ export function generateMetadata({
   const defaultTitle = title ? `${title} | ${siteName}` : siteName;
   const defaultDescription = description || 'Discover elegant Islamic modest wear at Diarayao Outlet. Premium abayas, hijabs, and modest fashion with fast delivery across Pakistan.';
   const defaultImage = ogImage || '/og-image.jpg';
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://alhamdcollection.com';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.diarayao.com';
 
   const metadata: Metadata = {
     title: defaultTitle,

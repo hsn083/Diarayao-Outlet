@@ -35,8 +35,8 @@ const AUDIT_LOGS_FILE = path.join(DATA_DIR, 'audit-logs.json');
 // Default admin user (will be created if no users exist)
 const DEFAULT_ADMIN: Omit<AdminUser, 'id' | 'passwordHash' | 'createdAt' | 'updatedAt'> = {
   username: 'Diarayaoutlet06',
-  email: 'admin@alhamdcollection.pk',
-  recoveryEmail: 'admin@alhamdcollection.pk',
+  email: 'diarayaoutlet@gmail.com',
+  recoveryEmail: 'diarayaoutlet@gmail.com',
 };
 
 // Ensure data directory exists

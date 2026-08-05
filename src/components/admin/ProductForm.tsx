@@ -18,7 +18,7 @@ import { Check, X } from 'lucide-react';
 const categories: string[] = [];
 
 const brands = [
-  'AlhamdCollection',
+  'Diarayao Outlet',
   'Premium Wear',
   'StyleCraft',
   'ElegantFit',

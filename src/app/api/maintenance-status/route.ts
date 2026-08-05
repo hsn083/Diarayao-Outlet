@@ -17,9 +17,9 @@ export async function GET(request: NextRequest) {
       success: true,
       maintenanceMode: settings?.general?.maintenanceMode || false,
       maintenanceMessage: settings?.general?.maintenanceMessage || 'We are currently performing maintenance. Please check back soon.',
-      siteName: settings?.general?.siteName || 'AlhamdCollection',
-      siteLogo: settings?.general?.siteLogo || '/Logo.jpeg',
-      contactEmail: settings?.general?.contactEmail || 'info@alhamdcollection.pk',
+      siteName: settings?.general?.siteName || 'Diarayao Outlet',
+      siteLogo: settings?.general?.siteLogo || '/favicon.png',
+      contactEmail: settings?.general?.contactEmail || 'diarayaoutlet@gmail.com',
       phoneNumber: settings?.general?.phoneNumber || '+92 300 1234567',
     });
     

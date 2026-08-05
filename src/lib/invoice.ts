@@ -33,7 +33,7 @@ export async function generateInvoicePDF(data: InvoiceData): Promise<Buffer> {
       doc.font('Helvetica');
 
       // Header
-      doc.fontSize(24).fillColor('#10b981').text('AlhamdCollection Store', 50, 50);
+      doc.fontSize(24).fillColor('#10b981').text('Diarayao Outlet Store', 50, 50);
       doc.fontSize(10).fillColor('#666').text('Your Trusted Fashion Store', 50, 80);
 
       // Invoice Title
@@ -84,7 +84,7 @@ export async function generateInvoicePDF(data: InvoiceData): Promise<Buffer> {
 
       // Footer
       doc.fontSize(10).fillColor('#666').text('Thank you for your purchase!', 50, 700);
-      doc.text('For any questions, contact us at support@alhamdcollection.com', 50, 715);
+      doc.text('For any questions, contact us at diarayaoutlet@gmail.com', 50, 715);
 
       doc.end();
     } catch (error) {

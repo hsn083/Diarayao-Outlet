@@ -134,9 +134,9 @@ export default function AdminReviewsPage() {
 
   const getProductImage = (review: Review) => {
     if (review.product && typeof review.product === 'object' && review.product.images) {
-      return review.product.images[0] || '/Logo.jpeg';
+      return review.product.images[0] || '/Logo.png';
     }
-    return '/Logo.jpeg';
+    return '/Logo.png';
   };
 
   const handleApprove = async (reviewId: string) => {
@@ -250,7 +250,7 @@ export default function AdminReviewsPage() {
         body: JSON.stringify({
           reviewId: selectedReview.id,
           reply: replyText.trim(),
-          sellerName: 'Alhamd Collection',
+          sellerName: 'Diarayao Outlet',
         }),
       });
       const data = await response.json();

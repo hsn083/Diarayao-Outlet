@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
         items: order.items?.map((item: any) => ({
           product: {
             name: item.name,
-            brand: 'AlhamdCollection',
+            brand: 'Diarayao Outlet',
             images: item.image ? [item.image] : [],
           },
           quantity: item.quantity,

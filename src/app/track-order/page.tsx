@@ -357,7 +357,7 @@ export default function TrackOrderPage() {
                         )}
                         <div className="flex-1 min-w-0">
                           <p className="font-medium text-gray-800 text-sm truncate">{item.product?.name || 'Product'}</p>
-                          <p className="text-xs text-gray-400">{item.product?.brand || 'AlhamdCollection'} · Qty: {item.quantity}</p>
+                          <p className="text-xs text-gray-400">{item.product?.brand || 'Diarayao Outlet'} · Qty: {item.quantity}</p>
                         </div>
                         <div className="text-right">
                           <p className="font-semibold text-gray-800">PKR {((item.price || 0) * (item.quantity || 0))?.toLocaleString()}</p>
@@ -390,16 +390,16 @@ export default function TrackOrderPage() {
                     If you have any questions about your order, please contact our support team.
                   </p>
                   <div className="space-y-2">
-                    <a href="mailto:alhamdcollection518@gmail.com" className="block">
+                    <a href="mailto:diarayaoulet@gmail.com" className="block">
                       <Button variant="outline" size="sm" className="w-full border-emerald-300 text-emerald-700 hover:bg-emerald-100 justify-start">
                         <Mail className="h-4 w-4 mr-2" /> Email Support
-                        <span className="ml-auto text-xs opacity-70">alhamdcollection518@gmail.com</span>
+                        <span className="ml-auto text-xs opacity-70">diarayaoulet@gmail.com</span>
                       </Button>
                     </a>
-                    <a href="tel:+923457791198" className="block">
+                    <a href="tel:+923713193031" className="block">
                       <Button variant="outline" size="sm" className="w-full border-emerald-300 text-emerald-700 hover:bg-emerald-100 justify-start">
                         <Phone className="h-4 w-4 mr-2" /> Call Us
-                        <span className="ml-auto text-xs opacity-70">+923457791198</span>
+                        <span className="ml-auto text-xs opacity-70">+923713193031</span>
                       </Button>
                     </a>
                   </div>

@@ -22,7 +22,7 @@ export function ProductShare({ productName, productUrl, productImage }: ProductS
 
   const shareUrl = typeof window !== 'undefined' ? window.location.origin + productUrl : productUrl;
 
-  const shareText = `Check out ${productName} on Alhamd Collection!`;
+  const shareText = `Check out ${productName} on Diarayao Outlet!`;
 
   const handleCopyLink = async () => {
     try {

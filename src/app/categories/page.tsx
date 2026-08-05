@@ -56,7 +56,7 @@ export default function CategoriesPage() {
         <div className="bg-gradient-to-br from-emerald-50 to-emerald-100/50 py-16 border-b border-emerald-100 text-gray-900">
           <div className="container mx-auto px-4">
             <h1 className="text-4xl font-bold mb-4 text-emerald-950">All Categories</h1>
-            <p className="text-xl text-emerald-800">Browse our premium clothing collections</p>
+            <p className="text-xl text-emerald-800">Browse our premium Abayas collections</p>
           </div>
         </div>
 

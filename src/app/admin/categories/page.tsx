@@ -329,7 +329,7 @@ export default function AdminCategoriesPage() {
                       <Input
                         id="slug"
                         name="slug"
-                        placeholder="e.g., alhamd-collection"
+                        placeholder="e.g., Diarayao-collection"
                         defaultValue={editingCategory?.slug || ''}
                       />
                     </div>

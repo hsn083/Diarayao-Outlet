@@ -168,7 +168,7 @@ const SettingsSchema = new Schema<ISettings>(
         organization: {
           name: { type: String, default: 'Diarayao Outlet' },
           url: { type: String, default: 'https://diarayaooutlet.pk' },
-          logo: { type: String, default: '/Logo.jpeg' },
+          logo: { type: String, default: '/Logo.png' },
           contactPoint: {
             telephone: { type: String, default: '+92 300 1234567' },
             contactType: { type: String, default: 'customer service' },

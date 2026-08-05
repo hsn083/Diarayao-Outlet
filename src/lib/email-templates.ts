@@ -1,4 +1,4 @@
-// Professional HTML email templates for AlhamdCollection
+// Professional HTML email templates for Diarayao Outlet
 
 const BRAND_COLOR = '#0F766E';
 const GOLD_COLOR = '#D4AF37';
@@ -26,9 +26,9 @@ function baseTemplate(title: string, content: string) {
   </td></tr>
   <!-- Footer -->
   <tr><td style="background:#f1f5f9;padding:24px 40px;border-radius:0 0 12px 12px;border:1px solid #e5e7eb;border-top:none;text-align:center;">
-    <p style="margin:0;font-size:12px;color:#94a3b8;">© 2024 AlhamdCollection. All rights reserved.</p>
+    <p style="margin:0;font-size:12px;color:#94a3b8;">© 2026 Diarayao Outlet. All rights reserved.</p>
     <p style="margin:4px 0 0;font-size:12px;color:#94a3b8;">
-      <a href="https://alhamdcollection.pk" style="color:${BRAND_COLOR};text-decoration:none;">alhamdcollection.pk</a>
+      <a href="https://www.diarayao.com" style="color:${BRAND_COLOR};text-decoration:none;">www.diarayao.com</a>
     </p>
   </td></tr>
 </table>
@@ -119,7 +119,7 @@ export function orderStatusUpdateTemplate(name: string, orderId: string, status:
       ${trackingNumber ? `<p style="margin:8px 0 0;font-size:13px;color:#059669;">Tracking #: <strong style="font-family:monospace;">${trackingNumber}</strong></p>` : ''}
     </div>
     <div style="text-align:center;margin:24px 0;">
-      <a href="https://alhamdcollection.pk/track-order" style="display:inline-block;background:${BRAND_COLOR};color:#fff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px;">Track Your Order →</a>
+      <a href="https://www.diarayao.com/track-order" style="display:inline-block;background:${BRAND_COLOR};color:#fff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px;">Track Your Order →</a>
     </div>
   `;
   return baseTemplate(info.title, content);
@@ -128,12 +128,12 @@ export function orderStatusUpdateTemplate(name: string, orderId: string, status:
 export function welcomeEmailTemplate(name: string) {
   const content = `
     <p style="margin:0 0 16px;color:#374151;font-size:16px;">Welcome, <strong>${name}</strong>! 🎉</p>
-    <p style="margin:0 0 24px;color:#6b7280;font-size:15px;">Your AlhamdCollection account has been created. Discover premium fashion for every occasion.</p>
+    <p style="margin:0 0 24px;color:#6b7280;font-size:15px;">Your Diarayao Outlet account has been created. Discover premium fashion for every occasion.</p>
     <div style="text-align:center;margin:24px 0;">
-      <a href="https://alhamdcollection.pk/shop" style="display:inline-block;background:${BRAND_COLOR};color:#fff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px;">Shop Now →</a>
+      <a href="https://www.diarayao.com/shop" style="display:inline-block;background:${BRAND_COLOR};color:#fff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px;">Shop Now →</a>
     </div>
   `;
-  return baseTemplate('Welcome to AlhamdCollection', content);
+  return baseTemplate('Welcome to Diarayao Outlet', content);
 }
 
 export function passwordResetTemplate(name: string, resetLink: string) {
@@ -191,10 +191,10 @@ export function newsletterTemplate(name: string, subject: string, content: strin
       </table>
     ` : ''}
     <div style="text-align:center;margin:32px 0;">
-      <a href="https://alhamdcollection.pk/shop" style="display:inline-block;background:${BRAND_COLOR};color:#fff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px;">Shop Latest Collection →</a>
+      <a href="https:/www.diarayao.com/shop" style="display:inline-block;background:${BRAND_COLOR};color:#fff;text-decoration:none;padding:14px 28px;border-radius:8px;font-weight:600;font-size:15px;">Shop Latest Collection →</a>
     </div>
     <p style="margin:32px 0 0;color:#94a3b8;font-size:12px;text-align:center;">
-      <a href="https://alhamdcollection.pk/unsubscribe" style="color:#94a3b8;text-decoration:underline;">Unsubscribe</a> from this newsletter
+      <a href="https://www.diarayao.com/unsubscribe" style="color:#94a3b8;text-decoration:underline;">Unsubscribe</a> from this newsletter
     </p>
   `;
   return baseTemplate(subject, fullContent);

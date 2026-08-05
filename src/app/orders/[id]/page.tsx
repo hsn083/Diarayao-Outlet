@@ -316,7 +316,7 @@ export default function OrderTrackingPage() {
                     )}
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-gray-800 text-sm truncate">{item.product?.name || item.name || 'Product'}</p>
-                      <p className="text-xs text-gray-400">{(item.product?.brand || item.brand || 'AlhamdCollection')} · Qty: {item.quantity}</p>
+                      <p className="text-xs text-gray-400">{(item.product?.brand || item.brand || 'Diarayao Outlet')} · Qty: {item.quantity}</p>
                     </div>
                     <div className="text-right">
                       <p className="font-semibold text-gray-800">PKR {(item.price * item.quantity)?.toLocaleString()}</p>

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/Logo.jpeg',
+        url: '/Logo.png',
         width: 1200,
         height: 630,
         alt: 'Diarayao Outlet - Privacy Policy',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Privacy Policy | Diarayao Outlet',
     description: 'Learn how Diarayao Outlet protects your privacy and handles your personal information.',
-    images: ['/Logo.jpeg'],
+    images: ['/Logo.png'],
     creator: '@diarayaooutlet',
     site: '@diarayaooutlet',
   },

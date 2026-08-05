@@ -8,7 +8,7 @@ export interface OTPData {
   orderId?: string;
 }
 
-const STORAGE_KEY = 'alhamdcollection_otp_data';
+const STORAGE_KEY = 'diarayaoutlet_otp_data';
 
 // Generate a 6-digit OTP
 export function generateOTP(): string {

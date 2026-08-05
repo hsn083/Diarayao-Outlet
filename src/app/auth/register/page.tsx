@@ -76,7 +76,7 @@ export default function RegisterPage() {
             Create Account
           </CardTitle>
           <CardDescription className="text-center text-gray-400">
-            Sign up to start shopping with AlhamdCollection
+            Sign up to start shopping with Diarayao Outlet
           </CardDescription>
         </CardHeader>
         <CardContent>

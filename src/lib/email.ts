@@ -26,9 +26,9 @@ export async function verifyEmailConfig() {
 // Send verification code email
 export async function sendVerificationCode(email: string, code: string, name: string) {
   const mailOptions = {
-    from: `"${process.env.EMAIL_FROM_NAME || 'AlhamdCollection Store'}" <${process.env.EMAIL_FROM}>`,
+    from: `"${process.env.EMAIL_FROM_NAME || 'Diarayao Outlet Store'}" <${process.env.EMAIL_FROM}>`,
     to: email,
-    subject: 'Email Verification Code - AlhamdCollection Store',
+    subject: 'Email Verification Code - Diarayao Outlet Store',
     html: `
       <!DOCTYPE html>
       <html>
@@ -53,13 +53,13 @@ export async function sendVerificationCode(email: string, code: string, name: st
           </div>
           <div class="content">
             <p>Hi <strong>${name}</strong>,</p>
-            <p>Thank you for choosing AlhamdCollection Store. To complete your order, please verify your email address using the code below:</p>
+            <p>Thank you for choosing Diarayao Outlet Store. To complete your order, please verify your email address using the code below:</p>
             <div class="code">${code}</div>
             <p>This code will expire in <strong>1 minute</strong>.</p>
             <p>If you didn't request this code, please ignore this email.</p>
           </div>
           <div class="footer">
-            <p>&copy; 2024 AlhamdCollection Store. All rights reserved.</p>
+            <p>&copy; 2026 Diarayao Outlet Store. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -88,7 +88,7 @@ export async function sendOrderVerificationEmail(
   const verificationUrl = `${baseUrl}/verify-order?token=${verificationToken}`;
 
   const mailOptions = {
-    from: `"${process.env.EMAIL_FROM_NAME || 'AlhamdCollection Store'}" <${process.env.EMAIL_FROM}>`,
+    from: `"${process.env.EMAIL_FROM_NAME || 'Diarayao Outlet Store'}" <${process.env.EMAIL_FROM}>`,
     to: email,
     subject: `Verify Your Order - #${orderId}`,
     html: `
@@ -139,10 +139,10 @@ export async function sendOrderVerificationEmail(
             
             <p>If you didn't place this order, please ignore this email.</p>
             
-            <p>If you have any questions, please contact us at support@alhamdcollection.com</p>
+            <p>If you have any questions, please contact us at diarayaoutlet@gmail.com</p>
           </div>
           <div class="footer">
-            <p>&copy; 2024 AlhamdCollection Store. All rights reserved.</p>
+            <p>&copy; 2026 Diarayao Outlet Store. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -181,7 +181,7 @@ export async function sendOrderConfirmationEmail(
     .join('');
 
   const mailOptions = {
-    from: `"${process.env.EMAIL_FROM_NAME || 'AlhamdCollection Store'}" <${process.env.EMAIL_FROM}>`,
+    from: `"${process.env.EMAIL_FROM_NAME || 'Diarayao Outlet Store'}" <${process.env.EMAIL_FROM}>`,
     to: email,
     subject: `Order Confirmed - #${orderId}`,
     html: `
@@ -250,10 +250,10 @@ export async function sendOrderConfirmationEmail(
               <p>${orderData.address?.city}, ${orderData.address?.province}</p>
             </div>
             
-            <p>If you have any questions, please contact us at support@alhamdcollection.com</p>
+            <p>If you have any questions, please contact us at diarayaoutlet@gmail.com</p>
           </div>
           <div class="footer">
-            <p>&copy; 2024 AlhamdCollection Store. All rights reserved.</p>
+            <p>&copy; 2026 Diarayao Outlet Store. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -288,7 +288,7 @@ export async function sendOrderStatusEmail(
   };
 
   const mailOptions = {
-    from: `"${process.env.EMAIL_FROM_NAME || 'AlhamdCollection Store'}" <${process.env.EMAIL_FROM}>`,
+    from: `"${process.env.EMAIL_FROM_NAME || 'Diarayao Outlet Store'}" <${process.env.EMAIL_FROM}>`,
     to: email,
     subject: `Order Status Update - #${orderId}`,
     html: `
@@ -318,10 +318,10 @@ export async function sendOrderStatusEmail(
             <div class="status">${status.charAt(0).toUpperCase() + status.slice(1)}</div>
             <p>${statusMessages[status] || 'Your order status has been updated.'}</p>
             <p>Order ID: #${orderId}</p>
-            <p>If you have any questions, please contact us at support@alhamdcollection.com</p>
+            <p>If you have any questions, please contact us at diarayaoutlet@gmail.com</p>
           </div>
           <div class="footer">
-            <p>&copy; 2026 AlhamdCollection Store. All rights reserved.</p>
+            <p>&copy; 2026 Diarayao Outlet Store. All rights reserved.</p>
           </div>
         </div>
       </body>
@@ -351,7 +351,7 @@ export async function sendOrderStatusEmailEnhanced(
   trackingNumber?: string
 ) {
   const mailOptions = {
-    from: `"${process.env.EMAIL_FROM_NAME || 'AlhamdCollection'}" <${process.env.EMAIL_FROM}>`,
+    from: `"${process.env.EMAIL_FROM_NAME || 'Diarayao Outlet'}" <${process.env.EMAIL_FROM}>`,
     to: email,
     subject: `Order Update: ${status.replace('_', ' ').toUpperCase()} - #${orderId.slice(0,12)}`,
     html: orderStatusUpdateTemplate(name, orderId, status, trackingNumber),

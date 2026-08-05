@@ -75,7 +75,7 @@ export default function LoginPage() {
             Welcome Back
           </h1>
           <p className="text-center text-gray-400">
-              Sign in to your AlhamdCollection account
+              Sign in to your Diarayao Outlet account
           </p>
         </CardHeader>
         <CardContent>

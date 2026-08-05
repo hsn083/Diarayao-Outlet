@@ -680,7 +680,7 @@ export default function AdminOrderDetailPage() {
                     onClick={() => {
                       const phone = order.customerPhone || order.shippingAddress?.phone;
                       if (phone) {
-                        const message = `Hello from Alhamd Collection. Regarding your order ${order.orderNumber || order._id}, we need to discuss your payment verification. Please contact us.`;
+                        const message = `Hello from Diarayao Outlet. Regarding our order ${order.orderNumber || order._id}, we need to discuss your payment verification. Please contact us.`;
                         window.open(`https://wa.me/${phone.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`, '_blank');
                       }
                     }}

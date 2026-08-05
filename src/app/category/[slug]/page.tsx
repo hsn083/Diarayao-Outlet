@@ -222,7 +222,7 @@ export default function CategorySlugPage() {
                 </div>
               ) : (
                 <div className="w-20 h-20 bg-gradient-to-br from-emerald-500/5 to-teal-600/5 rounded-lg flex items-center justify-center text-4xl">
-                  {category.slug === 'mens-clothing' ? '👔' : category.slug === 'womens-clothing' ? '👗' : '🛍️'}
+                  {category.slug === 'Abayas' ? '👗' : category.slug === 'Abayas' ? '👗' : }
                 </div>
               )}
               <div>

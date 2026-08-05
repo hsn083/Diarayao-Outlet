@@ -58,14 +58,14 @@ const defaultSettings: SiteSettings = {
     twitterDescription: 'Premium Islamic modest fashion collection',
     twitterImage: '/images/twitter-image.jpg',
     robots: 'index, follow',
-    canonicalUrl: 'https://diarayaooutlet.pk',
+    canonicalUrl: 'https://www.diarayaooutlet.com',
     structuredData: {
       organization: {
         name: 'Diarayao Outlet',
-        url: 'https://diarayaooutlet.pk',
-        logo: '/Logo.jpeg',
+        url: 'https://www.diarayaooutlet.com',
+        logo: '/Logo.jpg',
         contactPoint: {
-          telephone: '+92 300 1234567',
+          telephone: '+923713193031',
           contactType: 'customer service'
         }
       }

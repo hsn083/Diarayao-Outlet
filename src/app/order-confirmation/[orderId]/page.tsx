@@ -136,7 +136,7 @@ export default function OrderConfirmationPage() {
     const amount = order.total?.toLocaleString();
     const paymentMethod = getPaymentMethodName();
     
-    return `Hello Alhamd Collection,
+    return `Hello Diarayao Outlet,
 
 I have completed my payment.
 
@@ -507,7 +507,7 @@ Please verify my payment.`;
                   className="border-emerald-300 text-emerald-700 hover:bg-emerald-100"
                   onClick={() => {
                     const whatsappNumber = order.user?.phone || '+923457791198';
-                    const message = `Hello Alhamd Collection, I have a question about my order ${order.id}`;
+                    const message = `Hello Diarayao Outlet, I have a question about my order ${order.id}`;
                     window.open(`https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`, '_blank');
                   }}
                 >

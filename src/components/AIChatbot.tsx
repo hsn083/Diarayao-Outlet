@@ -80,7 +80,7 @@ export function AIChatbot() {
       return 'We accept Cash on Delivery, JazzCash, EasyPaisa, Bank Transfer, and Stripe. All transactions are secure and encrypted.';
     }
     if (lowerInput.includes('contact') || lowerInput.includes('support')) {
-      return 'You can reach our support team at alhamdcollection518@gmail.com or call +923457791198. We\'re available Monday to Saturday, 9 AM to 6 PM.';
+      return 'You can reach our support team at diarayaoutlet@gmail.com or call +923713193031. We\'re available Monday to Saturday, 9 AM to 6 PM.';
     }
     if (lowerInput.includes('product') || lowerInput.includes('item')) {
       return 'We have a wide range of products. You can browse our collection on the Shop page or use the search feature to find specific items.';
