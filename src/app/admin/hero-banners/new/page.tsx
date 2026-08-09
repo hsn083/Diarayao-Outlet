@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 import {
   Select,
   SelectContent,
@@ -26,6 +27,7 @@ interface BannerFormData {
   description: string;
   buttonText: string;
   buttonUrl: string;
+  enableButton: boolean;
   textAlignment: 'left' | 'center' | 'right';
   verticalAlignment: 'top' | 'center' | 'bottom';
   overlayColor: string;
@@ -84,6 +86,7 @@ export default function NewHeroBannerPage() {
     description: '',
     buttonText: '',
     buttonUrl: '',
+    enableButton: true,
     textAlignment: 'left',
     verticalAlignment: 'center',
     overlayColor: '#000000',
@@ -195,10 +198,6 @@ export default function NewHeroBannerPage() {
     // Validation
     if (!formData.desktopImage || !formData.mobileImage) {
       showNotification('error', 'Please upload both desktop and mobile images');
-      return;
-    }
-    if (!formData.heading || !formData.subHeading || !formData.buttonText || !formData.buttonUrl) {
-      showNotification('error', 'Please fill in all required fields');
       return;
     }
 
@@ -368,24 +367,22 @@ export default function NewHeroBannerPage() {
                   </CardHeader>
                   <CardContent className="space-y-4 px-4 sm:px-6">
                     <div>
-                      <Label htmlFor="heading">Heading *</Label>
+                      <Label htmlFor="heading">Heading</Label>
                       <Input
                         id="heading"
                         value={formData.heading}
                         onChange={(e) => handleInputChange('heading', e.target.value)}
                         placeholder="Enter banner heading"
-                        required
                         className="w-full min-w-0"
                       />
                     </div>
                     <div>
-                      <Label htmlFor="subHeading">Sub Heading *</Label>
+                      <Label htmlFor="subHeading">Sub Heading</Label>
                       <Input
                         id="subHeading"
                         value={formData.subHeading}
                         onChange={(e) => handleInputChange('subHeading', e.target.value)}
                         placeholder="Enter sub heading"
-                        required
                         className="w-full min-w-0"
                       />
                     </div>
@@ -401,26 +398,39 @@ export default function NewHeroBannerPage() {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="buttonText">Button Text *</Label>
+                      <Label htmlFor="buttonText">Button Text</Label>
                       <Input
                         id="buttonText"
                         value={formData.buttonText}
                         onChange={(e) => handleInputChange('buttonText', e.target.value)}
                         placeholder="e.g., Shop Now"
-                        required
                         className="w-full min-w-0"
                       />
                     </div>
                     <div>
-                      <Label htmlFor="buttonUrl">Button URL *</Label>
+                      <Label htmlFor="buttonUrl">Button URL</Label>
                       <Input
                         id="buttonUrl"
                         value={formData.buttonUrl}
                         onChange={(e) => handleInputChange('buttonUrl', e.target.value)}
                         placeholder="e.g., /products"
-                        required
                         className="w-full min-w-0"
                       />
+                    </div>
+                    <div className="flex items-center justify-between pt-4 border-t">
+                      <Label htmlFor="enableButton" className="text-sm cursor-pointer">
+                        Enable Button
+                      </Label>
+                      <div className="flex items-center space-x-2">
+                        <span className="text-xs text-gray-500">{formData.enableButton ? 'ON' : 'OFF'}</span>
+                        <input
+                          type="checkbox"
+                          id="enableButton"
+                          checked={formData.enableButton}
+                          onChange={(e) => handleInputChange('enableButton', e.target.checked)}
+                          className="w-5 h-5 rounded"
+                        />
+                      </div>
                     </div>
                   </CardContent>
                 </Card>

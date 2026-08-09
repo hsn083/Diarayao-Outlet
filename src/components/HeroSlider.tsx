@@ -14,6 +14,7 @@ interface HeroBanner {
   description?: string;
   buttonText: string;
   buttonUrl: string;
+  enableButton: boolean;
   textAlignment: 'left' | 'center' | 'right';
   verticalAlignment: 'top' | 'center' | 'bottom';
   overlayColor: string;
@@ -479,7 +480,7 @@ export default function HeroSlider() {
                       {banner.description}
                     </p>
                   )}
-                  {banner.buttonText && banner.buttonUrl && (
+                  {banner.enableButton !== false && banner.buttonText && banner.buttonUrl && (
                     <Link href={banner.buttonUrl}>
                       <button
                         className="text-xs sm:text-sm md:text-base lg:text-lg px-4 py-2 sm:px-5 sm:py-2.5 md:px-8 md:py-3 lg:px-10 lg:py-4 rounded-full md:rounded-lg font-semibold transition-all hover:scale-105 w-fit"

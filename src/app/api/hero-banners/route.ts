@@ -19,9 +19,9 @@ export async function GET(request: NextRequest) {
 
     const banners = await HeroBanner.find(query).sort({ displayOrder: 1, createdAt: -1 });
 
-    // Validate that we have banners with required fields
+    // Validate that we have banners with required fields (images only)
     const validBanners = banners.filter(banner => {
-      return banner.desktopImage && banner.mobileImage && banner.heading && banner.subHeading && banner.buttonText && banner.buttonUrl;
+      return banner.desktopImage && banner.mobileImage;
     });
 
     return NextResponse.json({
@@ -64,6 +64,7 @@ export async function POST(request: NextRequest) {
       description,
       buttonText,
       buttonUrl,
+      enableButton,
       textAlignment,
       verticalAlignment,
       overlayColor,
@@ -107,10 +108,10 @@ export async function POST(request: NextRequest) {
       displayOrder,
     } = body;
 
-    // Validation
-    if (!desktopImage || !mobileImage || !heading || !subHeading || !buttonText || !buttonUrl) {
+    // Validation - only images are required
+    if (!desktopImage || !mobileImage) {
       return NextResponse.json(
-        { success: false, error: 'Missing required fields' },
+        { success: false, error: 'Desktop and mobile images are required' },
         { status: 400 }
       );
     }
@@ -130,6 +131,7 @@ export async function POST(request: NextRequest) {
       description,
       buttonText,
       buttonUrl,
+      enableButton: enableButton !== undefined ? enableButton : true,
       textAlignment: textAlignment || 'left',
       verticalAlignment: verticalAlignment || 'center',
       overlayColor: overlayColor || '#000000',

@@ -66,6 +66,7 @@ export async function PUT(
       description,
       buttonText,
       buttonUrl,
+      enableButton,
       textAlignment,
       verticalAlignment,
       overlayColor,
@@ -126,6 +127,7 @@ export async function PUT(
     if (description !== undefined) banner.description = description;
     if (buttonText !== undefined) banner.buttonText = buttonText;
     if (buttonUrl !== undefined) banner.buttonUrl = buttonUrl;
+    if (enableButton !== undefined) banner.enableButton = enableButton;
     if (textAlignment !== undefined) banner.textAlignment = textAlignment;
     if (verticalAlignment !== undefined) banner.verticalAlignment = verticalAlignment;
     if (overlayColor !== undefined) banner.overlayColor = overlayColor;

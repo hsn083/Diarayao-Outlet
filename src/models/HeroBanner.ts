@@ -11,6 +11,7 @@ export interface IHeroBanner extends Document {
   description?: string;
   buttonText: string;
   buttonUrl: string;
+  enableButton: boolean;
   
   // Layout
   textAlignment: 'left' | 'center' | 'right';
@@ -92,12 +93,10 @@ const HeroBannerSchema = new Schema<IHeroBanner>(
     // Content
     heading: {
       type: String,
-      required: [true, 'Heading is required'],
       trim: true,
     },
     subHeading: {
       type: String,
-      required: [true, 'Sub heading is required'],
       trim: true,
     },
     description: {
@@ -106,13 +105,15 @@ const HeroBannerSchema = new Schema<IHeroBanner>(
     },
     buttonText: {
       type: String,
-      required: [true, 'Button text is required'],
       trim: true,
     },
     buttonUrl: {
       type: String,
-      required: [true, 'Button URL is required'],
       trim: true,
+    },
+    enableButton: {
+      type: Boolean,
+      default: true,
     },
     
     // Layout
