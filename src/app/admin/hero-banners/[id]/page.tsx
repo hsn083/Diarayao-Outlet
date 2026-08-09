@@ -408,11 +408,13 @@ export default function EditHeroBannerPage() {
                       >
                         {formData.mobileImage ? (
                           <div className="relative">
+                             <div className="w-48 mx-auto" style={{ aspectRatio: '768/960' }}>
                             <img
                               src={formData.mobileImage}
                               alt="Mobile preview"
                               className="w-full h-48 object-cover rounded"
                             />
+                            </div>
                             <Button
                               type="button"
                               variant="destructive"
