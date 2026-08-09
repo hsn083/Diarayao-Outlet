@@ -578,15 +578,14 @@ export default function HeroSlider() {
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className="transition-all duration-300 ease-in-out rounded-full"
+                className="transition-all rounded-full"
                 style={{
                   backgroundColor: index === currentIndex
                     ? settings.activeDotColor
                     : settings.dotColor,
-                  transform: index === currentIndex ? 'scale(1.2)' : 'scale(1)',
-                  width: index === currentIndex ? '12px' : '10px',
-                  height: index === currentIndex ? '12px' : '10px',
-                  opacity: index === currentIndex ? 1 : 0.7,
+                  transform: index === currentIndex ? 'scale(1.25)' : 'scale(1)',
+                  width: `${settings.dotSize}px`,
+                  height: `${settings.dotSize}px`,
                 }}
                 aria-label={`Go to slide ${index + 1}`}
                 aria-current={index === currentIndex ? 'true' : undefined}

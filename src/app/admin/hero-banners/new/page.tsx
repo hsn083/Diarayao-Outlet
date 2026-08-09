@@ -318,13 +318,11 @@ export default function NewHeroBannerPage() {
                       >
                         {formData.mobileImage ? (
                           <div className="relative">
-                            <div className="w-32 mx-auto" style={{ aspectRatio: '9/16' }}>
-                              <img
-                                src={formData.mobileImage}
-                                alt="Mobile preview"
-                                className="w-full h-full object-cover rounded"
-                              />
-                            </div>
+                            <img
+                              src={formData.mobileImage}
+                              alt="Mobile preview"
+                              className="w-full h-32 sm:h-48 object-cover rounded max-w-full"
+                            />
                             <Button
                               type="button"
                               variant="destructive"
