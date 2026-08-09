@@ -291,6 +291,7 @@ export default function HeroSlider() {
     description: '',
     buttonText: 'Shop Now',
     buttonUrl: '/shop',
+    enableButton: true,
     textAlignment: 'center',
     verticalAlignment: 'center',
     overlayColor: '#000000',

@@ -10,6 +10,7 @@ let heroBanner: HeroBanner = {
   subHeading: 'Discover the latest fashion trends, stylish clothing, and premium footwear crafted for comfort and elegance.',
   buttonText: 'Shop Now',
   buttonUrl: '/shop',
+  enableButton: true,
   textPosition: 'left',
   overlayOpacity: 50,
   overlayColor: '#000000',
@@ -43,7 +44,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { desktopImage, heading, subHeading, buttonText, buttonUrl, isActive } = body;
+    const { desktopImage, heading, subHeading, buttonText, buttonUrl, enableButton, isActive } = body;
 
     const updatedBanner: HeroBanner = {
       ...heroBanner,
@@ -53,6 +54,7 @@ export async function POST(request: NextRequest) {
       subHeading: subHeading !== undefined && subHeading !== '' ? subHeading : heroBanner.subHeading,
       buttonText: buttonText !== undefined && buttonText !== '' ? buttonText : heroBanner.buttonText,
       buttonUrl: buttonUrl !== undefined && buttonUrl !== '' ? buttonUrl : heroBanner.buttonUrl,
+      enableButton: enableButton !== undefined ? enableButton : heroBanner.enableButton,
       isActive: isActive !== undefined ? isActive : heroBanner.isActive,
       updatedAt: new Date(),
     };

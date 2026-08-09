@@ -17,6 +17,7 @@ const defaultHeroBanner: HeroBanner = {
   subHeading: 'Discover the latest fashion trends and premium products crafted for comfort and elegance.',
   buttonText: 'Shop Now',
   buttonUrl: '/shop',
+  enableButton: true,
   textPosition: 'left',
   overlayOpacity: 50,
   overlayColor: '#000000',

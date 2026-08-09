@@ -152,6 +152,7 @@ export default function EditHeroBannerPage() {
           description: banner.description || '',
           buttonText: banner.buttonText || '',
           buttonUrl: banner.buttonUrl || '',
+          enableButton: banner.enableButton ?? true,
           textAlignment: banner.textAlignment || 'left',
           verticalAlignment: banner.verticalAlignment || 'center',
           overlayColor: banner.overlayColor || '#000000',

@@ -313,6 +313,7 @@ export interface HeroBanner {
   description?: string;
   buttonText: string;
   buttonUrl: string;
+  enableButton: boolean;
   textPosition: 'left' | 'center' | 'right';
   overlayOpacity: number;
   overlayColor: string;

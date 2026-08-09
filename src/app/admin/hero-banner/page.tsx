@@ -263,7 +263,7 @@ export default function AdminHeroBannerPage() {
                             ) : (
                               <>
                                 <Upload className="h-12 w-12 text-emerald-700 mb-2" />
-                                <p className="text-sm text-muted-foreground mb-2">Upload banner image (Recommended: 1920x600px)</p>
+                                <p className="text-sm text-muted-foreground mb-2">Upload banner images (Recommended: 1920x600px)</p>
                               </>
                             )}
                             <Input
