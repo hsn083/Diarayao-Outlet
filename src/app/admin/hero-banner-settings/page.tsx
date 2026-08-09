@@ -151,7 +151,7 @@ export default function HeroBannerSettingsPage() {
     }
   };
 
-  const handleInputChange = (field: keyof SliderSettings, value: any) => {
+  const handleInputChange = (field: keyof SliderSettings, value: string | number | boolean) => {
     setSettings(prev => ({ ...prev, [field]: value }));
   };
 

@@ -204,15 +204,19 @@ export default function AdminHeroBannerPage() {
                       )}
                       <div className="absolute inset-0 bg-gradient-to-t from-gray-50/80 via-black/50 to-transparent flex items-end p-8">
                         <div className="max-w-3xl">
-                          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
-                            {heroBanner.heading}
-                          </h1>
-                          <p className="text-lg md:text-xl text-white/90 mb-6">
-                            {heroBanner.subHeading}
-                          </p>
-                          {heroBanner.isActive && (
-                            <Button 
-                              size="lg" 
+                          {heroBanner.heading && (
+                            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
+                              {heroBanner.heading}
+                            </h1>
+                          )}
+                          {heroBanner.subHeading && (
+                            <p className="text-lg md:text-xl text-white/90 mb-6">
+                              {heroBanner.subHeading}
+                            </p>
+                          )}
+                          {heroBanner.isActive && heroBanner.buttonText && heroBanner.buttonUrl && (
+                            <Button
+                              size="lg"
                               className="bg-emerald-600 text-black hover:bg-emerald-500 font-bold transition-all hover:scale-105"
                               onClick={() => window.location.href = heroBanner.buttonUrl}
                             >
@@ -236,7 +240,7 @@ export default function AdminHeroBannerPage() {
                     <form onSubmit={handleSave} className="space-y-6">
                       {/* Image Upload */}
                       <div>
-                        <Label>Banner Image *</Label>
+                        <Label>Banner Image</Label>
                         <div className="mt-2 border-2 border-dashed border-emerald-100 rounded-lg p-6 bg-white">
                           <div className="flex flex-col items-center justify-center">
                             {bannerImage ? (
@@ -279,46 +283,42 @@ export default function AdminHeroBannerPage() {
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <Label htmlFor="heading">Heading *</Label>
+                          <Label htmlFor="heading">Heading</Label>
                           <Input
                             id="heading"
                             name="heading"
                             placeholder="e.g., PREMIUM FASHION COLLECTION"
                             defaultValue={heroBanner?.heading || ''}
-                            required
                           />
                         </div>
                         <div>
-                          <Label htmlFor="buttonText">Button Text *</Label>
+                          <Label htmlFor="buttonText">Button Text</Label>
                           <Input
                             id="buttonText"
                             name="buttonText"
                             placeholder="e.g., Shop Now"
                             defaultValue={heroBanner?.buttonText || ''}
-                            required
                           />
                         </div>
                       </div>
 
                       <div>
-                        <Label htmlFor="subheading">Subheading *</Label>
+                        <Label htmlFor="subheading">Subheading</Label>
                         <Input
                           id="subheading"
                           name="subheading"
                           placeholder="e.g., Discover premium clothing and footwear..."
                           defaultValue={heroBanner?.subHeading || ''}
-                          required
                         />
                       </div>
 
                       <div>
-                        <Label htmlFor="buttonLink">Button Link *</Label>
+                        <Label htmlFor="buttonLink">Button Link</Label>
                         <Input
                           id="buttonLink"
                           name="buttonLink"
                           placeholder="e.g., /shop"
                           defaultValue={heroBanner?.buttonUrl || ''}
-                          required
                         />
                       </div>
 

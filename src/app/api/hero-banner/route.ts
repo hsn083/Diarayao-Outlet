@@ -43,16 +43,16 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { image, heading, subheading, buttonText, buttonLink, isActive } = body;
+    const { desktopImage, heading, subHeading, buttonText, buttonUrl, isActive } = body;
 
     const updatedBanner: HeroBanner = {
       ...heroBanner,
-      desktopImage: image || heroBanner.desktopImage,
-      mobileImage: image || heroBanner.mobileImage,
-      heading: heading || heroBanner.heading,
-      subHeading: subheading || heroBanner.subHeading,
-      buttonText: buttonText || heroBanner.buttonText,
-      buttonUrl: buttonLink || heroBanner.buttonUrl,
+      desktopImage: desktopImage || heroBanner.desktopImage,
+      mobileImage: desktopImage || heroBanner.mobileImage,
+      heading: heading !== undefined && heading !== '' ? heading : heroBanner.heading,
+      subHeading: subHeading !== undefined && subHeading !== '' ? subHeading : heroBanner.subHeading,
+      buttonText: buttonText !== undefined && buttonText !== '' ? buttonText : heroBanner.buttonText,
+      buttonUrl: buttonUrl !== undefined && buttonUrl !== '' ? buttonUrl : heroBanner.buttonUrl,
       isActive: isActive !== undefined ? isActive : heroBanner.isActive,
       updatedAt: new Date(),
     };
