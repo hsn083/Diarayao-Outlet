@@ -408,11 +408,13 @@ export default function EditHeroBannerPage() {
                       >
                         {formData.mobileImage ? (
                           <div className="relative">
-                            <img
-                              src={formData.mobileImage}
-                              alt="Mobile preview"
-                              className="w-full h-48 object-cover rounded"
-                            />
+                            <div className="w-48 mx-auto" style={{ aspectRatio: '768/960' }}>
+                              <img
+                                src={formData.mobileImage}
+                                alt="Mobile preview"
+                                className="w-full h-full object-cover rounded"
+                              />
+                            </div>
                             <Button
                               type="button"
                               variant="destructive"
@@ -725,7 +727,7 @@ export default function EditHeroBannerPage() {
                       <Label htmlFor="overlayOpacity">Overlay Opacity: {formData.overlayOpacity}%</Label>
                       <Input
                         id="overlayOpacity"
-                        type="range"
+                        type="number"
                         min="0"
                         max="100"
                         value={formData.overlayOpacity}
@@ -840,18 +842,6 @@ export default function EditHeroBannerPage() {
                           </div>
                         </div>
                         <div>
-                          <Label htmlFor="buttonBorderRadius">Border Radius: {formData.buttonBorderRadius}px</Label>
-                          <Input
-                            id="buttonBorderRadius"
-                            type="range"
-                            min="0"
-                            max="30"
-                            value={formData.buttonBorderRadius}
-                            onChange={(e) => handleInputChange('buttonBorderRadius', parseInt(e.target.value))}
-                            className="mt-2"
-                          />
-                        </div>
-                        <div>
                           <Label htmlFor="buttonShadow">Shadow</Label>
                           <Input
                             id="buttonShadow"
@@ -911,18 +901,6 @@ export default function EditHeroBannerPage() {
                               className="flex-1"
                             />
                           </div>
-                        </div>
-                        <div>
-                          <Label htmlFor="contentBoxOpacity">Content Box Opacity: {formData.contentBoxOpacity}%</Label>
-                          <Input
-                            id="contentBoxOpacity"
-                            type="range"
-                            min="0"
-                            max="100"
-                            value={formData.contentBoxOpacity}
-                            onChange={(e) => handleInputChange('contentBoxOpacity', parseInt(e.target.value))}
-                            className="mt-2"
-                          />
                         </div>
                       </div>
                     </div>
