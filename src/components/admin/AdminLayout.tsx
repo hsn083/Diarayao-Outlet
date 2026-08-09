@@ -106,7 +106,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   };
 
   return (
-    <div className="min-w-[1280px] w-full overflow-x-auto overflow-y-auto h-screen bg-gray-50 flex">
+    <div className="min-w-[1280px] w-full overflow-x-auto bg-gray-50 flex">
       <ToastContainer />
       {/* Sidebar */}
       <aside className="w-64 flex-shrink-0 bg-white border-r border-gray-200 flex flex-col shadow-sm fixed h-full z-30">
