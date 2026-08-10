@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "action": "LOGIN_SUCCESS",
+    "adminId": "ADMIN-1723334965000",
+    "adminUsername": "Diarayaoutlet06",
+    "details": "Successful login",
+    "id": "AUDIT-1786375868053-fzhmsxxma",
+    "timestamp": "2026-08-10T15:31:08.053Z"
+  }
+]
