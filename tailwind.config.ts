@@ -90,9 +90,37 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      typography: (theme: any) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.gray.700'),
+            h1: { color: theme('colors.gray.900') },
+            h2: { color: theme('colors.gray.900') },
+            h3: { color: theme('colors.gray.900') },
+            h4: { color: theme('colors.gray.900') },
+            strong: { color: theme('colors.gray.900') },
+            a: { color: theme('colors.primary.500') },
+            'a:hover': { color: theme('colors.primary.600') },
+          },
+        },
+        pink: {
+          css: {
+            color: theme('colors.gray.700'),
+            h1: { color: theme('colors.gray.900') },
+            h2: { color: theme('colors.gray.900') },
+            h3: { color: theme('colors.gray.900') },
+            h4: { color: theme('colors.gray.900') },
+            strong: { color: theme('colors.gray.900') },
+            a: { color: theme('colors.primary.500') },
+            'a:hover': { color: theme('colors.primary.600') },
+            'ul > li::marker': { color: theme('colors.primary.500') },
+            'ol > li::marker': { color: theme('colors.primary.500') },
+          },
+        },
+      }),
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 } satisfies Config
 
 export default config

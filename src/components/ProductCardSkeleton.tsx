@@ -3,8 +3,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 export function ProductCardSkeleton() {
   return (
     <div className="group relative bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
-      {/* Image Skeleton */}
-      <Skeleton className="w-full h-64 bg-gray-200" />
+      {/* Image Skeleton with 4:5 aspect ratio */}
+      <Skeleton className="w-full aspect-[4/5] bg-gray-200" />
       
       {/* Badge Skeleton */}
       <div className="absolute top-2 left-2">

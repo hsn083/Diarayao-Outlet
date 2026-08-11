@@ -13,6 +13,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ProductCard from '@/components/ProductCard';
 import SEOContentSection from '@/components/SEOContentSection';
+import { ProductDescription } from '@/components/ProductDescription';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
@@ -896,19 +897,33 @@ export default function ProductPage() {
           {/* Product Details Tabs */}
           <div className="mb-8 md:mb-16">
             <Tabs defaultValue="description" className="w-full">
-              <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="description">Description</TabsTrigger>
-                <TabsTrigger value="reviews">Reviews</TabsTrigger>
+              <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto bg-gray-100 p-1 rounded-lg">
+                <TabsTrigger 
+                  value="description" 
+                  className="data-[state=active]:bg-white data-[state=active]:text-[#D4849C] data-[state=active]:shadow-sm rounded-md transition-all duration-200 text-sm"
+                >
+                  Description
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="reviews" 
+                  className="data-[state=active]:bg-white data-[state=active]:text-[#D4849C] data-[state=active]:shadow-sm rounded-md transition-all duration-200 text-sm"
+                >
+                  Reviews ({liveRating.totalReviews})
+                </TabsTrigger>
               </TabsList>
-              <TabsContent value="description" className="mt-4 md:mt-6">
-                <Card>
-                  <CardContent className="p-4 md:p-6">
-                    <p className="text-muted-foreground">{product.description}</p>
+              <TabsContent value="description" className="mt-6 md:mt-8">
+                <Card className="border-[#F4E4E9] shadow-sm">
+                  <CardContent className="p-6 md:p-8">
+                    <ProductDescription product={product} />
                   </CardContent>
                 </Card>
               </TabsContent>
-              <TabsContent value="reviews" className="mt-4 md:mt-6">
-                <ReviewSection productId={product.id} onReviewSubmit={handleReviewSubmit} />
+              <TabsContent value="reviews" className="mt-6 md:mt-8">
+                <Card className="border-[#F4E4E9] shadow-sm">
+                  <CardContent className="p-6 md:p-8">
+                    <ReviewSection productId={product.id} onReviewSubmit={handleReviewSubmit} />
+                  </CardContent>
+                </Card>
               </TabsContent>
             </Tabs>
           </div>

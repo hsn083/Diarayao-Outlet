@@ -36,9 +36,9 @@ const AbayaProductSection = dynamic(() => import('@/components/AbayaProductSecti
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
         <div className="h-8 bg-gray-200 rounded animate-pulse w-48 mb-8" />
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="aspect-[3/4] bg-gray-200 rounded-lg animate-pulse" />
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
+          {[...Array(8)].map((_, i) => (
+            <div key={i} className="aspect-[4/5] bg-gray-200 rounded-lg animate-pulse" />
           ))}
         </div>
       </div>

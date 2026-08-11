@@ -51,12 +51,17 @@ export function ProductForm({
     handleSubmit,
     formState: { errors },
     watch,
+    setValue,
   } = useForm<ProductFormData>({
     resolver: zodResolver(productSchema),
-    defaultValues: initialData || {
+    defaultValues: initialData ? {
+      ...initialData,
+      features: initialData.features || [],
+    } : {
       isNew: false,
       isFeatured: false,
       isBestSeller: false,
+      features: [],
     },
   });
 
@@ -208,12 +213,37 @@ export function ProductForm({
         <FormLabel>Description *</FormLabel>
         <textarea
           {...register('description')}
-          placeholder='Enter product description'
+          placeholder='Enter product description. You can use "Key: Value" format for specifications (e.g., "Design: Turkish Abaya") and regular text for description.'
           rows={4}
           className='fashion-input rounded w-full px-3 py-2'
         />
+        <FormDescription className='text-xs mt-1'>
+          Use "Key: Value" format for specifications. HTML formatting is supported.
+        </FormDescription>
         {errors.description && (
           <FormMessage>{errors.description.message}</FormMessage>
+        )}
+      </FormField>
+
+      {/* Features */}
+      <FormField>
+        <FormLabel>Key Features</FormLabel>
+        <FormDescription className='text-xs'>
+          Enter each feature on a new line. These will be displayed as bullet points.
+        </FormDescription>
+        <textarea
+          {...register('features')}
+          placeholder='Premium fabric&#10;Elegant design&#10;Comfortable fit'
+          rows={4}
+          className='fashion-input rounded w-full px-3 py-2'
+          value={watch('features')?.join('\n') || ''}
+          onChange={(e) => {
+            const features = e.target.value.split('\n').filter(f => f.trim());
+            setValue('features', features);
+          }}
+        />
+        {errors.features && (
+          <FormMessage>{errors.features.message}</FormMessage>
         )}
       </FormField>
 

@@ -36,6 +36,7 @@ export interface IProduct extends Document {
   statusTags?: string[]; // New array field for multiple status tags: 'new', 'sale', 'featured', 'out-of-stock'
   warranty?: string;
   tags?: string[];
+  features?: string[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -162,6 +163,11 @@ const ProductSchema = new Schema<IProduct>(
       type: String,
     },
     tags: [
+      {
+        type: String,
+      },
+    ],
+    features: [
       {
         type: String,
       },
