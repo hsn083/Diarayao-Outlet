@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
     const isNew = searchParams.get('new') === 'true';
     const bestSellers = searchParams.get('bestseller') === 'true';
     const page = parseInt(searchParams.get('page') || '1');
-    const limit = parseInt(searchParams.get('limit') || '50');
+    const limit = parseInt(searchParams.get('limit') || '1000');
     const sortBy = searchParams.get('sortBy') || 'createdAt';
     const sortOrder = searchParams.get('sortOrder') || 'desc';
 

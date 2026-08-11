@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import ProductCard from './ProductCard';
+import { ProductCardSkeleton } from './ProductCardSkeleton';
 import { Product } from '@/types';
 import { ArrowRight } from 'lucide-react';
 
@@ -13,10 +14,11 @@ export default function ProductSection() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('/api/products');
+        const response = await fetch('/api/products?limit=1000');
         const data = await response.json();
         if (data.success && data.products) {
           setProducts(data.products);
+          console.log('Fetched products:', data.products.length, 'products');
         }
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -56,7 +58,7 @@ export default function ProductSection() {
         {isLoading ? (
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-4 lg:gap-6">
             {[...Array(8)].map((_, index) => (
-              <div key={index} className="aspect-[4/5] bg-gray-200 rounded-lg animate-pulse p-3" />
+              <ProductCardSkeleton key={index} />
             ))}
           </div>
         ) : (
