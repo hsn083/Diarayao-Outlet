@@ -80,6 +80,14 @@ export async function generateMetadata(): Promise<Metadata> {
   const ogImage = settings?.seo?.ogImage || '/Pic.jpg';
   const siteUrl = 'https://www.diarayao.com';
 
+  // Helper function to ensure absolute URL without duplication
+  const getAbsoluteImageUrl = (imageUrl: string): string => {
+    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+      return imageUrl;
+    }
+    return `${siteUrl}${imageUrl}`;
+  };
+
   return {
     metadataBase: new URL(siteUrl),
     title: {
@@ -119,7 +127,7 @@ export async function generateMetadata(): Promise<Metadata> {
   type: 'website',
   images: [
     {
-      url: `${siteUrl}${ogImage}`,
+      url: getAbsoluteImageUrl(ogImage),
       width: 1200,
       height: 1200,
       alt: 'Diarayao Premium Abaya Collection',
@@ -133,7 +141,7 @@ export async function generateMetadata(): Promise<Metadata> {
   description: settings?.seo?.twitterDescription || metaDescription,
   creator: '@diarayaooutlet',
   site: '@diarayaooutlet',
-  images: [`${siteUrl}${ogImage}`],
+  images: [getAbsoluteImageUrl(ogImage)],
 },
     robots: {
       index: settings?.seo?.robots !== 'noindex',

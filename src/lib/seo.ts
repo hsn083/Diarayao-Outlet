@@ -27,6 +27,14 @@ export function generateMetadata({
   const defaultImage = ogImage || '/og-image.jpg';
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.diarayao.com';
 
+  // Helper function to ensure absolute URL without duplication
+  const getAbsoluteImageUrl = (imageUrl: string): string => {
+    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+      return imageUrl;
+    }
+    return `${siteUrl}${imageUrl}`;
+  };
+
   const metadata: Metadata = {
     title: defaultTitle,
     description: defaultDescription,
@@ -54,7 +62,7 @@ export function generateMetadata({
       siteName,
       images: [
         {
-          url: defaultImage,
+          url: getAbsoluteImageUrl(defaultImage),
           width: 1200,
           height: 630,
           alt: title || siteName,
@@ -65,7 +73,7 @@ export function generateMetadata({
       card: 'summary_large_image',
       title: defaultTitle,
       description: defaultDescription,
-      images: [defaultImage],
+      images: [getAbsoluteImageUrl(defaultImage)],
       creator: '@diarayaooutlet',
     },
     verification: {

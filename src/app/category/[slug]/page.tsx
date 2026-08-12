@@ -24,6 +24,14 @@ export default function CategorySlugPage() {
   
   const { products, refetchProducts, getProductsByCategory } = useProductStore();
 
+  // Helper function to ensure absolute URL without duplication
+  const getAbsoluteImageUrl = (imageUrl: string): string => {
+    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+      return imageUrl;
+    }
+    return `https://www.diarayao.com${imageUrl}`;
+  };
+
   // Fetch category and products data from API
   useEffect(() => {
     const fetchData = async () => {
@@ -68,7 +76,7 @@ export default function CategorySlugPage() {
 
             const ogImage = document.querySelector('meta[property="og:image"]') as HTMLMetaElement;
             if (ogImage && foundCategory.image) {
-              ogImage.setAttribute('content', foundCategory.image);
+              ogImage.setAttribute('content', getAbsoluteImageUrl(foundCategory.image));
             } else if (ogImage) {
               ogImage.setAttribute('content', 'https://www.diarayao.com/favicon.png');
             }
@@ -86,7 +94,7 @@ export default function CategorySlugPage() {
 
             const twitterImage = document.querySelector('meta[name="twitter:image"]') as HTMLMetaElement;
             if (twitterImage && foundCategory.image) {
-              twitterImage.setAttribute('content', foundCategory.image);
+              twitterImage.setAttribute('content', getAbsoluteImageUrl(foundCategory.image));
             } else if (twitterImage) {
               twitterImage.setAttribute('content', 'https://www.diarayao.com/favicon.png');
             }

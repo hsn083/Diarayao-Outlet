@@ -73,6 +73,14 @@ export default function ProductPage() {
 
   const product = products.find(p => p.slug === slug);
 
+  // Helper function to ensure absolute URL without duplication
+  const getAbsoluteImageUrl = (imageUrl: string): string => {
+    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+      return imageUrl;
+    }
+    return `https://www.diarayao.com${imageUrl}`;
+  };
+
   const handleThumbnailClick = (index: number) => {
     setSelectedImage(index);
     setLightboxIndex(index);
@@ -257,7 +265,7 @@ export default function ProductPage() {
 
       const ogImage = document.querySelector('meta[property="og:image"]') as HTMLMetaElement;
       if (ogImage && product.images && product.images.length > 0) {
-        ogImage.setAttribute('content', product.images[0]);
+        ogImage.setAttribute('content', getAbsoluteImageUrl(product.images[0]));
       }
 
       // Update Twitter card
@@ -273,7 +281,7 @@ export default function ProductPage() {
 
       const twitterImage = document.querySelector('meta[name="twitter:image"]') as HTMLMetaElement;
       if (twitterImage && product.images && product.images.length > 0) {
-        twitterImage.setAttribute('content', product.images[0]);
+        twitterImage.setAttribute('content', getAbsoluteImageUrl(product.images[0]));
       }
 
       // Update canonical URL
