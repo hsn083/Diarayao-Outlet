@@ -12,8 +12,6 @@ export const dynamicImports = {
   Wishlist: () => import('@/app/wishlist/page'),
   
   // Heavy components
-  ProductImageGallery: () => import('@/components/ProductImageGallery'),
-  ProductRecommendations: () => import('@/components/ProductRecommendations'),
   HeroSlider: () => import('@/components/HeroSlider'),
 };
 
