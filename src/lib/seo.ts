@@ -135,7 +135,7 @@ export function generateOrganizationJsonLd() {
     description: 'Your one-stop shop for Islamic modest wear in Pakistan',
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+923457791198',
+      telephone: '+923713193031',
       contactType: 'customer service',
       email: 'diarayaooutlet@gmail.com',
     },

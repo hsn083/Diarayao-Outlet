@@ -156,7 +156,7 @@ Please verify my payment.`;
   };
 
   const handleWhatsAppClick = () => {
-    const whatsappNumber = '+923457791198'; // This should come from settings
+    const whatsappNumber = '+923713193031'; // This should come from settings
     const message = getWhatsAppMessage();
     window.open(`https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`, '_blank');
   };
@@ -439,7 +439,7 @@ Please verify my payment.`;
                     )}
                     <div className="flex-1 min-w-0">
                       <p className="font-medium text-gray-900 text-sm truncate">{item.product?.name || item.name || 'Product'}</p>
-                      <p className="text-xs text-gray-400">{(item.product?.brand || item.brand || 'AlhamdCollection')} · Qty: {item.quantity}</p>
+                      <p className="text-xs text-gray-400">{(item.product?.brand || item.brand || 'Diarayao Outlet')} · Qty: {item.quantity}</p>
                     </div>
                     <div className="text-right">
                       <p className="font-semibold text-gray-900">PKR {(item.price * item.quantity)?.toLocaleString()}</p>
@@ -506,7 +506,7 @@ Please verify my payment.`;
                   size="sm" 
                   className="border-emerald-300 text-emerald-700 hover:bg-emerald-100"
                   onClick={() => {
-                    const whatsappNumber = order.user?.phone || '+923457791198';
+                    const whatsappNumber = order.user?.phone || '+923713193031';
                     const message = `Hello Diarayao Outlet, I have a question about my order ${order.id}`;
                     window.open(`https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`, '_blank');
                   }}

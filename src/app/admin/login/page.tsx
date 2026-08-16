@@ -62,7 +62,7 @@ export default function AdminLoginPage() {
                 <Lock className="h-8 w-8 text-white" />
               </div>
               <CardTitle className="text-2xl">Admin Login</CardTitle>
-              <p className="text-muted-foreground">Secure access to AlhamdCollection Admin Panel</p>
+              <p className="text-muted-foreground">Secure access to Diarayao Outlet Admin Panel</p>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
