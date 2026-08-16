@@ -1,12 +1,12 @@
 [
   {
-    "id": "ADMIN-1723334965000",
     "username": "Diarayaoutlet06",
-    "passwordHash": "$2b$10$xPSTQCO8OJ5jTQBBuTsLb.SOyp/dFag9f4TbyPFtGoWbOLaN7wsTi",
     "email": "diarayaoutlet@gmail.com",
     "recoveryEmail": "diarayaoutlet@gmail.com",
-    "createdAt": "2026-08-10T23:09:25.000Z",
-    "updatedAt": "2026-08-10T23:09:25.000Z",
-    "lastLogin": "2026-08-10T15:31:08.050Z"
+    "id": "ADMIN-1786885741165",
+    "passwordHash": "$2b$10$wY4UPxflbKVrcUAclKdliO1l.hk4SBw6cnSFiC4UEllQONuMDTiUi",
+    "createdAt": "2026-08-16T13:09:01.165Z",
+    "updatedAt": "2026-08-16T13:09:01.165Z",
+    "lastLogin": "2026-08-16T13:09:01.430Z"
   }
 ]
