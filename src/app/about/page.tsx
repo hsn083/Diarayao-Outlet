@@ -4,11 +4,11 @@ import Footer from '@/components/Footer';
 import { BreadcrumbSchema } from '@/components/StructuredData';
 
 export const metadata: Metadata = {
-  title: 'About Us - Premium Abayas & Modest Fashion | Diarayao Outlet',
+  title: 'About Us | Diarayao Outlet',
   description: 'Learn about Diarayao Outlet - Pakistan\'s premier destination for premium Arabian and Turkish abayas, hijabs, and modest fashion. Our mission is to empower women with elegant, comfortable, and affordable Islamic wear.',
   keywords: 'about Diarayao Outlet, modest fashion Pakistan, abaya store Pakistan, Islamic clothing Pakistan, our story, mission, vision',
   openGraph: {
-    title: 'About Us - Premium Abayas & Modest Fashion | Diarayao Outlet',
+    title: 'About Us | Diarayao Outlet',
     description: 'Learn about Diarayao Outlet - Pakistan\'s premier destination for premium Arabian and Turkish abayas, hijabs, and modest fashion.',
     url: 'https://www.diarayao.com/about',
     siteName: 'Diarayao Outlet',
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Us - Premium Abayas & Modest Fashion | Diarayao Outlet',
+    title: 'About Us | Diarayao Outlet',
     description: 'Learn about Diarayao Outlet - Pakistan\'s premier destination for premium Arabian and Turkish abayas, hijabs, and modest fashion.',
     images: ['https://www.diarayao.com/favicon.png'],
     creator: '@diarayaooutlet',

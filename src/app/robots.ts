@@ -7,7 +7,18 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/admin', '/api'],
+      disallow: [
+        '/admin',
+        '/api',
+        '/auth',
+        '/cart',
+        '/checkout',
+        '/orders',
+        '/wishlist',
+        '/account',
+        '/dashboard',
+        '/private',
+      ],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
   }
