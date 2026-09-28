@@ -1,0 +1,227 @@
+import type { Metadata, Viewport } from "next";
+import { Inter, Poppins, Playfair_Display, Cinzel, Montserrat } from "next/font/google";
+import "./globals.css";
+import Analytics from "@/components/Analytics";
+import SettingsProvider from "@/components/SettingsProvider";
+import { ToastContainer } from "@/components/ui/toast";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { OrganizationSchema, WebsiteSchema, OnlineStoreSchema, WebPageSchema } from "@/components/StructuredData";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import AnnouncementBarWrapper from "@/components/AnnouncementBarWrapper";
+
+// Force dynamic rendering to avoid build-time fetch issues
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+// Performance: Optimize font loading with preload and reduced subsets
+const inter = Inter({
+  subsets: ["latin"],
+  variable: '--font-inter',
+  display: 'swap',
+  preload: true,
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: '--font-poppins',
+  display: 'swap',
+  preload: true,
+});
+
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: '--font-playfair-display',
+  display: 'swap',
+  preload: true,
+});
+
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: '--font-cinzel',
+  display: 'swap',
+  preload: true,
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  variable: '--font-montserrat',
+  display: 'swap',
+  preload: true,
+});
+
+async function getSettings() {
+  try {
+    // Use absolute URL for server-side fetch
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.diarayao.com';
+    const response = await fetch(`${baseUrl}/api/settings`, {
+      cache: 'no-store',
+    });
+    if (response.ok) {
+      const data = await response.json();
+      return data.settings;
+    }
+  } catch (error) {
+    console.error('Failed to fetch settings:', error);
+  }
+  return null;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await getSettings();
+  
+  const siteName = settings?.general?.siteName || 'Diarayao Outlet';
+  const metaTitle = settings?.seo?.metaTitle || 'Diarayao Outlet | Premium Abayas & Modest Dresses';
+  const metaDescription = settings?.seo?.metaDescription || 'Shop premium Abayas, Hijabs & Modest Dresses in Pakistan. Quality fabrics, fast delivery. Order online at Diaraya Outlet!';
+  const metaKeywords = settings?.seo?.metaKeywords || 'Diarayao Outlet, Abaya Pakistan, Buy Abaya Online, Premium Abaya, Hijab Pakistan, Modest Fashion, Islamic Clothing, Women\'s Abaya, Modest Dresses, Luxury Abaya, Black Abaya, Kimono Abaya, Open Abaya, Nida Abaya, Pakistani Abaya, Abaya Collection, Muslim Fashion, Hijab Store, Abaya Online Pakistan, Islamic Wear';
+  const ogImage = settings?.seo?.ogImage || '/Pic.jpg';
+  const siteUrl = 'https://www.diarayao.com';
+
+  // Helper function to ensure absolute URL without duplication
+  const getAbsoluteImageUrl = (imageUrl: string): string => {
+    if (imageUrl.startsWith('http://') || imageUrl.startsWith('https://')) {
+      return imageUrl;
+    }
+    return `${siteUrl}${imageUrl}`;
+  };
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: metaTitle,
+      template: '%s | Diarayao Outlet'
+    },
+    description: metaDescription,
+    keywords: metaKeywords,
+    applicationName: siteName,
+    authors: [{ name: 'Diarayao Outlet' }],
+    creator: 'Diarayao Outlet',
+    publisher: 'Diarayao Outlet',
+    manifest: '/manifest.json',
+    icons: {
+      icon: [
+        { url: '/favicon.png', type: 'image/png' },
+      ],
+      shortcut: '/favicon.png',
+      apple: [
+        { url: '/favicon.png', type: 'image/png' },
+      ],
+    },
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    alternates: {
+      canonical: 'https://www.diarayao.com/',
+    },
+   openGraph: {
+  title: settings?.seo?.ogTitle || metaTitle,
+  description: settings?.seo?.ogDescription || metaDescription,
+  url: siteUrl,
+  siteName,
+  locale: 'en_PK',
+  type: 'website',
+  images: [
+    {
+      url: getAbsoluteImageUrl(ogImage),
+      width: 1200,
+      height: 1200,
+      alt: 'Diarayao Premium Abaya Collection',
+      type: 'image/jpeg',
+    },
+  ],
+},
+   twitter: {
+  card: 'summary_large_image',
+  title: settings?.seo?.twitterTitle || metaTitle,
+  description: settings?.seo?.twitterDescription || metaDescription,
+  creator: '@diarayaooutlet',
+  site: '@diarayaooutlet',
+  images: [getAbsoluteImageUrl(ogImage)],
+},
+    robots: {
+      index: settings?.seo?.robots !== 'noindex',
+      follow: settings?.seo?.robots !== 'nofollow',
+      googleBot: {
+        index: settings?.seo?.robots !== 'noindex',
+        follow: settings?.seo?.robots !== 'nofollow',
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+   },
+    verification: {
+      google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
+      yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
+    },
+    category: 'ecommerce',
+    other: {
+      'msapplication-TileColor': '#F4A7B9',
+      'apple-mobile-web-app-capable': 'yes',
+      'apple-mobile-web-app-status-bar-style': 'default',
+      'apple-mobile-web-app-title': 'DIARAYAO OUTLET',
+    },
+  };
+}
+
+export function generateViewport(): Viewport {
+  return {
+    width: 'device-width',
+    initialScale: 1,
+    // Accessibility fix: Removed maximumScale and userScalable to allow zooming
+    themeColor: '#F43F7E',
+  };
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" className="scroll-smooth">
+      <head>
+        {/* Performance: Preconnect to critical origins */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://res.cloudinary.com" />
+        <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="1200" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:alt" content="Diarayao Premium Abaya Collection" />
+        <link rel="preload" as="image" href="/Pic.jpg" />
+      </head>
+      <body className={`${inter.variable} ${poppins.variable} ${playfairDisplay.variable} ${cinzel.variable} ${montserrat.variable}`}>
+        {/* Accessibility: Skip to content link for keyboard users */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[9999] focus:bg-pink-600 focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:font-medium"
+        >
+          Skip to main content
+        </a>
+        <AnnouncementBarWrapper />
+        <OrganizationSchema />
+        <WebsiteSchema />
+        <WebPageSchema />
+        <OnlineStoreSchema />
+        <SettingsProvider>
+          {children}
+        </SettingsProvider>
+
+        <ToastContainer />
+        <SpeedInsights />
+        <WhatsAppButton />
+
+      </body>
+    </html>
+  );
+}

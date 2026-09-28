@@ -1,0 +1,28 @@
+# Diarayao Outlet Robots.txt
+# Allow all pages except admin and API routes
+
+User-agent: *
+Allow: /
+
+Disallow: /admin
+Disallow: /api
+Disallow: /dashboard
+Disallow: /private
+Disallow: /_next
+Disallow: /static
+Disallow: /auth
+Disallow: /cart
+Disallow: /checkout
+Disallow: /account
+Disallow: /orders
+Disallow: /wishlist
+
+# Allow important assets
+Allow: /favicon.png
+Allow: /manifest.json
+
+# Crawl delay
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://www.diarayao.com/sitemap.xml

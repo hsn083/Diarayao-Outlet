@@ -1,0 +1,182 @@
+import { NextRequest, NextResponse } from 'next/server';
+import connectDB from '@/lib/db';
+import User from '@/models/User';
+import Order from '@/models/Order';
+import mongoose from 'mongoose';
+import { adminApiMiddleware } from '@/lib/admin-middleware';
+
+// Helper function to find customer by ID (handles ObjectId, custom customerId, and email)
+async function findCustomerById(id: string) {
+  await connectDB();
+  
+  console.log('[CUSTOMER_LOOKUP] Looking up customer with ID:', id);
+  
+  let customer = null;
+  let lookupMethod = '';
+  
+  // Check if it's a valid MongoDB ObjectId
+  if (mongoose.Types.ObjectId.isValid(id)) {
+    console.log('[CUSTOMER_LOOKUP] ID is valid ObjectId, trying findById');
+    customer = await User.findById(id);
+    lookupMethod = 'ObjectId';
+  }
+  
+  // If not found by ObjectId, try by customerId field
+  if (!customer) {
+    console.log('[CUSTOMER_LOOKUP] Not found by ObjectId, trying customerId field');
+    customer = await User.findOne({ customerId: id });
+    lookupMethod = 'customerId';
+  }
+  
+  // If still not found, try by email
+  if (!customer) {
+    console.log('[CUSTOMER_LOOKUP] Not found by customerId, trying email');
+    customer = await User.findOne({ email: id });
+    lookupMethod = 'email';
+  }
+  
+  if (customer) {
+    console.log('[CUSTOMER_LOOKUP] Customer found using method:', lookupMethod, 'MongoDB _id:', customer._id.toString());
+  } else {
+    console.log('[CUSTOMER_LOOKUP] Customer NOT found with ID:', id);
+  }
+  
+  return customer;
+}
+
+// GET - Get single customer with details
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  // Verify admin authorization
+  const authError = await adminApiMiddleware(request);
+  if (authError) return authError;
+
+  try {
+    const customerId = params.id;
+    const customer = await findCustomerById(customerId);
+
+    if (!customer) {
+      return NextResponse.json(
+        { success: false, error: 'Customer not found' },
+        { status: 404 }
+      );
+    }
+
+    // Get customer orders
+    const orders = await Order.find({ customer: customer._id }).sort({ createdAt: -1 });
+
+    // Calculate total spending
+    const totalSpending = orders.reduce((sum: number, order: any) => sum + (order.total || 0), 0);
+
+    // Ensure createdAt has a value with fallback to ObjectId timestamp
+    let createdAt = customer.createdAt;
+    if (!createdAt) {
+      createdAt = customer._id.getTimestamp();
+    }
+
+    // Return customer without password
+    const customerObj = customer.toObject();
+    const { password, ...customerWithoutPassword } = customerObj;
+
+    return NextResponse.json({
+      success: true,
+      customer: {
+        ...customerWithoutPassword,
+        id: customer._id.toString(),
+        customerId: customer.customerId,
+        fullName: customer.name,
+        emailVerified: customer.isEmailVerified,
+        createdAt: createdAt,
+        joinedDate: createdAt,
+        totalOrders: orders.length,
+        totalSpending,
+        orders,
+      },
+    });
+  } catch (error: any) {
+    console.error('[CUSTOMER] Error fetching customer:', error);
+    return NextResponse.json(
+      { success: false, error: error.message || 'Failed to fetch customer' },
+      { status: 500 }
+    );
+  }
+}
+
+// PATCH - Update customer (for verification, blocking, etc.)
+export async function PATCH(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  // Verify admin authorization
+  const authError = await adminApiMiddleware(request);
+  if (authError) return authError;
+
+  try {
+    const customerId = params.id;
+    const body = await request.json();
+    const { action } = body;
+
+    const customer = await findCustomerById(customerId);
+
+    if (!customer) {
+      return NextResponse.json(
+        { success: false, error: 'Customer not found' },
+        { status: 404 }
+      );
+    }
+
+    switch (action) {
+      case 'verify':
+        customer.isEmailVerified = true;
+        break;
+      case 'revoke-verification':
+        customer.isEmailVerified = false;
+        break;
+      case 'block':
+        customer.isBlocked = true;
+        break;
+      case 'unblock':
+        customer.isBlocked = false;
+        break;
+      case 'delete':
+        customer.isDeleted = true;
+        customer.deletedAt = new Date();
+        break;
+      case 'restore':
+        customer.isDeleted = false;
+        customer.deletedAt = undefined;
+        break;
+      default:
+        return NextResponse.json(
+          { success: false, error: 'Invalid action' },
+          { status: 400 }
+        );
+    }
+
+    await customer.save();
+
+    return NextResponse.json({
+      success: true,
+      customer: {
+        id: customer._id.toString(),
+        fullName: customer.name,
+        emailVerified: customer.isEmailVerified,
+        isBlocked: customer.isBlocked,
+        isDeleted: customer.isDeleted,
+      },
+      message: `Customer ${action} successful`,
+    });
+  } catch (error: any) {
+    console.error('[CUSTOMER] Error updating customer:', error);
+    return NextResponse.json(
+      { success: false, error: error.message || 'Failed to update customer' },
+      { status: 500 }
+    );
+  }
+}
+
+// Force dynamic rendering
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;

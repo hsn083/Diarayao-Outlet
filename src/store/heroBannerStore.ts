@@ -1,0 +1,61 @@
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+import { HeroBanner } from '@/types';
+
+interface HeroBannerStore {
+  heroBanner: HeroBanner | null;
+  setHeroBanner: (banner: HeroBanner) => void;
+  updateHeroBanner: (banner: Partial<HeroBanner>) => void;
+  resetHeroBanner: () => void;
+}
+
+const defaultHeroBanner: HeroBanner = {
+  _id: '1',
+  desktopImage: '/images/hero-banner-default.jpg',
+  mobileImage: '/images/hero-banner-default.jpg',
+  heading: 'Premium Fashion Collection',
+  subHeading: 'Discover the latest fashion trends and premium products crafted for comfort and elegance.',
+  buttonText: 'Shop Now',
+  buttonUrl: '/shop',
+  enableButton: true,
+  textPosition: 'left',
+  overlayOpacity: 50,
+  overlayColor: '#000000',
+  textColor: '#ffffff',
+  buttonStyle: 'primary',
+  displayOrder: 1,
+  isActive: true,
+  createdAt: new Date('2024-01-01'),
+  updatedAt: new Date('2024-01-01'),
+};
+
+export const useHeroBannerStore = create<HeroBannerStore>()(
+  persist(
+    (set) => ({
+      heroBanner: defaultHeroBanner,
+
+      setHeroBanner: (banner) => {
+        set({ heroBanner: banner });
+      },
+
+      updateHeroBanner: (bannerData) => {
+        set((state) => ({
+          heroBanner: state.heroBanner
+            ? {
+                ...state.heroBanner,
+                ...bannerData,
+                updatedAt: new Date(),
+              }
+            : null,
+        }));
+      },
+
+      resetHeroBanner: () => {
+        set({ heroBanner: defaultHeroBanner });
+      },
+    }),
+    {
+      name: 'hero-banner-storage',
+    }
+  )
+);
