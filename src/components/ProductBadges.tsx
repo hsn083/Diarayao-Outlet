@@ -51,11 +51,7 @@ export function ProductBadge({ type, discount }: ProductBadgeProps) {
     return (
       <Badge className={`${config.className} text-xs font-semibold`}>
         {Icon && <Icon className="h-3 w-3 mr-1" />}
-<<<<<<< HEAD
         {Math.abs(discount)}% OFF
-=======
-        {discount}% OFF
->>>>>>> f67d9ae5125ac0b65dc25adb5887770d2cb55cdb
       </Badge>
     );
   }

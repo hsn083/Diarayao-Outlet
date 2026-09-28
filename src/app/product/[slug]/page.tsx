@@ -723,11 +723,7 @@ export default function ProductPage() {
                       <span className="text-xl text-muted-foreground line-through">
                         PKR {product.price.toLocaleString()}
                       </span>
-<<<<<<< HEAD
                       <Badge className="bg-pink-500">{Math.abs(discount)}%</Badge>
-=======
-                      <Badge className="bg-pink-500">-{discount}%</Badge>
->>>>>>> f67d9ae5125ac0b65dc25adb5887770d2cb55cdb
                     </>
                   )}
                 </div>
