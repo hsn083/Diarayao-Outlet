@@ -163,8 +163,13 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
           
           {discount > 0 && (
+<<<<<<< HEAD
             <Badge className="absolute top-2 left-2 bg-gradient-to-r from-pink-500 to-rose-500 z-10 text-white" aria-label={`${Math.abs(discount)}% discount`}>
               {Math.abs(discount)}%
+=======
+            <Badge className="absolute top-2 left-2 bg-gradient-to-r from-pink-500 to-rose-500 z-10 text-white" aria-label={`${discount}% discount`}>
+              -{discount}%
+>>>>>>> f67d9ae5125ac0b65dc25adb5887770d2cb55cdb
             </Badge>
           )}
           
