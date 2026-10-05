@@ -9,6 +9,7 @@ import Script from "next/script";
 import { OrganizationSchema, WebsiteSchema, OnlineStoreSchema, WebPageSchema } from "@/components/StructuredData";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import AnnouncementBarWrapper from "@/components/AnnouncementBarWrapper";
+import ZanderioProductImages from "@/components/ZanderioProductImages";
 
 // Force dynamic rendering to avoid build-time fetch issues
 export const dynamic = 'force-dynamic';
@@ -225,6 +226,7 @@ export default function RootLayout({
           data-id="wdg_6EC1yU4wU1gl8er928Q4oTzF"
           strategy="afterInteractive"
         />
+        <ZanderioProductImages />
         <WhatsAppButton />
 
       </body>
