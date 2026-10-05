@@ -5,6 +5,7 @@ import Analytics from "@/components/Analytics";
 import SettingsProvider from "@/components/SettingsProvider";
 import { ToastContainer } from "@/components/ui/toast";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 import { OrganizationSchema, WebsiteSchema, OnlineStoreSchema, WebPageSchema } from "@/components/StructuredData";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import AnnouncementBarWrapper from "@/components/AnnouncementBarWrapper";
@@ -219,6 +220,11 @@ export default function RootLayout({
 
         <ToastContainer />
         <SpeedInsights />
+        <Script
+          src="https://cdn.zanderio.ai/widget/loader.js"
+          data-id="wdg_6EC1yU4wU1gl8er928Q4oTzF"
+          strategy="afterInteractive"
+        />
         <WhatsAppButton />
 
       </body>

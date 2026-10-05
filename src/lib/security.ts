@@ -120,11 +120,11 @@ export function getCSPHeaders() {
   return {
     'Content-Security-Policy': [
       "default-src 'self'",
-      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.jsdelivr.net https://checkout.stripe.com",
+      "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://cdn.jsdelivr.net https://checkout.stripe.com https://cdn.zanderio.ai",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com",
       "img-src 'self' data: https: blob:",
-      "connect-src 'self' https://api.stripe.com https://checkout.stripe.com",
+      "connect-src 'self' https://api.stripe.com https://checkout.stripe.com https://api.zanderio.ai https://agent.zanderio.ai",
       "frame-src 'self' https://checkout.stripe.com https://js.stripe.com",
       "object-src 'none'",
       "base-uri 'self'",
