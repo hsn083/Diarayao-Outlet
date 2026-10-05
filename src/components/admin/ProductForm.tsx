@@ -183,6 +183,25 @@ export function ProductForm({
           )}
         </FormField>
 
+        {/* Discount Percentage */}
+        <FormField>
+          <FormLabel>Discount Percentage (%)</FormLabel>
+          <Input
+            {...register('discountPercentage', {
+              setValueAs: (value) => value === '' ? null : Number(value),
+            })}
+            type='number'
+            min='0'
+            max='100'
+            step='1'
+            placeholder='e.g., 20'
+            className='fashion-input'
+          />
+          {errors.discountPercentage && (
+            <FormMessage>{errors.discountPercentage.message}</FormMessage>
+          )}
+        </FormField>
+
         {/* Stock */}
         <FormField>
           <FormLabel>Stock Quantity *</FormLabel>

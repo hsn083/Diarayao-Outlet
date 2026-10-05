@@ -28,9 +28,9 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [isDesktop, setIsDesktop] = useState(false);
   const router = useRouter();
   const { success: toastSuccess, error: toastError } = useToast();
-  const discount = product.discountPrice 
+  const discount = product.discountPercentage ?? (product.discountPrice
     ? Math.round(((product.price - product.discountPrice) / product.price) * 100)
-    : 0;
+    : 0);
 
   // Detect desktop device (non-touch)
   useEffect(() => {
@@ -163,8 +163,8 @@ export default function ProductCard({ product }: ProductCardProps) {
           </div>
           
           {discount > 0 && (
-            <Badge className="absolute top-2 left-2 bg-gradient-to-r from-pink-500 to-rose-500 z-10 text-white" aria-label={`${Math.abs(discount)}% discount`}>
-              {Math.abs(discount)}%
+            <Badge className="absolute top-2 left-2 bg-gradient-to-r from-pink-500 to-rose-500 z-10 text-white" aria-label={`${Math.abs(discount)}% off`}>
+              {Math.abs(discount)}% OFF
             </Badge>
           )}
           

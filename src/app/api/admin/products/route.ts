@@ -183,6 +183,9 @@ export async function POST(request: NextRequest) {
       description: body.description,
       price: Number(body.price),
       discountPrice: body.discountPrice ? Number(body.discountPrice) : undefined,
+      discountPercentage: body.discountPercentage !== undefined && body.discountPercentage !== null && body.discountPercentage !== ''
+        ? Number(body.discountPercentage)
+        : undefined,
       category: body.category,
       brand: body.brand,
       stock: Number(body.stock),
@@ -284,6 +287,11 @@ export async function PUT(request: NextRequest) {
     if (body.description) product.description = body.description;
     if (body.price !== undefined) product.price = Number(body.price);
     if (body.discountPrice !== undefined) product.discountPrice = body.discountPrice ? Number(body.discountPrice) : undefined;
+    if (body.discountPercentage !== undefined) {
+      product.discountPercentage = body.discountPercentage === null || body.discountPercentage === ''
+        ? undefined
+        : Number(body.discountPercentage);
+    }
     if (body.category) {
       const category = await Category.findById(body.category);
       if (category) {

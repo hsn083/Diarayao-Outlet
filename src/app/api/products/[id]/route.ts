@@ -146,6 +146,11 @@ export async function PUT(
     if (body.description) updateData.description = body.description;
     if (body.price !== undefined) updateData.price = Number(body.price);
     if (body.discountPrice !== undefined) updateData.discountPrice = body.discountPrice ? Number(body.discountPrice) : null;
+    if (body.discountPercentage !== undefined) {
+      updateData.discountPercentage = body.discountPercentage === null || body.discountPercentage === ''
+        ? null
+        : Number(body.discountPercentage);
+    }
     if (body.category) updateData.category = body.category;
     if (body.brand !== undefined) updateData.brand = body.brand;
     if (body.stock !== undefined) updateData.stock = Number(body.stock);

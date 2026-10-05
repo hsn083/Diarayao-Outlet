@@ -175,6 +175,9 @@ export async function POST(request: NextRequest) {
       description: body.description,
       price: Number(body.price),
       discountPrice: body.discountPrice ? Number(body.discountPrice) : undefined,
+      discountPercentage: body.discountPercentage !== undefined && body.discountPercentage !== null && body.discountPercentage !== ''
+        ? Number(body.discountPercentage)
+        : undefined,
       category: body.category,
       brand: body.brand,
       stock: Number(body.stock),

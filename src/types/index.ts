@@ -10,6 +10,7 @@ export interface Product {
   metaKeywords?: string;
   price: number;
   discountPrice?: number;
+  discountPercentage?: number;
   categoryId: string;
   category: string;
   brand: string;

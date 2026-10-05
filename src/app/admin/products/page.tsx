@@ -33,6 +33,7 @@ interface Product {
   description: string;
   price: number;
   discountPrice?: number;
+  discountPercentage?: number;
   category: string;
   categoryId?: string;
   brand: string;
@@ -74,6 +75,7 @@ export default function AdminProductsPage() {
     brand: '',
     price: '',
     discountPrice: '',
+    discountPercentage: '',
     stock: '',
     fabric: '',
     description: ''
@@ -133,6 +135,7 @@ export default function AdminProductsPage() {
           brand: product.brand || '',
           price: product.price?.toString() || '',
           discountPrice: product.discountPrice?.toString() || '',
+          discountPercentage: product.discountPercentage?.toString() || '',
           stock: product.stock?.toString() || '',
           fabric: product.fabric || '',
           description: product.description || ''
@@ -190,6 +193,7 @@ export default function AdminProductsPage() {
       brand: '',
       price: '',
       discountPrice: '',
+      discountPercentage: '',
       stock: '',
       fabric: '',
       description: ''
@@ -328,6 +332,7 @@ export default function AdminProductsPage() {
       categoryId: selectedCategory,
       price: Number(formData.price),
       discountPrice: formData.discountPrice ? Number(formData.discountPrice) : undefined,
+      discountPercentage: formData.discountPercentage === '' ? null : Number(formData.discountPercentage),
       stock: Number(formData.stock),
       fabric: formData.fabric,
       description: formData.description,
@@ -604,6 +609,19 @@ export default function AdminProductsPage() {
                         placeholder="e.g., 7999"
                         value={formData.discountPrice}
                         onChange={(e) => setFormData({ ...formData, discountPrice: e.target.value })}
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="discountPercentage">Discount Percentage (%)</Label>
+                      <Input
+                        id="discountPercentage"
+                        type="number"
+                        min="0"
+                        max="100"
+                        step="1"
+                        placeholder="e.g., 20"
+                        value={formData.discountPercentage}
+                        onChange={(e) => setFormData({ ...formData, discountPercentage: e.target.value })}
                       />
                     </div>
                     <div>

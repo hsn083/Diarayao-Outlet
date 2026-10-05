@@ -17,6 +17,7 @@ export interface IProduct extends Document {
   description: string;
   price: number;
   discountPrice?: number;
+  discountPercentage?: number;
   brand?: string;
   category: mongoose.Types.ObjectId;
   images: string[];
@@ -77,6 +78,11 @@ const ProductSchema = new Schema<IProduct>(
     discountPrice: {
       type: Number,
       min: [0, 'Discount price cannot be negative'],
+    },
+    discountPercentage: {
+      type: Number,
+      min: [0, 'Discount percentage cannot be negative'],
+      max: [100, 'Discount percentage cannot exceed 100'],
     },
     brand: {
       type: String,

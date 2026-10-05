@@ -7,6 +7,7 @@ export const productSchema = z.object({
   brand: z.string().min(1, 'Brand is required'),
   price: z.number().positive('Price must be greater than 0'),
   discountPrice: z.number().positive('Discount price must be greater than 0').optional().nullable(),
+  discountPercentage: z.number().min(0, 'Discount percentage cannot be negative').max(100, 'Discount percentage cannot exceed 100').optional().nullable(),
   stock: z.number().int().nonnegative('Stock cannot be negative'),
   description: z.string().min(10, 'Description must be at least 10 characters'),
   warranty: z.string().optional(),
