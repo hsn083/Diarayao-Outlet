@@ -187,7 +187,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <!-- Google tag (gtag.js) -->
+        
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DR1EHYV4EE"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -196,6 +196,7 @@ export default function RootLayout({
 
   gtag('config', 'G-DR1EHYV4EE');
 </script>
+        
         {/* Performance: Preconnect to critical origins */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
